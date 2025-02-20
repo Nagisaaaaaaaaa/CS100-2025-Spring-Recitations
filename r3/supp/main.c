@@ -44,22 +44,23 @@ double ColormapB(double value);
 //
 //
 int main(void) {
-  int w = 512, h = 512;
+  int imageWidth = 512, imageHeight = 512;
 
-  printf("P3\n%d %d\n255\n", w, h);
+  printf("P3\n%d %d\n255\n", imageWidth, imageHeight);
 
-  for (int j = 0; j < h; ++j) {
-    for (int i = 0; i < w; ++i) {
-      int dwell = Dwell(i, j, w, h, -1.5, -1.0, 0.5, 1.0);
+  for (int j = 0; j < imageHeight; ++j) {
+    for (int i = 0; i < imageWidth; ++i) {
+      double r = 0.0, g = 0.0, b = 0.0;
 
-      double r, g, b;
-      if (dwell == maxDwell) {
-        r = 0, g = 0, b = 0;
-      } else {
-        double t = (double)dwell / (double)(maxDwell - 1);
-        r = ColormapR(t);
-        g = ColormapG(t);
-        b = ColormapB(t);
+      // When the "dwell" at coordinate `(i, j)` is less than `maxDwell`.
+      // That is, the point does not belong to the set.
+      // The color at `(i, j)` is determined based on "dwell" and the colormap.
+      int dwell = Dwell(i, j, imageWidth, imageHeight, -1.5, -1.0, 0.5, 1.0);
+      if (dwell < maxDwell) {
+        double v = (double)dwell / (double)(maxDwell - 1);
+        r = ColormapR(v);
+        g = ColormapG(v);
+        b = ColormapB(v);
       }
 
       // [0.0, 1.0] -> [0, 255].
