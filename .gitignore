@@ -33,6 +33,9 @@
 *.out
 *.app
 
+# Images
+*.ppm
+
 # file automatically generated
 CppCheckSuppressions.txt
 
@@ -52,7 +55,6 @@ CMakeSettings.json
 
 # Cland
 .clangd
-
 
 # Directory
 .cache/
