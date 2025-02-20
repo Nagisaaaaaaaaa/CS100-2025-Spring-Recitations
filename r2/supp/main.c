@@ -44,10 +44,14 @@ int main(void) {
       int ig = 0;
       int ib = 0;
 
-      if (IsInSphere(i, j, 64.0 * 1.0, 64.0 * 1.0, 64.0) || //
-          IsInSphere(i, j, 64.0 * 3.0, 64.0 * 1.0, 64.0) || //
-          IsInSphere(i, j, 64.0 * 1.0, 64.0 * 3.0, 64.0) || //
-          IsInSphere(i, j, 64.0 * 3.0, 64.0 * 3.0, 64.0)) {
+      double quarterX = (double)imageWidth / 4.0;
+      double quarterY = (double)imageHeight / 4.0;
+      double quarterMin = quarterX < quarterY ? quarterX : quarterY;
+
+      if (IsInSphere(i, j, quarterX * 1.0, quarterY * 1.0, quarterMin) || //
+          IsInSphere(i, j, quarterX * 3.0, quarterY * 1.0, quarterMin) || //
+          IsInSphere(i, j, quarterX * 1.0, quarterY * 3.0, quarterMin) || //
+          IsInSphere(i, j, quarterX * 3.0, quarterY * 3.0, quarterMin)) {
         // r: [0, w - 1] -> [0.0, 1.0].
         // g: [0, h - 1] -> [0.0, 1.0].
         double r = (double)i / (double)(imageWidth - 1);  // `r` = red.
