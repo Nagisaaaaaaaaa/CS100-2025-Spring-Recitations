@@ -48,10 +48,10 @@ int main(void) {
       double quarterY = (double)imageHeight / 4.0;
       double quarterMin = quarterX < quarterY ? quarterX : quarterY;
 
-      if (IsInSphere(i, j, quarterX * 1.0, quarterY * 1.0, quarterMin) || //
-          IsInSphere(i, j, quarterX * 3.0, quarterY * 1.0, quarterMin) || //
-          IsInSphere(i, j, quarterX * 1.0, quarterY * 3.0, quarterMin) || //
-          IsInSphere(i, j, quarterX * 3.0, quarterY * 3.0, quarterMin)) {
+      if (IsInSphere(i, j, quarterX * 1.0, quarterY * 1.0, quarterMin) ||                        //
+          IsInSphere(i, j, quarterX * 3.0, quarterY * 3.0, quarterMin) ||                        //
+          IsInRectangle(i, j, quarterX * 0.0, quarterY * 2.0, quarterX * 2.0, quarterY * 4.0) || //
+          IsInRectangle(i, j, quarterX * 2.0, quarterY * 0.0, quarterX * 4.0, quarterY * 2.0)) {
         // r: [0, w - 1] -> [0.0, 1.0].
         // g: [0, h - 1] -> [0.0, 1.0].
         double r = (double)i / (double)(imageWidth - 1);  // `r` = red.
