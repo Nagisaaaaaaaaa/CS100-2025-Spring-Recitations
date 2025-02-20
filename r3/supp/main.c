@@ -41,6 +41,8 @@ double ColormapB(double value);
 //
 //
 //
+//
+//
 int main(void) {
   int w = 512, h = 512;
 
@@ -72,6 +74,8 @@ int main(void) {
   return 0;
 }
 
+//
+//
 //
 //
 //
@@ -109,6 +113,9 @@ int Dwell(int i, int j, int width, int height, double cMinRe, double cMinIm, dou
   return dwell;
 }
 
+//
+//
+//
 const double colorsTurbo[256][3] = {
     {0.18995, 0.07176, 0.23217}, {0.19483, 0.08339, 0.26149}, {0.19956, 0.09498, 0.29024}, {0.20415, 0.10652, 0.31844},
     {0.20860, 0.11802, 0.34607}, {0.21291, 0.12947, 0.37314}, {0.21708, 0.14087, 0.39964}, {0.22111, 0.15223, 0.42558},
