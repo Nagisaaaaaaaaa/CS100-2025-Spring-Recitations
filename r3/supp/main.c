@@ -76,6 +76,10 @@ int main(void) {
 //
 //
 int Dwell(int i, int j, int width, int height, double cMinRe, double cMinIm, double cMaxRe, double cMaxIm) {
+  // You may refer to https://en.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set for pseudocodes, or
+  // refer to https://developer.nvidia.com/blog/introduction-cuda-dynamic-parallelism for a C++ implementation.
+  // The following implementation is just a copy-paste of the later one and is converted to C.
+
   double dcRe = cMaxRe - cMinRe;
   double dcIm = cMaxIm - cMinIm;
   double fx = (double)i / (double)width;
