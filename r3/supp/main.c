@@ -80,10 +80,16 @@ int Dwell(int i, int j, int width, int height, double cMinRe, double cMinIm, dou
   // refer to https://developer.nvidia.com/blog/introduction-cuda-dynamic-parallelism for a C++ implementation.
   // The following implementation is just a copy-paste of the later one and is converted to C.
 
+  // Compute center of the pixel `(i, j)`.
+  double x = (double)i + 0.5;
+  double y = (double)j + 0.5;
+
+  // Compute the normalized position in `[0, 1]`.
+  double fx = x / (double)width;
+  double fy = y / (double)height;
+
   double dcRe = cMaxRe - cMinRe;
   double dcIm = cMaxIm - cMinIm;
-  double fx = (double)i / (double)width;
-  double fy = (double)j / (double)height;
 
   double cRe = cMinRe + fx * dcRe;
   double cIm = cMinIm + fy * dcIm;
