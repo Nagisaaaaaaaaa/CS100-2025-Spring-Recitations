@@ -1,0 +1,24 @@
+BasedOnStyle: LLVM
+
+ColumnLimit: 120
+
+# ARIA customizations
+AlwaysBreakTemplateDeclarations: Yes
+BinPackParameters: false
+AllowShortFunctionsOnASingleLine: Inline
+
+InsertNewlineAtEOF: true
+SeparateDefinitionBlocks: Always
+AllowShortBlocksOnASingleLine: Always
+
+# Indenting macros like
+#  #define ARIA_HOST    __host__
+#  #define ARIA_DEVICE  __device__
+AlignConsecutiveMacros: Consecutive
+
+# Indenting preprocessor directives for complex PP in platform.h
+IndentPPDirectives: BeforeHash
+PPIndentWidth: 2
+
+# Avoid indenting lambda bodies
+LambdaBodyIndentation: OuterScope
