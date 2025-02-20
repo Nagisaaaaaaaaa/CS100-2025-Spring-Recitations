@@ -50,6 +50,7 @@ int main(void) {
 
   for (int j = 0; j < imageHeight; ++j) {
     for (int i = 0; i < imageWidth; ++i) {
+      // Default values.
       double r = 0.0, g = 0.0, b = 0.0;
 
       // When the "dwell" at coordinate `(i, j)` is less than `maxDwell`.
