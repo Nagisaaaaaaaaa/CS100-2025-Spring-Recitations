@@ -115,6 +115,10 @@ int Dwell(int i, int j, int width, int height, double cMinRe, double cMinIm, dou
 //
 //
 //
+// Colormap is implemented with the following lookup table.
+// Note that the second dimension has size `3`, which contains the actual RGB colors.
+// The first dimension has size `256`, which means that
+// given any value in `[0, 255]`, we can access its corresponding color.
 const double ColormapColors[256][3] = {
     {0.18995, 0.07176, 0.23217}, {0.19483, 0.08339, 0.26149}, {0.19956, 0.09498, 0.29024}, {0.20415, 0.10652, 0.31844},
     {0.20860, 0.11802, 0.34607}, {0.21291, 0.12947, 0.37314}, {0.21708, 0.14087, 0.39964}, {0.22111, 0.15223, 0.42558},
