@@ -116,7 +116,7 @@ int Dwell(int i, int j, int width, int height, double cMinRe, double cMinIm, dou
 //
 //
 //
-const double colorsTurbo[256][3] = {
+const double ColormapColors[256][3] = {
     {0.18995, 0.07176, 0.23217}, {0.19483, 0.08339, 0.26149}, {0.19956, 0.09498, 0.29024}, {0.20415, 0.10652, 0.31844},
     {0.20860, 0.11802, 0.34607}, {0.21291, 0.12947, 0.37314}, {0.21708, 0.14087, 0.39964}, {0.22111, 0.15223, 0.42558},
     {0.22500, 0.16354, 0.45096}, {0.22875, 0.17481, 0.47578}, {0.23236, 0.18603, 0.50004}, {0.23582, 0.19720, 0.52373},
@@ -198,7 +198,7 @@ double ColormapR(double value) {
   int j = i + 1;
   double t = value256 - i;
 
-  return Lerp(colorsTurbo[i][0], colorsTurbo[j][0], t);
+  return Lerp(ColormapColors[i][0], ColormapColors[j][0], t);
 }
 
 double ColormapG(double value) {
@@ -209,7 +209,7 @@ double ColormapG(double value) {
   int j = i + 1;
   double t = value256 - i;
 
-  return Lerp(colorsTurbo[i][1], colorsTurbo[j][1], t);
+  return Lerp(ColormapColors[i][1], ColormapColors[j][1], t);
 }
 
 double ColormapB(double value) {
@@ -220,5 +220,5 @@ double ColormapB(double value) {
   int j = i + 1;
   double t = value256 - i;
 
-  return Lerp(colorsTurbo[i][2], colorsTurbo[j][2], t);
+  return Lerp(ColormapColors[i][2], ColormapColors[j][2], t);
 }
