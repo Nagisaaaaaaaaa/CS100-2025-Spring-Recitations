@@ -188,10 +188,13 @@ const double ColormapColors[256][3] = {
     {0.57103, 0.04474, 0.00529}, {0.55852, 0.04028, 0.00579}, {0.54583, 0.03593, 0.00638}, {0.53295, 0.03169, 0.00705},
     {0.51989, 0.02756, 0.00780}, {0.50664, 0.02354, 0.00863}, {0.49321, 0.01963, 0.00955}, {0.47960, 0.01583, 0.01055}};
 
+/// \brief Clamp the given `value` to `[low, high]`.
 double Clamp(double value, double low, double high) {
   return (value < low) ? low : (high < value ? high : value);
 }
 
+/// \brief Compute the linear interpolation between `x` and `y`, if
+/// the parameter `t` is inside `[0, 1)` (the linear extrapolation otherwise).
 double Lerp(double x, double y, double t) {
   return x + t * (y - x);
 }
