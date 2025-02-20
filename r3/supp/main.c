@@ -199,7 +199,7 @@ double Lerp(double x, double y, double t) {
   return x + t * (y - x);
 }
 
-// `ColormapR`, `ColormapG`, and `ColormapB` are similarly implemented.
+// TODO: `ColormapR`, `ColormapG`, and `ColormapB` are similarly implemented.
 // Since we are currently C beginners, let's just duplicate the codes.
 // We will be able to greatly simplify them several weeks later.
 double ColormapR(double value) {
