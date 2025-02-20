@@ -7,7 +7,8 @@ int main(void) {
 
   for (int j = 0; j < imageHeight; ++j) {
     for (int i = 0; i < imageWidth; ++i) {
-      // [0, W - 1] -> [0.0, 1.0].
+      // r: [0, w - 1] -> [0.0, 1.0].
+      // g: [0, h - 1] -> [0.0, 1.0].
       double r = (double)i / (double)(imageWidth - 1);  // `r` = red.
       double g = (double)j / (double)(imageHeight - 1); // `g` = green.
       double b = 0.25;                                  // `b` = blue.
