@@ -34,7 +34,10 @@ int main(void) {
       int ig = 0;
       int ib = 0;
 
-      if (isInSphere(i, j, 128.0, 128.0, 128.0)) {
+      if (isInSphere(i, j, 64.0 * 1.0, 64.0 * 1.0, 64.0) || //
+          isInSphere(i, j, 64.0 * 3.0, 64.0 * 1.0, 64.0) || //
+          isInSphere(i, j, 64.0 * 1.0, 64.0 * 3.0, 64.0) || //
+          isInSphere(i, j, 64.0 * 3.0, 64.0 * 3.0, 64.0)) {
         // r: [0, w - 1] -> [0.0, 1.0].
         // g: [0, h - 1] -> [0.0, 1.0].
         double r = (double)i / (double)(imageWidth - 1);  // `r` = red.
