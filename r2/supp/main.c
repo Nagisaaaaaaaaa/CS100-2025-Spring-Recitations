@@ -2,21 +2,31 @@
 #include <stdio.h>
 
 /// \brief Compute the squared norm of a vector `(x, y)`.
-double squaredNorm(double x, double y) {
+double SquaredNorm(double x, double y) {
   return x * x + y * y;
 }
 
 /// \brief Determine whether coordinate `(i, j)` is inside the sphere, which is
 /// centered at `(centerX, centerY)` and has radius `radius`.
-bool isInSphere(int i, int j, double centerX, double centerY, double radius) {
+bool IsInSphere(int i, int j, double centerX, double centerY, double radius) {
   // Compute center of the pixel `(i, j)`.
   double x = (double)i + 0.5;
   double y = (double)j + 0.5;
 
   double dirX = x - centerX;
   double dirY = y - centerY;
-  double dstSquared = squaredNorm(dirX, dirY);
+  double dstSquared = SquaredNorm(dirX, dirY);
   return dstSquared <= radius * radius;
+}
+
+/// \brief Determine whether coordinate `(i, j)` is inside the rectangle, whose
+/// range is from `(minX, minY)` to `(maxX, maxY)`.
+bool IsInRectangle(int i, int j, double minX, double minY, double maxX, double maxY) {
+  // Compute center of the pixel `(i, j)`.
+  double x = (double)i + 0.5;
+  double y = (double)j + 0.5;
+
+  return x >= minX && x <= maxX && y >= minY && y <= maxY;
 }
 
 //
@@ -34,10 +44,10 @@ int main(void) {
       int ig = 0;
       int ib = 0;
 
-      if (isInSphere(i, j, 64.0 * 1.0, 64.0 * 1.0, 64.0) || //
-          isInSphere(i, j, 64.0 * 3.0, 64.0 * 1.0, 64.0) || //
-          isInSphere(i, j, 64.0 * 1.0, 64.0 * 3.0, 64.0) || //
-          isInSphere(i, j, 64.0 * 3.0, 64.0 * 3.0, 64.0)) {
+      if (IsInSphere(i, j, 64.0 * 1.0, 64.0 * 1.0, 64.0) || //
+          IsInSphere(i, j, 64.0 * 3.0, 64.0 * 1.0, 64.0) || //
+          IsInSphere(i, j, 64.0 * 1.0, 64.0 * 3.0, 64.0) || //
+          IsInSphere(i, j, 64.0 * 3.0, 64.0 * 3.0, 64.0)) {
         // r: [0, w - 1] -> [0.0, 1.0].
         // g: [0, h - 1] -> [0.0, 1.0].
         double r = (double)i / (double)(imageWidth - 1);  // `r` = red.
