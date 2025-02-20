@@ -1,0 +1,55 @@
+---
+# Configure clang-tidy for this project.
+
+# This list is supposed to be frequently updated in the early stage of development.
+# Some of the options are to be disabled later and the reason will be explained.
+Checks: >
+  -*,
+  boost-*,
+  bugprone-*,
+  clang-analyzer-*,
+  concurrency-*,
+  cppcoreguidelines-*,
+  google-*,
+  misc-*,
+  modernize-*,
+  mpi-*,
+  openmp-*,
+  performance-*,
+  portability-*,
+  readability-*,
+
+  -bugprone-easily-swappable-parameters,
+  -cppcoreguidelines-avoid-do-while,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-avoid-non-const-global-variables,
+  -cppcoreguidelines-macro-usage,
+  -cppcoreguidelines-non-private-member-variables-in-classes,
+  -cppcoreguidelines-special-member-functions,
+  -cppcoreguidelines-owning-memory,
+  -cppcoreguidelines-pro-bounds-constant-array-index,
+  -misc-non-private-member-variables-in-classes,
+  -modernize-use-trailing-return-type,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-redundant-access-specifiers,
+  -misc-include-cleaner,
+
+# Disable it for now, we might need more precise report on errors.
+# WarningsAsErrors: "*"
+
+# FunctionCase is set to aNy_CasE to make math function naming more robust.
+CheckOptions:
+  - { key: readability-identifier-naming.NamespaceCase, value: aNy_CasE }
+  - { key: readability-identifier-naming.ClassCase, value: aNy_CasE }
+  - { key: readability-identifier-naming.StructCase, value: aNy_CasE }
+  - { key: readability-identifier-naming.EnumCase, value: aNy_CasE }
+  - { key: readability-identifier-naming.FunctionCase, value: aNy_CasE }
+  - { key: readability-identifier-naming.VariableCase, value: aNy_CasE }
+  - { key: readability-identifier-naming.ClassMemberCase, value: aNy_CasE }
+  # - { key: readability-identifier-naming.ClassMemberSuffix, value: _ }
+  - { key: readability-identifier-naming.PrivateMemberSuffix, value: _ }
+  - { key: readability-identifier-naming.ProtectedMemberSuffix, value: _ }
+
+  # Extra options
+  - { key: readability-function-cognitive-complexity.IgnoreMacros, value: 1 }
