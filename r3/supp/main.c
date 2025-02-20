@@ -29,8 +29,13 @@ const int maxDwell = 512;
 /// `(cMinRe, cMinIm)` and `(cMaxRe, cMaxIm)` are coordinates of bottom-left and top-right image corners.
 int Dwell(int i, int j, int width, int height, double cMinRe, double cMinIm, double cMaxRe, double cMaxIm);
 
+/// \brief Map the `value` in `[0.0, 1.0]` to a color at the red channel.
 double ColormapR(double value);
+
+/// \brief Map the `value` in `[0.0, 1.0]` to a color at the green channel.
 double ColormapG(double value);
+
+/// \brief Map the `value` in `[0.0, 1.0]` to a color at the blue channel.
 double ColormapB(double value);
 
 //
