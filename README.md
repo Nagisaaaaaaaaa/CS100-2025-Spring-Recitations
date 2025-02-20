@@ -2,8 +2,12 @@
 
 ## Introduction
 
-我们还是希望复习课能在实用的基础上，更有趣一点。
+以下是每次复习课的补充资料。
 
-## R1: Hello Painter
+## Supp 1: Hello Painter
 
 我们将学习如何使用 `printf` 来作画。
+
+## Supp 2: Hello Circle
+
+我们将学习如何在图上画圆，并使用函数来做一些封装。
