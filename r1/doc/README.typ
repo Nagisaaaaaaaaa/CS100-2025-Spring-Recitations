@@ -4,13 +4,16 @@
 #set heading(numbering: "1.1.1.")
 #set math.equation(numbering: "(1)")
 
-= 运行我们的小程序
+//
+//
+//
+= 让我们用 `printf` 创作些好看的东西吧
 
-+ 如何在 windows 上，先运行 `bash`
++ 如果在 windows 上，请先运行 `bash`
 + `gcc main.c -o main.exe`
 + `LANG=C.UTF-8 ./main.exe > image.ppm`
 + `python show.py image.ppm`
 
-= 把它们整合起来
+= 不想每次都打这么多字
 
 + `python go.py main.c`
