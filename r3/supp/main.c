@@ -25,9 +25,9 @@
 /// 2. If "dwell" is less than `maxDwell`, the point does not belong to the set.
 const int maxDwell = 512;
 
-/// \brief Compute the "dwell" of coordinate `(i, j)` from a canvas whose size is `(w, h)`.
+/// \brief Compute the "dwell" at coordinate `(i, j)` from a canvas whose size is `(width, height)`.
 /// `(cMinRe, cMinIm)` and `(cMaxRe, cMaxIm)` are coordinates of bottom-left and top-right image corners.
-int Dwell(int i, int j, int w, int h, double cMinRe, double cMinIm, double cMaxRe, double cMaxIm);
+int Dwell(int i, int j, int width, int height, double cMinRe, double cMinIm, double cMaxRe, double cMaxIm);
 
 double ColormapR(double value);
 double ColormapG(double value);
@@ -70,11 +70,11 @@ int main(void) {
 //
 //
 //
-int Dwell(int i, int j, int w, int h, double cMinRe, double cMinIm, double cMaxRe, double cMaxIm) {
+int Dwell(int i, int j, int width, int height, double cMinRe, double cMinIm, double cMaxRe, double cMaxIm) {
   double dcRe = cMaxRe - cMinRe;
   double dcIm = cMaxIm - cMinIm;
-  double fx = (double)i / (double)w;
-  double fy = (double)j / (double)h;
+  double fx = (double)i / (double)width;
+  double fy = (double)j / (double)height;
 
   double cRe = cMinRe + fx * dcRe;
   double cIm = cMinIm + fy * dcIm;
