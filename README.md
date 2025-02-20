@@ -15,3 +15,9 @@
 我们将学习如何在图上画圆、椭圆、长方形，并使用函数来做一些封装。
 
 <img src="r2/supp/image.png" style="zoom: 100%;" />
+
+## Supp 3: Hello Fractal
+
+我们将学习如何绘制[分形](https://en.wikipedia.org/wiki/Fractal)。
+
+<img src="r3/supp/image.png" style="zoom: 25%;" />

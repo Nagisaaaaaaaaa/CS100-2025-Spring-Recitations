@@ -54,9 +54,7 @@ int main(void) {
   for (int j = 0; j < imageHeight; ++j) {
     for (int i = 0; i < imageWidth; ++i) {
       // Default values.
-      int ir = 0;
-      int ig = 0;
-      int ib = 0;
+      double r = 0.0, g = 0.0, b = 0.0;
 
       double quarterX = (double)imageWidth / 4.0;
       double quarterY = (double)imageHeight / 4.0;
@@ -67,15 +65,15 @@ int main(void) {
           IsInRectangle(i, j, quarterX * 2.0, quarterY * 0.0, quarterX * 4.0, quarterY * 2.0)) {
         // r: [0, w - 1] -> [0.0, 1.0].
         // g: [0, h - 1] -> [0.0, 1.0].
-        double r = (double)i / (double)(imageWidth - 1);  // `r` = red.
-        double g = (double)j / (double)(imageHeight - 1); // `g` = green.
-        double b = 0.25;                                  // `b` = blue.
-
-        // [0.0, 1.0] -> [0, 255].
-        ir = (int)(255.0 * r);
-        ig = (int)(255.0 * g);
-        ib = (int)(255.0 * b);
+        r = (double)i / (double)(imageWidth - 1);  // `r` = red.
+        g = (double)j / (double)(imageHeight - 1); // `g` = green.
+        b = 0.25;                                  // `b` = blue.
       }
+
+      // [0.0, 1.0] -> [0, 255].
+      int ir = (int)(255.0 * r);
+      int ig = (int)(255.0 * g);
+      int ib = (int)(255.0 * b);
 
       printf("%d %d %d\n", ir, ig, ib);
     }
