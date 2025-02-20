@@ -6,8 +6,23 @@ double SquaredNorm(double x, double y) {
   return x * x + y * y;
 }
 
+/// \brief Determine whether coordinate `(i, j)` is inside the ellipse, which is
+/// centered at `(centerX, centerY)` and has radius `(radiusX, radiusY)`.
+bool IsInEllipse(int i, int j, double centerX, double centerY, double radiusX, double radiusY) {
+  // Compute center of the pixel `(i, j)`.
+  double x = (double)i + 0.5;
+  double y = (double)j + 0.5;
+
+  double dirX = (x - centerX) / radiusX;
+  double dirY = (y - centerY) / radiusY;
+  return SquaredNorm(dirX, dirY) <= 1.0;
+}
+
 /// \brief Determine whether coordinate `(i, j)` is inside the sphere, which is
 /// centered at `(centerX, centerY)` and has radius `radius`.
+///
+/// \details You may wonder why not implement `IsInSphere` based on `IsInEllipse`.
+/// That is because multiplications are usually faster than divisions for floating points.
 bool IsInSphere(int i, int j, double centerX, double centerY, double radius) {
   // Compute center of the pixel `(i, j)`.
   double x = (double)i + 0.5;
@@ -15,8 +30,7 @@ bool IsInSphere(int i, int j, double centerX, double centerY, double radius) {
 
   double dirX = x - centerX;
   double dirY = y - centerY;
-  double dstSquared = SquaredNorm(dirX, dirY);
-  return dstSquared <= radius * radius;
+  return SquaredNorm(dirX, dirY) <= radius * radius;
 }
 
 /// \brief Determine whether coordinate `(i, j)` is inside the rectangle, whose
@@ -33,7 +47,7 @@ bool IsInRectangle(int i, int j, double minX, double minY, double maxX, double m
 //
 //
 int main(void) {
-  int imageWidth = 256, imageHeight = 256;
+  int imageWidth = 256, imageHeight = 256 * 0.618;
 
   printf("P3\n%d %d\n255\n", imageWidth, imageHeight);
 
@@ -46,11 +60,10 @@ int main(void) {
 
       double quarterX = (double)imageWidth / 4.0;
       double quarterY = (double)imageHeight / 4.0;
-      double quarterMin = quarterX < quarterY ? quarterX : quarterY;
 
-      if (IsInSphere(i, j, quarterX * 1.0, quarterY * 1.0, quarterMin) ||                        //
-          IsInSphere(i, j, quarterX * 3.0, quarterY * 3.0, quarterMin) ||                        //
-          IsInRectangle(i, j, quarterX * 0.0, quarterY * 2.0, quarterX * 2.0, quarterY * 4.0) || //
+      if (IsInEllipse(i, j, quarterX * 1.0, quarterY * 1.0, quarterX, quarterY) ||
+          IsInEllipse(i, j, quarterX * 3.0, quarterY * 3.0, quarterX, quarterY) ||
+          IsInRectangle(i, j, quarterX * 0.0, quarterY * 2.0, quarterX * 2.0, quarterY * 4.0) ||
           IsInRectangle(i, j, quarterX * 2.0, quarterY * 0.0, quarterX * 4.0, quarterY * 2.0)) {
         // r: [0, w - 1] -> [0.0, 1.0].
         // g: [0, h - 1] -> [0.0, 1.0].
