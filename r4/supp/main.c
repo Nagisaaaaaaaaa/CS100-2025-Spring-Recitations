@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define Min(a, b) (((a) < (b)) ? (a) : (b))
-
 /// \brief Compute the squared norm of a vector `(x, y)`.
 double SquaredNorm(double x, double y) {
   return x * x + y * y;
@@ -45,23 +43,31 @@ int main(int argc, char **argv) {
   // The current time of the video.
   double time = (double)frame / (double)fps;
 
-  // Size of the film
+  // Size of the film.
   int filmWidth = 256, filmHeight = 256;
 
-  double frequency = 2.0;
-  double pointDensity = 10.0;
+  // Frequency of the sin wave.
+  double waveFrequency = 2.0;
+  // Frequency of generating the points.
+  double pointFrequency = 10.0;
+  // Radius of the points.
   double pointRadius = 0.01;
 
-  int nPoints = 1 + (int)(time * frequency * pointDensity);
+  // The current number of the points.
+  int nPoints = 1 + (int)(time * waveFrequency * pointFrequency);
 
+  // Radius of the points in the scale of pixels.
+  double pointRadiusInPixel = filmWidth * pointRadius;
+
+  // Compute positions of the points.
   double *posX = malloc(nPoints * sizeof(double));
   double *posY = malloc(nPoints * sizeof(double));
-  for (int i = 0; i < nPoints; ++i) {
-    posX[i] = filmWidth * pointRadius * i;
-    posY[i] = filmHeight * 0.5 * sin(time * frequency - (double)i / pointDensity) + filmHeight * 0.5;
+  for (int iPoints = 0; iPoints < nPoints; ++iPoints) {
+    // Points are generated at right side.
+    posX[iPoints] = pointRadiusInPixel * iPoints;
+    // Points are moving as a sin wave.
+    posY[iPoints] = filmHeight * 0.5 * sin(time * waveFrequency - (double)iPoints / pointFrequency) + filmHeight * 0.5;
   }
-
-  double radius = (double)Min(filmWidth, filmHeight) * pointRadius;
 
   printf("P3\n%d %d\n255\n", filmWidth, filmHeight);
 
@@ -71,7 +77,7 @@ int main(int argc, char **argv) {
       double r = 1.0, g = 1.0, b = 1.0;
 
       for (int iPoints = 0; iPoints < nPoints; ++iPoints)
-        if (IsInCircle(i, j, posX[iPoints], posY[iPoints], radius)) {
+        if (IsInCircle(i, j, posX[iPoints], posY[iPoints], pointRadiusInPixel)) {
           double v = posY[iPoints] / (double)filmHeight;
           r = ColormapR(v);
           g = ColormapG(v);
