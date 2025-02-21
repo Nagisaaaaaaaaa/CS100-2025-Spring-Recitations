@@ -60,19 +60,19 @@ int main(void) {
       double quarterY = (double)imageHeight / 4.0;
 
       if (IsInEllipse(i, j, quarterX * 3.5, quarterY * 2.00, quarterX * 0.5, quarterY * 2.00))
-        r = 0.5, g = 0.0, b = 1.0;
+        r = 0.75, g = 0.25, b = 1.00;
       if (IsInEllipse(i, j, quarterX * 3.0, quarterY * 2.25, quarterX * 0.5, quarterY * 1.75))
-        r = 0.0, g = 0.0, b = 1.0;
+        r = 0.25, g = 0.25, b = 1.00;
       if (IsInEllipse(i, j, quarterX * 2.5, quarterY * 2.50, quarterX * 0.5, quarterY * 1.50))
-        r = 0.0, g = 1.0, b = 1.0;
+        r = 0.25, g = 1.00, b = 1.00;
       if (IsInEllipse(i, j, quarterX * 2.0, quarterY * 2.75, quarterX * 0.5, quarterY * 1.25))
-        r = 0.0, g = 1.0, b = 0.0;
+        r = 0.25, g = 1.00, b = 0.25;
       if (IsInEllipse(i, j, quarterX * 1.5, quarterY * 3.00, quarterX * 0.5, quarterY * 1.00))
-        r = 1.0, g = 1.0, b = 0.0;
+        r = 1.00, g = 1.00, b = 0.25;
       if (IsInEllipse(i, j, quarterX * 1.0, quarterY * 3.25, quarterX * 0.5, quarterY * 0.75))
-        r = 1.0, g = 0.5, b = 0.0;
-      if (IsInSphere(i, j, quarterX * 0.5, quarterY * 3.50, quarterX * 0.5))
-        r = 1.0, g = 0.0, b = 0.0;
+        r = 1.00, g = 0.75, b = 0.25;
+      if (IsInEllipse(i, j, quarterX * 0.5, quarterY * 3.50, quarterX * 0.5, quarterY * 0.50))
+        r = 1.00, g = 0.25, b = 0.25;
 
       // [0.0, 1.0] -> [0, 255].
       int ir = (int)(255.0 * r);
