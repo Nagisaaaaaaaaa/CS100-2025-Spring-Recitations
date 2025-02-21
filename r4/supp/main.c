@@ -1,3 +1,13 @@
+/// \file
+/// \brief This file generates frames (images) of a video.
+/// The executable should be called with proper arguments.
+/// See `go.py` to understand how the video is generated.
+
+//
+//
+//
+//
+//
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
