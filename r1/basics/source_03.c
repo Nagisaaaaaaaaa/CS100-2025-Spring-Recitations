@@ -37,8 +37,7 @@ int main(void) {
 
   // Read cppreference.com:
   // Most conversion specifiers first consume all consecutive whitespace.
-  // Exeptions exist, such as "%c".
-  // Try:
+  // Exeptions exist, such as "%c". For example, try:
   // scanf("%c", &C);
   // printf("C = %c\n", C);
 
