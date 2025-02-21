@@ -46,16 +46,17 @@ int main(int argc, char **argv) {
   int nPoints = 1 + (int)(time * waveFrequency * pointFrequency);
 
   // Radius of the points in the scale of pixels.
-  double pointRadiusInPixel = filmWidth * pointRadius;
+  double pointRadiusInPixel = (double)filmWidth * pointRadius;
 
   // Compute positions of the points.
-  double *posX = malloc(nPoints * sizeof(double));
-  double *posY = malloc(nPoints * sizeof(double));
+  double *posX = malloc((size_t)nPoints * sizeof(double));
+  double *posY = malloc((size_t)nPoints * sizeof(double));
   for (int iPoints = 0; iPoints < nPoints; ++iPoints) {
     // Points are generated at right side.
-    posX[iPoints] = pointRadiusInPixel * iPoints;
+    posX[iPoints] = pointRadiusInPixel * (double)iPoints;
     // Points are moving as a sin wave.
-    posY[iPoints] = filmHeight * 0.5 * sin(time * waveFrequency - (double)iPoints / pointFrequency) + filmHeight * 0.5;
+    posY[iPoints] = (double)filmHeight * 0.5 * sin(time * waveFrequency - (double)iPoints / pointFrequency) +
+                    (double)filmHeight * 0.5;
   }
 
   printf("P3\n%d %d\n255\n", filmWidth, filmHeight);
