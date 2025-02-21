@@ -4,24 +4,14 @@
 #include <stdlib.h>
 
 /// \brief Compute the squared norm of a vector `(x, y)`.
-double SquaredNorm(double x, double y) {
-  return x * x + y * y;
-}
+double SquaredNorm(double x, double y);
 
 /// \brief Determine whether coordinate `(i, j)` is inside the circle, which is
 /// centered at `(centerX, centerY)` and has radius `radius`.
 ///
 /// \details You may wonder why not implement `IsInCircle` based on `IsInEllipse`.
 /// That is because multiplications are usually faster than divisions for floating points.
-bool IsInCircle(int i, int j, double centerX, double centerY, double radius) {
-  // Compute center of the pixel `(i, j)`.
-  double x = (double)i + 0.5;
-  double y = (double)j + 0.5;
-
-  double dirX = x - centerX;
-  double dirY = y - centerY;
-  return SquaredNorm(dirX, dirY) <= radius * radius;
-}
+bool IsInCircle(int i, int j, double centerX, double centerY, double radius);
 
 /// \brief Map the `value` in `[0.0, 1.0]` to a color at the red channel.
 double ColormapR(double value);
@@ -32,6 +22,8 @@ double ColormapG(double value);
 /// \brief Map the `value` in `[0.0, 1.0]` to a color at the blue channel.
 double ColormapB(double value);
 
+//
+//
 //
 //
 //
@@ -102,13 +94,26 @@ int main(int argc, char **argv) {
 //
 //
 //
-// Colormap is implemented with the following lookup table.
-// Note that the second dimension has size `3`, which contains the actual RGB colors.
-// The first dimension has size `256`, which means that
-// given any value in `[0, 255]`, we can access its corresponding color.
 //
-// Actually, the following colormap has a name called "Turbo".
-// See https://research.google/blog/turbo-an-improved-rainbow-colormap-for-visualization.
+//
+double SquaredNorm(double x, double y) {
+  return x * x + y * y;
+}
+
+bool IsInCircle(int i, int j, double centerX, double centerY, double radius) {
+  // Compute center of the pixel `(i, j)`.
+  double x = (double)i + 0.5;
+  double y = (double)j + 0.5;
+
+  double dirX = x - centerX;
+  double dirY = y - centerY;
+  return SquaredNorm(dirX, dirY) <= radius * radius;
+}
+
+//
+//
+//
+// See `r3/supp` for more details.
 const double colormapColors[256][3] = {
     {0.18995, 0.07176, 0.23217}, {0.19483, 0.08339, 0.26149}, {0.19956, 0.09498, 0.29024}, {0.20415, 0.10652, 0.31844},
     {0.20860, 0.11802, 0.34607}, {0.21291, 0.12947, 0.37314}, {0.21708, 0.14087, 0.39964}, {0.22111, 0.15223, 0.42558},
@@ -186,14 +191,8 @@ double Lerp(double x, double y, double t) {
   return x + t * (y - x);
 }
 
-// TODO: `ColormapR`, `ColormapG`, and `ColormapB` are similarly implemented.
-// Since we are currently C beginners, let's just duplicate the codes.
-// We will be able to greatly simplify them several weeks later.
+// See `r3/supp` for more details.
 double ColormapR(double value) {
-  // Clamp and parse `value * 255` to:
-  // 1. The floored integer `i`.
-  // 2. The ceiling integer `j`.
-  // 3. The linear interpolation parameter `t`.
   double value256 = Clamp(value * 255.0, 0.0, 255.0);
   int i = (int)(value256);
   if (i == 255)
