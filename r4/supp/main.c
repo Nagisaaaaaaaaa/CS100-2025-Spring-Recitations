@@ -38,37 +38,41 @@ double ColormapB(double value);
 //
 //
 int main(int argc, char **argv) {
+  // The current frame of the video.
   int frame = atoi(argv[1]);
+  // FPS of the video.
   int fps = atoi(argv[2]);
+  // The current time of the video.
   double time = (double)frame / (double)fps;
+
+  // Size of the film
+  int filmWidth = 256, filmHeight = 256;
 
   double frequency = 2.0;
   double pointDensity = 10.0;
   double pointRadius = 0.01;
-
-  int imageWidth = 256, imageHeight = 256;
 
   int nPoints = 1 + (int)(time * frequency * pointDensity);
 
   double *posX = malloc(nPoints * sizeof(double));
   double *posY = malloc(nPoints * sizeof(double));
   for (int i = 0; i < nPoints; ++i) {
-    posX[i] = imageWidth * pointRadius * i;
-    posY[i] = imageHeight * 0.5 * sin(time * frequency - (double)i / pointDensity) + imageHeight * 0.5;
+    posX[i] = filmWidth * pointRadius * i;
+    posY[i] = filmHeight * 0.5 * sin(time * frequency - (double)i / pointDensity) + filmHeight * 0.5;
   }
 
-  double radius = (double)Min(imageWidth, imageHeight) * pointRadius;
+  double radius = (double)Min(filmWidth, filmHeight) * pointRadius;
 
-  printf("P3\n%d %d\n255\n", imageWidth, imageHeight);
+  printf("P3\n%d %d\n255\n", filmWidth, filmHeight);
 
-  for (int j = 0; j < imageHeight; ++j) {
-    for (int i = 0; i < imageWidth; ++i) {
+  for (int j = 0; j < filmHeight; ++j) {
+    for (int i = 0; i < filmWidth; ++i) {
       // Default values.
       double r = 1.0, g = 1.0, b = 1.0;
 
       for (int iPoints = 0; iPoints < nPoints; ++iPoints)
         if (IsInCircle(i, j, posX[iPoints], posY[iPoints], radius)) {
-          double v = posY[iPoints] / (double)imageHeight;
+          double v = posY[iPoints] / (double)filmHeight;
           r = ColormapR(v);
           g = ColormapG(v);
           b = ColormapB(v);
