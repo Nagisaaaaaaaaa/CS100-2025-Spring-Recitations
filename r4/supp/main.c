@@ -33,18 +33,22 @@ int main(int argc, char **argv) {
   int fps = atoi(argv[2]);
   double time = (double)frame / (double)fps;
 
+  double frequency = 2.0;
+  double pointDensity = 10.0;
+  double pointRadius = 0.01;
+
   int imageWidth = 256, imageHeight = 256;
 
-  int nPoints = 1 + (int)(time / 0.1);
+  int nPoints = 1 + (int)(time * frequency * pointDensity);
 
   double *posX = malloc(nPoints * sizeof(double));
   double *posY = malloc(nPoints * sizeof(double));
   for (int i = 0; i < nPoints; ++i) {
-    posX[i] = imageWidth * 0.01 * i;
-    posY[i] = imageHeight * 0.45 * sin(time - i * 0.1) + imageHeight * 0.5;
+    posX[i] = imageWidth * pointRadius * i;
+    posY[i] = imageHeight * 0.45 * sin(time * frequency - (double)i / pointDensity) + imageHeight * 0.5;
   }
 
-  double radius = (double)Min(imageWidth, imageHeight) * 0.01;
+  double radius = (double)Min(imageWidth, imageHeight) * pointRadius;
 
   printf("P3\n%d %d\n255\n", imageWidth, imageHeight);
 
