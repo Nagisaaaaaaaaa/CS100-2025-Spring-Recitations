@@ -1,3 +1,15 @@
+/// \file
+/// \brief This file creates an image based on the PPM image format, which
+/// is almost the simplest image format in the world.
+/// See https://raytracing.github.io/books/RayTracingInOneWeekend.html#outputanimage/theppmimageformat
+/// for a detailed introduction.
+///
+/// As you will see, we can `printf` strings into another file.
+/// That is how we create the image.
+
+//
+//
+//
 #include <stdio.h>
 
 int main(void) {
