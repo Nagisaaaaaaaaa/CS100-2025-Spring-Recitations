@@ -29,3 +29,11 @@
 我们将学习如何制作[动画](r4/supp/video_high_quality.mp4)。
 
 <img src="r4/supp/image.png" style="zoom: 100%;" />
+
+## Supp 5: Hello Macro
+
+我们将学习如何实现强大、实用的宏，例如让同一个宏能够接收不同数量的参数、做不同的事情。
+```c
+ASSERT(a == 1);                       // 接收一个参数。
+ASSERT(a == 1, "`a` 得等于 1 才对啊"); // 接收两个参数，第二个参数是失败时会打印的信息。
+```
