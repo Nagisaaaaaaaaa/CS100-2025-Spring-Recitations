@@ -22,3 +22,12 @@ C/C++ 编程，一边丰富自己的工程经验。不妨关闭 Copilot 之类�
 我们将学习如何绘制[分形](https://en.wikipedia.org/wiki/Fractal)。
 
 <img src="r3/supp/image.png" style="zoom: 25%;" />
+
+## Supp 4: Hello Animation
+
+我们将学习如何制作动画。
+
+<video width="100%" controls>
+  <source src="r4/supp/video_high_quality.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
