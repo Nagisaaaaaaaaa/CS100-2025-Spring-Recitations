@@ -66,13 +66,16 @@ int main(int argc, char **argv) {
       // Default values.
       double r = 1.0, g = 1.0, b = 1.0;
 
-      for (int iPoints = 0; iPoints < nPoints; ++iPoints)
+      // If coordinate `(i, j)` is inside any of the points,
+      // the color is determined based on `posY` and the colormap.
+      for (int iPoints = 0; iPoints < nPoints; ++iPoints) {
         if (IsInCircle(i, j, posX[iPoints], posY[iPoints], pointRadiusInPixel)) {
           double v = posY[iPoints] / (double)filmHeight;
           r = ColormapR(v);
           g = ColormapG(v);
           b = ColormapB(v);
         }
+      }
 
       // [0.0, 1.0] -> [0, 255].
       int ir = (int)(255.0 * r);
