@@ -13,7 +13,7 @@
 #include <stdio.h>
 
 int main(void) {
-  int imageWidth = 256, imageHeight = 256;
+  int imageWidth = 512, imageHeight = 512;
 
   printf("P3\n%d %d\n255\n", imageWidth, imageHeight);
 
