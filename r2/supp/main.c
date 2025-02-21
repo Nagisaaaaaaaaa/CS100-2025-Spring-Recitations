@@ -1,3 +1,10 @@
+/// \file
+/// \brief This file creates an image based on the PPM image format, and
+/// introduces how to draw ellipses, circles, and rectangles on it.
+
+//
+//
+//
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -18,12 +25,12 @@ bool IsInEllipse(int i, int j, double centerX, double centerY, double radiusX, d
   return SquaredNorm(dirX, dirY) <= 1.0;
 }
 
-/// \brief Determine whether coordinate `(i, j)` is inside the sphere, which is
+/// \brief Determine whether coordinate `(i, j)` is inside the circle, which is
 /// centered at `(centerX, centerY)` and has radius `radius`.
 ///
-/// \details You may wonder why not implement `IsInSphere` based on `IsInEllipse`.
+/// \details You may wonder why not implement `IsInCircle` based on `IsInEllipse`.
 /// That is because multiplications are usually faster than divisions for floating points.
-bool IsInSphere(int i, int j, double centerX, double centerY, double radius) {
+bool IsInCircle(int i, int j, double centerX, double centerY, double radius) {
   // Compute center of the pixel `(i, j)`.
   double x = (double)i + 0.5;
   double y = (double)j + 0.5;

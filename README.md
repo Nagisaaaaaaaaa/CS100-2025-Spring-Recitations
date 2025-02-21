@@ -13,7 +13,7 @@ C/C++ 编程，一边丰富自己的工程经验。不妨关闭 Copilot 之类�
 
 ## Supp 2: Hello Primitive
 
-我们将学习如何在图上画圆、椭圆、长方形，并使用函数来做一些封装。
+我们将学习如何在图上画圆、椭圆、长方形。
 
 <img src="r2/supp/image.png" style="zoom: 100%;" />
 
