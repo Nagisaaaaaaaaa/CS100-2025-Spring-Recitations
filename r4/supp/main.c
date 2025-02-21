@@ -8,9 +8,6 @@ double SquaredNorm(double x, double y);
 
 /// \brief Determine whether coordinate `(i, j)` is inside the circle, which is
 /// centered at `(centerX, centerY)` and has radius `radius`.
-///
-/// \details You may wonder why not implement `IsInCircle` based on `IsInEllipse`.
-/// That is because multiplications are usually faster than divisions for floating points.
 bool IsInCircle(int i, int j, double centerX, double centerY, double radius);
 
 /// \brief Map the `value` in `[0.0, 1.0]` to a color at the red channel.
