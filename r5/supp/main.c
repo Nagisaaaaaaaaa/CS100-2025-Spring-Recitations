@@ -1,9 +1,9 @@
 #include <assert.h>
 #include <stdbool.h>
 
+// Helper macros.
 #define __MY_EXPAND(x) x
 
-// Helper macros.
 #define __MY_NUM_OF_HELPER(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _, ...) _
 #define __MY_CONCAT_HELPER(x, y)                                                                          x##y
 
@@ -12,6 +12,9 @@
 #define __MY_COND_false(x, y) y
 #define __MY_COND_true(x, y)  x
 
+//
+//
+//
 /// \brief Get number of the given args.
 ///
 /// \example ```cpp
