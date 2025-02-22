@@ -31,8 +31,12 @@
 /// \brief Get number of the given args.
 ///
 /// \example ```c
+/// static_assert(MY_NUM_OF(a) == 1);
 /// static_assert(MY_NUM_OF(a, b) == 2);
 /// static_assert(MY_NUM_OF(a, b, c) == 3);
+///
+/// \warning It is dangerous to call `MY_NUM_OF` with no arguments.
+/// Never do that.
 /// ```
 #define MY_NUM_OF(...)                                                                                                 \
   __MY_EXPAND(__MY_NUM_OF_HELPER(__VA_ARGS__, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1))
