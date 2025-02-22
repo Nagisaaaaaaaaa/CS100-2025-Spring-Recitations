@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 // Helper macros.
 #define __MY_EXPAND(x) x
@@ -34,12 +35,10 @@
 /// \brief Create an anonymous name based on x.
 ///
 /// \example ```c
-/// class MY_ANON(Name) {
+/// struct MY_ANON(Name) {
 /// ...
 /// };
 /// ```
-///
-/// \see Property.h
 #define MY_ANON(x) MY_CONCAT(x, __LINE__)
 
 /// \brief Create a precompile-time `cond ? x : y`.
@@ -136,6 +135,15 @@ int main() {
   static_assert(MY_NUM_OF(a, b, c) == 3);
 
   static_assert(MY_CONCAT(114, 514) == 114514);
+
+  // `MY_ANON` might be helpful if you want to write some super-crazy codes.
+  // See https://github.com/Nagisaaaaaaaaa/ARIA/blob/main/ARIA/Core/Core/include/ARIA/Property.h
+  // for a super-crazy example.
+  // It is not recommended to use such weird techniques, but
+  // you should know that macros can be very powerful.
+  struct MY_ANON(Vec3d) {
+    double x, y, z;
+  } vec = {.x = 0.1, .y = 1.2, .z = 2.3};
 
   return 0;
 }
