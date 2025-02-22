@@ -165,12 +165,13 @@ int main(void) {
   MY_IF(true, printf("This message will be printed\n"));
   MY_IF(false, printf("This message will not be printed\n"));
 
-  // What will happen if we call an unimplemented function?
+  // There will be errors if we call an unimplemented function.
   // SomeUnimplementedFunction();
 
   int a = 1, b = 2;
   MY_ASSERT(a + b == 3);
   MY_ASSERT(a + b == 3, "a + b should be equal to 3");
+  // There will be errors if assertions fail.
   // MY_ASSERT(a + b == 4);
   // MY_ASSERT(a + b == 4, "a + b should be equal to 3");
 
