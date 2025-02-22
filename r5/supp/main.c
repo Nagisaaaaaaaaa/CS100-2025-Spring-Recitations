@@ -77,47 +77,21 @@
   } while (0)
 
 #if !defined(NDEBUG)
-  #if MY_IS_DEVICE_CODE
-    #define __MY_ASSERT1(cond)                                                                                         \
-      do {                                                                                                             \
-        if (!(cond)) {                                                                                                 \
-          printf("Assertion (%s) failed at [%s:%d]\n", #cond, __FILE__, __LINE__);                                     \
-          assert(false);                                                                                               \
-        }                                                                                                              \
-      } while (0)
+  #define __MY_ASSERT1(cond)                                                                                           \
+    do {                                                                                                               \
+      if (!(cond)) {                                                                                                   \
+        fprintf(stderr, "Assertion (%s) failed at [%s:%d]\n", #cond, __FILE__, __LINE__);                              \
+        assert(false);                                                                                                 \
+      }                                                                                                                \
+    } while (0)
 
-    #define __MY_ASSERT2(cond, explanation)                                                                            \
-      do {                                                                                                             \
-        if (!(cond)) {                                                                                                 \
-          printf("Assertion (%s) failed at [%s:%d] (" explanation ")\n", #cond, __FILE__, __LINE__);                   \
-          assert(false);                                                                                               \
-        }                                                                                                              \
-      } while (0)
-  #else
-    #define __MY_ASSERT1(cond)                                                                                         \
-      do {                                                                                                             \
-        if (!(cond)) {                                                                                                 \
-          fmt::print(stderr,                                                                                           \
-                     "Assertion ({:s}) failed at "                                                                     \
-                     "[{:s}:{:d}]\n",                                                                                  \
-                     #cond, __FILE__, __LINE__);                                                                       \
-          fflush(stderr);                                                                                              \
-          std::abort();                                                                                                \
-        }                                                                                                              \
-      } while (0)
-
-    #define __MY_ASSERT2(cond, explanation)                                                                            \
-      do {                                                                                                             \
-        if (!(cond)) {                                                                                                 \
-          fmt::print(stderr,                                                                                           \
-                     "Assertion ({:s}) failed at "                                                                     \
-                     "[{:s}:{:d}] (" explanation ")\n",                                                                \
-                     #cond, __FILE__, __LINE__);                                                                       \
-          fflush(stderr);                                                                                              \
-          std::abort();                                                                                                \
-        }                                                                                                              \
-      } while (0)
-  #endif
+  #define __MY_ASSERT2(cond, explanation)                                                                              \
+    do {                                                                                                               \
+      if (!(cond)) {                                                                                                   \
+        fprintf(stderr, "Assertion (%s) failed at [%s:%d] (" explanation ")\n", #cond, __FILE__, __LINE__);            \
+        assert(false);                                                                                                 \
+      }                                                                                                                \
+    } while (0)
 
   /// \brief Assert that the condition is true.
   ///
@@ -169,6 +143,12 @@ int main(void) {
 
   // What will happen if we call an unimplemented function?
   // SomeUnimplementedFunction();
+
+  int a = 1, b = 2;
+  MY_ASSERT(a + b == 3);
+  MY_ASSERT(a + b == 3, "a + b should be equal to 3");
+  // MY_ASSERT(a + b == 4);
+  // MY_ASSERT(a + b == 4, "a + b should be equal to 3");
 
   return 0;
 }
