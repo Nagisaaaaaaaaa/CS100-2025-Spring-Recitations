@@ -93,7 +93,7 @@
       }                                                                                                                \
     } while (0)
 
-  /// \brief Assert that the condition is true.
+  /// \brief Assert that the condition is true in debug mode.
   ///
   /// \example ```c
   /// MY_ASSERT(a == 1);
@@ -101,6 +101,12 @@
   /// ```
   #define MY_ASSERT(...) __MY_EXPAND(__MY_EXPAND(MY_CONCAT(__MY_ASSERT, MY_NUM_OF(__VA_ARGS__)))(__VA_ARGS__))
 #else
+  /// \brief Do nothing in release mode.
+  ///
+  /// \example ```c
+  /// MY_ASSERT(a == 1);
+  /// MY_ASSERT(a == 1, "`a` does not equals to 1");
+  /// ```
   #define MY_ASSERT(...) ((void)0)
 #endif // !defined(NDEBUG)
 
