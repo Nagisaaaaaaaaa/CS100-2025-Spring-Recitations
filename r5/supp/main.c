@@ -17,16 +17,16 @@
 //
 /// \brief Get number of the given args.
 ///
-/// \example ```cpp
-/// EXPECT_EQ(MY_NUM_OF(a, b), 2);
-/// EXPECT_EQ(MY_NUM_OF(a, b, c), 3);
+/// \example ```c
+/// static_assert(MY_NUM_OF(a, b) == 2);
+/// static_assert(MY_NUM_OF(a, b, c) == 3);
 /// ```
 #define MY_NUM_OF(...)                                                                                                 \
   __MY_EXPAND(__MY_NUM_OF_HELPER(__VA_ARGS__, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1))
 
 /// \brief Concatenate `x` and `y`.
 ///
-/// \example ```cpp
+/// \example ```c
 /// #define SQUARE(x) ((x) * (x))
 /// int number = MY_CONCAT(SQUARE, (2)); // Replacement: ((2) * (2))
 /// ```
@@ -34,7 +34,7 @@
 
 /// \brief Create an anonymous name based on x.
 ///
-/// \example ```cpp
+/// \example ```c
 /// class MY_ANON(Name) {
 /// ...
 /// };
@@ -45,7 +45,7 @@
 
 /// \brief Create a precompile-time `cond ? x : y`.
 ///
-/// \example ```cpp
+/// \example ```c
 /// int five = MY_COND(MY_IS_HOST_CODE, 5, 6); // Can be `0`, `1`, `false`, `true` here.
 /// EXPECT_EQ(five, 5);
 /// ```
@@ -53,7 +53,7 @@
 
 /// \brief Create a precompile-time `if (cond) x`.
 ///
-/// \example ```cpp
+/// \example ```c
 /// MY_IF(MY_IS_HOST_CODE, printf("Is host code here\n")); // Can be `0`, `1`, `false`, `true` here.
 /// ```
 #define MY_IF(cond, x) MY_COND(cond, x, )
@@ -63,7 +63,7 @@
 //
 /// \brief Mark unimplemented code.
 ///
-/// \example ```cpp
+/// \example ```c
 /// MY_UNIMPLEMENTED;
 /// ```
 #define MY_UNIMPLEMENTED                                                                                               \
@@ -117,7 +117,7 @@
 
   /// \brief Assert that the condition is true.
   ///
-  /// \example ```cpp
+  /// \example ```c
   /// MY_ASSERT(a == 1);
   /// MY_ASSERT(a == 1, "`a` does not equals to 1");
   /// ```
@@ -132,6 +132,9 @@
 //
 //
 int main() {
-  assert(false);
+  static_assert(MY_NUM_OF(a) == 1);
+  static_assert(MY_NUM_OF(a, b) == 2);
+  static_assert(MY_NUM_OF(a, b, c) == 3);
+
   return 0;
 }
