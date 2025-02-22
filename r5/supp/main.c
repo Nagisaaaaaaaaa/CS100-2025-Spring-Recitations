@@ -6,6 +6,10 @@
 /// So, feel free to just copy-paste the following macros
 /// into your own projects or homeworks, they will help you a lot.
 ///
+/// You will see the keyword `static_assert` in the following code.
+/// It is just a compile-time version of `assert`.
+/// The compiler will stop compiling the code when assertions fail.
+///
 /// \warning It is recommended to define all macros with a prefix
 /// such as `MY_` in the following codes or abbreviation of your project name.
 /// This will help prevent redefinitions.
@@ -145,7 +149,7 @@ void SomeUnimplementedFunction(void) {
 int main(void) {
   static_assert(MY_NUM_OF(a) == 1);
   static_assert(MY_NUM_OF(a, b) == 2);
-  static_assert(MY_NUM_OF(a, b, c) == 3);
+  static_assert(MY_NUM_OF(a, b, c) == 3, "You can even write error messages here");
 
   static_assert(MY_CONCAT(114, 514) == 114514);
 
