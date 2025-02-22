@@ -27,8 +27,7 @@
 /// \brief Concatenate `x` and `y`.
 ///
 /// \example ```c
-/// #define SQUARE(x) ((x) * (x))
-/// int number = MY_CONCAT(SQUARE, (2)); // Replacement: ((2) * (2))
+/// static_assert(MY_CONCAT(114, 514) == 114514);
 /// ```
 #define MY_CONCAT(x, y) __MY_CONCAT_HELPER(x, y)
 
@@ -135,6 +134,8 @@ int main() {
   static_assert(MY_NUM_OF(a) == 1);
   static_assert(MY_NUM_OF(a, b) == 2);
   static_assert(MY_NUM_OF(a, b, c) == 3);
+
+  static_assert(MY_CONCAT(114, 514) == 114514);
 
   return 0;
 }
