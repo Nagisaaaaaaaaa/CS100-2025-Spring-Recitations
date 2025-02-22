@@ -1,3 +1,14 @@
+/// \file
+/// \brief This file introduces a collection of commonly used macros.
+///
+/// \note You are not forced to understand the implementations, since
+/// the implementations are quite weird for C beginners.
+/// So, feel free to just copy-paste the following macros
+/// into your own projects or homeworks, they will help you a lot.
+
+//
+//
+//
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
