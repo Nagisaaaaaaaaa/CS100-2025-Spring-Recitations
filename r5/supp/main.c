@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // Helper macros.
 #define __MY_EXPAND(x) x
@@ -71,8 +72,8 @@
 /// ```
 #define MY_UNIMPLEMENTED                                                                                               \
   do {                                                                                                                 \
-    fmt::print(stderr, "Reached unimplemented code at [{}:{}]\n", __FILE__, __LINE__);                                 \
-    std::abort();                                                                                                      \
+    fprintf(stderr, "Reached unimplemented code at [%s:%d]\n", __FILE__, __LINE__);                                    \
+    abort();                                                                                                           \
   } while (0)
 
 #if !defined(NDEBUG)
@@ -134,7 +135,11 @@
 //
 //
 //
-int main() {
+void SomeUnimplementedFunction() {
+  MY_UNIMPLEMENTED;
+}
+
+int main(void) {
   static_assert(MY_NUM_OF(a) == 1);
   static_assert(MY_NUM_OF(a, b) == 2);
   static_assert(MY_NUM_OF(a, b, c) == 3);
@@ -161,6 +166,9 @@ int main() {
   MY_IF(0, printf("This message will not be printed\n"));
   MY_IF(true, printf("This message will be printed\n"));
   MY_IF(false, printf("This message will not be printed\n"));
+
+  // What will happen if we call an unimplemented function?
+  // SomeUnimplementedFunction();
 
   return 0;
 }
