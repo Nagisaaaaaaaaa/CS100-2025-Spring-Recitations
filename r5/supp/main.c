@@ -54,7 +54,10 @@
 /// \brief Create a precompile-time `if (cond) x`.
 ///
 /// \example ```c
-/// MY_IF(MY_IS_HOST_CODE, printf("Is host code here\n")); // Can be `0`, `1`, `false`, `true` here.
+/// MY_IF(1, printf("This message will be printed\n"));
+/// MY_IF(0, printf("This message will not be printed\n"));
+/// MY_IF(true, printf("This message will be printed\n"));
+/// MY_IF(false, printf("This message will not be printed\n"));
 /// ```
 #define MY_IF(cond, x) MY_COND(cond, x, )
 
@@ -147,10 +150,17 @@ int main() {
     double x, y, z;
   } vec = {.x = 0.1, .y = 1.2, .z = 2.3};
 
+  printf("vec: (%f, %f, %f)\n", vec.x, vec.y, vec.z);
+
   static_assert(MY_COND(1, 5, 6) == 5);
   static_assert(MY_COND(0, 5, 6) == 6);
   static_assert(MY_COND(true, 5, 6) == 5);
   static_assert(MY_COND(false, 5, 6) == 6);
+
+  MY_IF(1, printf("This message will be printed\n"));
+  MY_IF(0, printf("This message will not be printed\n"));
+  MY_IF(true, printf("This message will be printed\n"));
+  MY_IF(false, printf("This message will not be printed\n"));
 
   return 0;
 }
