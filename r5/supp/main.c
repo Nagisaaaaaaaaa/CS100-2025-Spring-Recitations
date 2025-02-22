@@ -5,6 +5,10 @@
 /// the implementations are quite weird for C beginners.
 /// So, feel free to just copy-paste the following macros
 /// into your own projects or homeworks, they will help you a lot.
+///
+/// \warning It is recommended to define all macros with a prefix
+/// such as `MY_` in the following codes or abbreviation of your project name.
+/// This will help prevent redefinitions.
 
 //
 //
