@@ -44,8 +44,10 @@
 /// \brief Create a precompile-time `cond ? x : y`.
 ///
 /// \example ```c
-/// int five = MY_COND(MY_IS_HOST_CODE, 5, 6); // Can be `0`, `1`, `false`, `true` here.
-/// EXPECT_EQ(five, 5);
+/// static_assert(MY_COND(1, 5, 6) == 5);
+/// static_assert(MY_COND(0, 5, 6) == 6);
+/// static_assert(MY_COND(true, 5, 6) == 5);
+/// static_assert(MY_COND(false, 5, 6) == 6);
 /// ```
 #define MY_COND(cond, x, y) __MY_EXPAND(MY_CONCAT(__MY_COND_, cond))(x, y)
 
@@ -144,6 +146,11 @@ int main() {
   struct MY_ANON(Vec3d) {
     double x, y, z;
   } vec = {.x = 0.1, .y = 1.2, .z = 2.3};
+
+  static_assert(MY_COND(1, 5, 6) == 5);
+  static_assert(MY_COND(0, 5, 6) == 6);
+  static_assert(MY_COND(true, 5, 6) == 5);
+  static_assert(MY_COND(false, 5, 6) == 6);
 
   return 0;
 }
