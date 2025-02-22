@@ -145,9 +145,10 @@ int main(void) {
 
   // `MY_ANON` might be helpful if you want to write some super-crazy codes.
   // See https://github.com/Nagisaaaaaaaaa/ARIA/blob/main/ARIA/Core/Core/include/ARIA/Property.h
-  // for a super-crazy example.
-  // It is not recommended to use such weird techniques, but
-  // you should know that macros can be very powerful.
+  // for a super-crazy C++ example, which you will be able to read and understand several weeks later.
+  //
+  // However, it is really not recommended to use such weird techniques.
+  // But you should know that macros can be extremely powerful.
   struct MY_ANON(Vec3d) {
     double x, y, z;
   } vec = {.x = 0.1, .y = 1.2, .z = 2.3};
