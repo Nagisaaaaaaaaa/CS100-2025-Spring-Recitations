@@ -83,7 +83,9 @@
 /// \brief Mark unimplemented code.
 ///
 /// \example ```c
-/// MY_UNIMPLEMENTED;
+/// void SomeUnimplementedFunction(void) {
+///   MY_UNIMPLEMENTED;
+/// }
 /// ```
 #define MY_UNIMPLEMENTED                                                                                               \
   do {                                                                                                                 \
@@ -130,7 +132,7 @@
 //
 //
 //
-void SomeUnimplementedFunction() {
+void SomeUnimplementedFunction(void) {
   MY_UNIMPLEMENTED;
 }
 
