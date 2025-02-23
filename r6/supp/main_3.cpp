@@ -20,10 +20,8 @@ struct MemoryGuard {
   }
 };
 
-//
-//
-//
-void DoSomething(bool earlyReturn) {
+/// \brief Some complex function where we will allocate and free many memorys.
+void SomeComplexFunction(bool earlyReturn) {
   MemoryGuard guard1{(int *)malloc(1 * sizeof(int))};
   MemoryGuard guard2{(int *)malloc(2 * sizeof(int))};
   MemoryGuard guard3{(int *)malloc(3 * sizeof(int))};
@@ -38,9 +36,12 @@ void DoSomething(bool earlyReturn) {
   }
 }
 
+//
+//
+//
 int main() {
-  DoSomething(false);
-  DoSomething(true);
+  SomeComplexFunction(false);
+  SomeComplexFunction(true);
 
   return 0;
 }
