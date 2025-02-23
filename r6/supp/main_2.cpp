@@ -25,8 +25,8 @@ int main() {
 
     //! These lines will not be called because of the exception.
     //! Memory leak!
+    printf("This `printf` will not be executed\n");
     free(ptr);
-    printf("Memory has been freed\n");
   } catch (const std::invalid_argument &e) {
     const char *message = e.what();
     std::cout << "The exception message is: " << message << std::endl;
