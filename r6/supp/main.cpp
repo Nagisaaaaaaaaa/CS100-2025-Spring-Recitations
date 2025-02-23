@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 
-/// \brief A memory guard automatically frees the owning memory when
+/// \brief A memory guard automatically frees the OWNing memory when
 /// the instance is out of scope.
 struct MemoryGuard {
   // We use `nullptr` instead of `NULL` in C++ codes.
@@ -20,7 +20,12 @@ struct MemoryGuard {
 //
 //
 int main() {
+  // Instantiate a memory guard with a dynamic array of 10 `int`s.
+  // The memory is now OWNed by `guard`.
   MemoryGuard guard{(int *)malloc(10 * sizeof(int))};
+
+  // Get a non-OWNing pointer of the dynamic array.
+  // "Non-OWNing" means that we should not call `free` on it.
   int *const ptr = guard.ptr;
 
   for (int i = 0; i < 10; ++i)
