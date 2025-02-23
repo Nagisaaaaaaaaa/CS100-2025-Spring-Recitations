@@ -25,6 +25,8 @@ void DoSomething(bool earlyReturn) {
 
   if (earlyReturn) {
     printf("Let's early return");
+
+    //! We no longer need to worry about early returns.
     return;
   }
 }

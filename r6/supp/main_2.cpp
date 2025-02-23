@@ -24,7 +24,6 @@ void DoSomething(bool earlyReturn) {
     free(ptr2);
     free(ptr4);
     free(ptr5);
-
     return;
   }
 
