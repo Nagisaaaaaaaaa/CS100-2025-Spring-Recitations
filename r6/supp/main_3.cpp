@@ -34,10 +34,13 @@ int main() {
       std::cout << ptr[i] << std::endl;
     }
 
+    // An exception will be thrown here.
     SomeBuggyFunction();
 
+    //! These lines will not be called because of the exception.
     printf("This `printf` will not be executed\n");
-    //! But, the destructor, `~MemoryGuard` will always be called!
+    //! But, the destructor, `~MemoryGuard` will ALWAYS be called!
+    //! Even when there are exceptions!
   } catch (const std::invalid_argument &e) {
     const char *message = e.what();
     std::cout << "The exception message is: " << message << std::endl;
