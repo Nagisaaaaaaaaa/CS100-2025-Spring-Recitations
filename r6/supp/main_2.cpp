@@ -23,6 +23,7 @@ void SomeComplexFunction(bool earlyReturn) {
     //! It's really easy to forget something...
     free(ptr1);
     free(ptr2);
+    //! Forget to free `ptr3` here, QAQ.
     free(ptr4);
     free(ptr5);
     return;
