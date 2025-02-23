@@ -8,9 +8,6 @@
 #include <cstdlib>
 #include <iostream>
 
-//
-//
-//
 void DoSomething(bool earlyReturn) {
   int *const ptr1 = (int *)malloc(1 * sizeof(int));
   int *const ptr2 = (int *)malloc(2 * sizeof(int));
@@ -19,6 +16,8 @@ void DoSomething(bool earlyReturn) {
   int *const ptr5 = (int *)malloc(5 * sizeof(int));
 
   if (earlyReturn) {
+    printf("Let's early return");
+
     //! WTF, too many memorys to free...
     //! It's really easy to forget something...
     free(ptr1);
