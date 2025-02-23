@@ -12,10 +12,11 @@ void SomeBuggyFunction() {
 /// \brief A memory guard automatically frees the OWNing memory when
 /// the instance is out of scope.
 struct MemoryGuard {
-  int *const ptr = nullptr;
+  int *ptr = nullptr;
 
   ~MemoryGuard() {
     free(ptr);
+    ptr = nullptr;
     printf("Memory has been freed\n");
   }
 };

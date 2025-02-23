@@ -12,13 +12,14 @@
 /// the instance is out of scope.
 struct MemoryGuard {
   // We use `nullptr` instead of `NULL` in C++ codes.
-  int *const ptr = nullptr;
+  int *ptr = nullptr;
 
   // Just like python, C++ allows us to define methods (member functions) of a `struct`.
   // The following method, `~MemoryGuard`, is a special method called "destructor".
   // Destructors will ALWAYS be called when the instance is out of scope.
   ~MemoryGuard() {
     free(ptr);
+    ptr = nullptr;
     printf("Memory has been freed\n");
   }
 };
