@@ -28,8 +28,14 @@ int main() {
   // "Non-OWNing" means that we should not call `free` on it.
   int *const ptr = guard.ptr;
 
-  for (int i = 0; i < 10; ++i)
+  // We can manipulate the dynamic array with the non-OWNing pointer.
+  for (int i = 0; i < 10; ++i) {
     ptr[i] = i;
+    std::cout << ptr[i] << std::endl;
+  }
 
+  // When `main` returns, the destructor of `guard`, `~MemoryGuard`, will
+  // be automatically called, which means that
+  // the memory will be automatically freed.
   return 0;
 }
