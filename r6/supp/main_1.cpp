@@ -1,7 +1,27 @@
-#include <cstdlib>
+/// \file
+/// \brief This file introduces the C++ exceptions, which
+/// is one of the main differences between C and C++.
+
+//
+//
+//
 #include <exception>
 #include <iostream>
 #include <string>
+
+//! In C, there are many functions returning "error code"s.
+//! For example:
+//! 1. `main` returns 0 if succeeded.
+//! 2. `fopen` returns `NULL` if failed.
+//!
+//! But in C++, we use "exception"s, just like Python.
+//! When functions fail, the execution is stopped, and
+//! an "exception" is "thrown".
+//!
+//! For example, the following buggy function will throw
+//! an exception called `std::invalid_argument`.
+//! We have to wrap the execution with `try-catch` in order to
+//! get the exception message.
 
 /// \brief A buggy function which will throw `std::invalid_argument` when executed.
 void SomeBuggyFunction() {
@@ -13,21 +33,11 @@ void SomeBuggyFunction() {
 //
 //
 int main() {
+  // Wrap the execution with `try-catch` in order to get the exception message.
   try {
-    int *ptr = (int *)malloc(10 * sizeof(int));
-
-    for (int i = 0; i < 10; ++i) {
-      ptr[i] = i;
-      std::cout << ptr[i] << std::endl;
-    }
-
     SomeBuggyFunction();
-
-    //! These lines will not be called because of the exception.
-    //! Memory leak!
-    free(ptr);
-    printf("Memory has been freed\n");
   } catch (const std::invalid_argument &e) {
+    // These lines of codes will only be called when `std::invalid_argument`s are caught.
     const char *message = e.what();
     std::cout << "The exception message is: " << message << std::endl;
   }
