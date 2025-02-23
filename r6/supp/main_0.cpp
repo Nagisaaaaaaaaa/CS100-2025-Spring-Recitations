@@ -1,3 +1,10 @@
+/// \file
+/// \brief This file introduces the C++ exceptions, which
+/// is one of the main differences between C and C++.
+
+//
+//
+//
 #include <exception>
 #include <iostream>
 #include <string>
