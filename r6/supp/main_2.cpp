@@ -14,7 +14,7 @@ void SomeBuggyFunction() {
 //
 int main() {
   try {
-    int *ptr = (int *)malloc(10 * sizeof(int));
+    int *const ptr = (int *)malloc(10 * sizeof(int));
 
     for (int i = 0; i < 10; ++i) {
       ptr[i] = i;
