@@ -19,7 +19,7 @@ struct MemoryGuard {
   // Destructors will ALWAYS be called when the instance is out of scope.
   ~MemoryGuard() {
     free(ptr);
-    printf("Memory has been freed");
+    printf("Memory has been freed\n");
   }
 };
 
