@@ -1,3 +1,10 @@
+/// \file
+/// \brief This file introduces how to use `MemoryGuard` to
+/// automatically free the memory without explicitly calling `free`.
+
+//
+//
+//
 #include <cstdlib>
 #include <iostream>
 
