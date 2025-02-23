@@ -29,7 +29,7 @@ void SomeComplexFunction(bool earlyReturn) {
   MemoryGuard guard5{(int *)malloc(5 * sizeof(int))};
 
   if (earlyReturn) {
-    printf("Let's early return");
+    printf("Let's early return\n");
 
     //! We no longer need to worry about early returns.
     return;

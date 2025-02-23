@@ -17,7 +17,7 @@ void SomeComplexFunction(bool earlyReturn) {
   int *const ptr5 = (int *)malloc(5 * sizeof(int));
 
   if (earlyReturn) {
-    printf("Let's early return");
+    printf("Let's early return\n");
 
     //! WTF, too many memorys to free...
     //! It's really easy to forget something...
