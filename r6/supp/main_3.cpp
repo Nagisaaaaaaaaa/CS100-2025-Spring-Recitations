@@ -1,3 +1,10 @@
+/// \file
+/// \brief This file shows that, C++ codes are prone to memory leaks
+/// because of the exceptions.
+
+//
+//
+//
 #include <cstdlib>
 #include <exception>
 #include <iostream>
@@ -9,25 +16,12 @@ void SomeBuggyFunction() {
   std::cout << num << std::endl;
 }
 
-/// \brief A memory guard automatically frees the OWNing memory when
-/// the instance is out of scope.
-struct MemoryGuard {
-  int *ptr = nullptr;
-
-  ~MemoryGuard() {
-    free(ptr);
-    ptr = nullptr;
-    printf("Memory has been freed\n");
-  }
-};
-
 //
 //
 //
 int main() {
   try {
-    MemoryGuard guard{(int *)malloc(10 * sizeof(int))};
-    int *const ptr = guard.ptr;
+    int *const ptr = (int *)malloc(10 * sizeof(int));
 
     for (int i = 0; i < 10; ++i) {
       ptr[i] = i;
@@ -39,8 +33,8 @@ int main() {
 
     //! These lines will not be called because of the exception.
     printf("This `printf` will not be executed\n");
-    //! But, the destructor, `~MemoryGuard` will ALWAYS be called!
-    //! Even when there are exceptions!
+    //! Memory leak!
+    free(ptr);
   } catch (const std::invalid_argument &e) {
     const char *message = e.what();
     std::cout << "The exception message is: " << message << std::endl;
