@@ -1,3 +1,10 @@
+/// \file
+/// \brief This file shows that, C++ codes are prone to memory leaks
+/// because of the exceptions.
+
+//
+//
+//
 #include <cstdlib>
 #include <exception>
 #include <iostream>
