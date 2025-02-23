@@ -34,6 +34,9 @@ int main() {
     }
 
     SomeBuggyFunction();
+
+    printf("This `printf` will not be executed\n");
+    //! But, the destructor, `~MemoryGuard` will always be called!
   } catch (const std::invalid_argument &e) {
     const char *message = e.what();
     std::cout << "The exception message is: " << message << std::endl;
