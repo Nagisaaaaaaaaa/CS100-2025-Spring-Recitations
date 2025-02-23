@@ -42,7 +42,7 @@ MY_ASSERT(a == 1, "杂鱼♥～杂鱼♥～，才不会告诉你 `a` 应该等�
 
 ## Supp 6: Hello RAII
 
-最重要的一集，必看！
+**最重要的一集，必看！**
 
 如果您问，C++ 最重要的基础知识点是什么，我们会毫不犹豫地回答 [RAII (Resource Acquisition Is Initialization)](https://en.cppreference.com/w/cpp/language/raii)，甚至它可能是 C++ 和 C 最本质的差异之一。因此，我们决定在最开头就介绍它，这会和官方的教学风格有所不同。但请放心，我们会尽量用最简洁、易懂的方式来介绍这个重要概念。
 
