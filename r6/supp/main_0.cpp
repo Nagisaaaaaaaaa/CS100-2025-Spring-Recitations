@@ -46,4 +46,9 @@ int main() {
   // be automatically called, which means that
   // the memory will be automatically freed.
   return 0;
+
+  //! This technique is called RAII (Resource Acquisition Is Initialization).
+  //! Recall that `guard` OWNs the dynamic array during initialization.
+  //! In this example, memory is the resource.
+  //! RAII is almost the most important programming technique for C++!
 }

@@ -56,4 +56,9 @@ MemoryGuard guard{(int *)malloc(10 * sizeof(int))};
 // Get a non-OWNing pointer of the dynamic array.
 // "Non-OWNing" means that we should not call `free` on it.
 int *const ptr = guard.ptr;
+
+//! This technique is called RAII (Resource Acquisition Is Initialization).
+//! Recall that `guard` OWNs the dynamic array during initialization.
+//! In this example, memory is the resource.
+//! RAII is almost the most important programming technique for C++!
 ```
