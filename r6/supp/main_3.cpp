@@ -1,3 +1,10 @@
+/// \file
+/// \brief This file shows how RAII (`MemoryGuard`) helps
+/// prevent memory leaks caused by the early returns.
+
+//
+//
+//
 #include <cstdlib>
 #include <iostream>
 
