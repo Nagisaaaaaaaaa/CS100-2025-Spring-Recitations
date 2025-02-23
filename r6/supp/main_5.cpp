@@ -36,10 +36,8 @@ int main() {
     MemoryGuard guard{(int *)malloc(10 * sizeof(int))};
     int *const ptr = guard.ptr;
 
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i)
       ptr[i] = i;
-      std::cout << ptr[i] << std::endl;
-    }
 
     // An exception will be thrown here.
     SomeBuggyFunction();

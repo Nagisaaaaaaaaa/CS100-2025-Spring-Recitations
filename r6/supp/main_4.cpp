@@ -23,10 +23,8 @@ int main() {
   try {
     int *const ptr = (int *)malloc(10 * sizeof(int));
 
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i)
       ptr[i] = i;
-      std::cout << ptr[i] << std::endl;
-    }
 
     // An exception will be thrown here.
     SomeBuggyFunction();
