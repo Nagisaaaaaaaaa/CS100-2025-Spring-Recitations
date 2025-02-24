@@ -12,6 +12,7 @@ int main(void) {
   double e_doub = 2.718281828;
 
   char e_char = 'e';
+  //   char e_char = "e"; // Why this doesn't work?
 
   int e_int = e_doub;
 
