@@ -2,7 +2,7 @@
 
 #show: simple-page.with(
   "TAs: 吴义恒 & 丁麟",
-  "clearwuyh32023@shanghaitech.edu.cn\ndinglin12022@shanghaitech.edu.cn",
+  "wuyh32023@shanghaitech.edu.cn\ndinglin12022@shanghaitech.edu.cn",
   middle-text: "CS100 Recitation - Week 01",
   numbering: false,
 )
@@ -19,17 +19,18 @@
 
 == 2. #emoji.warning Academic Integrity Policies (10 \~ 15 min)
 - What is our #text(red)[plagiarism policies]? Which behaviors are defined as plagiarism?
-- Some real world plagiarism cases.
-- AI tools (ChatGPT, Deepseek, Copilot...) and cheating.
+- Some real-world plagiarism cases.
+- About AI tools (ChatGPT, Deepseek, Copilot...) and cheating.
 
 == 3. Main Session (60 \~ 80 min)
 - Environment setups with TA assistance.
 - Material preparations and introduction to git usage.
 - Go through recitation slides with hands-on practice.
+- The free Q&A session.
 
 == 4. Bonus Application (15 \~ 20 min)
-- Basic bash usage and the [>] operator #emoji.face.happy
-- Let's paint a picture using #text(font:"Segoe UI", fill:blue)[printf] #emoji.face.heart
+- #emoji.face.happy Basic bash usage and the [>] operator.
+- #emoji.face.heart Let's paint a picture using #text(font:"Segoe UI", fill:blue)[printf].
 
 ~
 
