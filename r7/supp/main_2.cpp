@@ -24,6 +24,9 @@ int main() {
     int i1(); // Type of `i1` is even not `int`, it is actually a function.
     int i2{}; // Value initialization, the integer is zero-initialized as `0`.
 
+    // `is_same_v` determines whether the given two types are the same at compile-time.
+    // For example, type of `decltype(i0)` is the same as `int`, but
+    // type of `decltype(i1)` is different from `int`.
     static_assert(std::is_same_v<decltype(i0), int>);
     static_assert(!std::is_same_v<decltype(i1), int>);
     static_assert(std::is_same_v<decltype(i2), int>);
