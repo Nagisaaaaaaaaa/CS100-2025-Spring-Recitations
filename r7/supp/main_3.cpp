@@ -1,3 +1,12 @@
+/// \file
+/// \brief This file shows one of the most notorious STL design:
+/// `std::vector<bool>`.
+/// See https://en.cppreference.com/w/cpp/container/vector_bool.
+/// Crazy!
+
+//
+//
+//
 #include <iostream>
 #include <vector>
 
@@ -21,6 +30,6 @@ int main() {
     std::cout << typeid(v).name() << std::endl;
     std::cout << v << std::endl;
     vec[0] = false;
-    std::cout << v << std::endl;
+    std::cout << v << std::endl; //! ???
   }
 }
