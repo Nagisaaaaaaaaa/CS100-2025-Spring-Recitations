@@ -1,3 +1,11 @@
+/// \file
+/// \brief This file shows `()` and `{}` may
+/// have very different behaviors for exactly the same class.
+/// Terrible design!
+
+//
+//
+//
 #include <array>
 #include <string>
 #include <vector>
@@ -16,6 +24,7 @@ int main() {
   }
 
   {
+    // They are the same.
     std::string v0("QAQ");
     std::string v1{"QAQ"};
   }
