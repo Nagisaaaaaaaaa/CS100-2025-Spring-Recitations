@@ -1,5 +1,6 @@
 /// \file
 /// \brief This file shows the non-zero-argument constructions with `()` and `{}`.
+/// Their main differences:
 /// `{}` can be used for:
 ///   (1). C-style structures (aggregate initialization).
 ///   (2). C++ constructors, with narrow conversions banned.
