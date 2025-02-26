@@ -1,5 +1,10 @@
 /// \file
-/// \brief
+/// \brief This file shows the non-zero-argument constructions with `()` and `{}`.
+/// `{}` can be used for:
+///   (1). C-style structures (aggregate initialization).
+///   (2). C++ constructors, with narrow conversions banned.
+/// `()` can be used for:
+///   (1). C++ constructors, with narrow conversions allowed.
 
 //
 //
