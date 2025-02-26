@@ -62,3 +62,27 @@ int *const ptr = guard.ptr;
 //! In this example, memory is the resource.
 //! RAII is almost the most important programming technique for C++!
 ```
+
+## Supp 7: Hello Legacy
+
+**第二重要的一集，必看！**
+
+中国有句古话叫做，祖宗之法不可变。我们将学习一系列 C++ 臭名昭著的天坑、历史遗留问题、设计缺陷。请务必将它们铭记在心并且尽量避免它们出现。
+
+```cpp
+//! 有一只怪东西混入了其中，猜猜它是谁？
+SomeClass v0;  
+SomeClass v1();
+SomeClass v2{};
+SomeClass v3(10);
+SomeClass v4{10};
+SomeClass v5(10.0);
+SomeClass v6{10.0};
+
+//! 有一只怪东西试图伪装得和大家都很像，猜猜它是谁，又如何识破它呢？
+std::vector<char> vec0;
+std::vector<int> vec1;
+std::vector<bool> vec2;
+std::vector<float> vec3;
+std::vector<double> vec4;
+```
