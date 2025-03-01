@@ -22,7 +22,7 @@
 - Review of #codetxt([git clone]), #codetxt([git pull]).
 - What is Git? What does Git do? Why should you use it?
 - #text(red)[Version control] + Cloud backup + Multi-developer cooperation
-- Local Git operations, #codetxt([init, add, commit, log, reset]).
+- Local Git operations: #codetxt([init, add, commit, log, reset]).
 
 
 == 3. Main Session (50 \~ 70 min)
@@ -43,6 +43,7 @@
 == Supplementary Materials
 - #link("https://github.com/Nagisaaaaaaaaa/CS100-2025-Spring-Recitations")[#underline("Git Tutorial for Beginners: Learn Git in 1 Hour")]
 - #link("https://docs.github.com/en/get-started/git-basics")[#underline("Git basics | GitHub")]
-- #link("https://ieeexplore.ieee.org/document/8766229")[#underline("IEEE Standard for Floating-Point Arithmetic | 754-2019")]
+- #link("https://ieeexplore.ieee.org/document/8766229")[#underline("IEEE Standard for Floating-Point Arithmetic: 754-2019")]
 - #link("https://en.cppreference.com/w/c/language/operator_arithmetic")[#underline("Learn definition of C/C++ overflow with cppreference (homework-related)")]
 - #link("https://en.wikipedia.org/wiki/Horner%27s_method")[#underline("Horner's Method (homework-related)")]
+- #link("https://www.bilibili.com/video/BV18j411i7bp/?share_source=copy_web&vd_source=ca4dac12aaac43f0fc37e931183ee5c9")[#underline("关于位运算妙用的趣味科普向视频：快速平方根算法 | Bilibili")]
