@@ -81,7 +81,8 @@ int main(void) {
   } else {
     printf("g and h are NOT the same !!\n");
   }
-  // Explain 4: g is -1 (signed), h is 4294967295 (unsigned)
+  // Explain 4:
+  // g is -1 (signed), h is 4294967295 (unsigned)
   // Before comparison, g is promoted to unsigned int: (unsigned int)-1 -> 4294967295
   // Now we compare 4294967295 == 4294967295, which is true!
 
