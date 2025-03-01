@@ -24,8 +24,9 @@ int main(void) {
   ! BASELINE:
   ! 1. You should understand basic definition of integer promotion( and when it happens).
   ! 2. You should understand why example 1 & 2 behaves as shown.
+  ! 3. You should learn that signed-unsigned comparisons in C can be DANGEROUS.
   * BONUS:
-  * 3. You should understand why example 3 & 4 behaves differently.
+  * 4. You should understand why example 3 & 4 behaves differently.
 
   */
 
@@ -38,6 +39,10 @@ int main(void) {
   } else {
     printf("a and b are NOT the same !!\n");
   }
+  // Explain 1:
+  // a (char) gets promoted to int: 42 -> (int) 42
+  // b (unsigned char) gets promoted to int: 42 -> (int) 42
+  // Since both are now the same type and value, a == b is true.
 
   // Example 2:
   char c = -42;
@@ -50,6 +55,10 @@ int main(void) {
   } else {
     printf("c and d are NOT the same !!\n");
   }
+  // Explain 2:
+  // c (char) gets promoted to int: -42 -> (int) -42
+  // d (unsigned char) gets promoted to int: 214 (due to unsigned wrapping)
+  // Now we compare -42 with 214, so c != d.
 
   // Example 3:
   char e = -1;           // 1111 1111 Binary
@@ -72,6 +81,9 @@ int main(void) {
   } else {
     printf("g and h are NOT the same !!\n");
   }
+  // Explain 4: g is -1 (signed), h is 4294967295 (unsigned)
+  // Before comparison, g is promoted to unsigned int: (unsigned int)-1 -> 4294967295
+  // Now we compare 4294967295 == 4294967295, which is true!
 
   return 0;
 }
