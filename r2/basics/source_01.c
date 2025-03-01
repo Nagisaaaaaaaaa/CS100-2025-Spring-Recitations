@@ -22,10 +22,10 @@ int main(void) {
   preserve the value, including the sign. (see example 3)
 
   ! BASELINE:
-  ! 1. You should understand basic definition of integer promotion.
+  ! 1. You should understand basic definition of integer promotion( and when it happens).
   ! 2. You should understand why example 1 & 2 behaves as shown.
   * BONUS:
-  * 3. You should try understand why example 3 & 4 behaves differently.
+  * 3. You should understand why example 3 & 4 behaves differently.
 
   */
 

@@ -57,6 +57,7 @@ int main(void) {
   ! 1. Understand the difference between Undefined behavior v.s. Unspecified behavior.
   ! 2. Be able to list some examples of undefined / unspecified behaviors.
   ! 3. Unspecified order + Cross interference --> Undefined behavior.
+  ! 3. Fully understand the evalutaion order of [&& || ?: ,].
 
   */
 
