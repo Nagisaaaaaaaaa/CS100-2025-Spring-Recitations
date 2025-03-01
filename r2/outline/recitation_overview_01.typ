@@ -43,5 +43,6 @@
 == Supplementary Materials
 - #link("https://github.com/Nagisaaaaaaaaa/CS100-2025-Spring-Recitations")[#underline("Git Tutorial for Beginners: Learn Git in 1 Hour")]
 - #link("https://docs.github.com/en/get-started/git-basics")[#underline("Git basics | GitHub")]
+- #link("https://ieeexplore.ieee.org/document/8766229")[#underline("IEEE Standard for Floating-Point Arithmetic | 754-2019")]
 - #link("https://en.cppreference.com/w/c/language/operator_arithmetic")[#underline("Learn definition of C/C++ overflow with cppreference (homework-related)")]
 - #link("https://en.wikipedia.org/wiki/Horner%27s_method")[#underline("Horner's Method (homework-related)")]
