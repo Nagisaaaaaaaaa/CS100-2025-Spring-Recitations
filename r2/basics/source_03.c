@@ -1,3 +1,4 @@
+#define __USE_MINGW_ANSI_STDIO 1 // MinGW artifacts
 #include <stdio.h>
 
 double avg(long long x, long long y) {
@@ -5,7 +6,7 @@ double avg(long long x, long long y) {
 }
 
 long double avg_pro(long long x, long long y) {
-  return (x + y) / 2.0L; // Try remove the "L" prefix, see what happens
+  return (x + y) / 2.0L; // Try remove the "L" suffix, see what happens
 }
 
 int main(void) {
@@ -41,6 +42,11 @@ int main(void) {
   // double a = 1.0;
   // double b = 2.0;
   // double c = 3.0;
+
+  // And so does this group
+  // double a = 0.25;
+  // double b = 0.5;
+  // double c = 0.75;
 
   if (a + b == c) {
     printf("Equal\n");
