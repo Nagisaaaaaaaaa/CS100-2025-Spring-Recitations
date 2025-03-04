@@ -151,3 +151,13 @@
 - 点击 VSCode 左侧的 Source Control 图标
 
 - 点击 GitLens 栏目
+
+//
+//
+//
+= 回家作业
+
+- 创建 GitHub 账号
+  - 不太推荐使用上科大邮箱，因为毕业了会被回收
+
+- 下载 GitHub Desktop
