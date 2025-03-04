@@ -43,6 +43,11 @@ int main(void) {
   // double b = 2.0;
   // double c = 3.0;
 
+  // And so does this group
+  // double a = 0.25;
+  // double b = 0.5;
+  // double c = 0.75;
+
   if (a + b == c) {
     printf("Equal\n");
   } else {
