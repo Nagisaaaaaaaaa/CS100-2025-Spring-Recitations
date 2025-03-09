@@ -12,7 +12,6 @@
 */
 
 // Use `<...>` for standard library headers.
-#include <assert.h>
 #include <stdio.h>
 
 // Use `"..."` for user-defined headers.
