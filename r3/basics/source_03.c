@@ -29,21 +29,29 @@
 #define MAX2(a, b) (a < b ? b : a)         //! Bad!
 
 int mian() {
+#if 1
   int v = MAX(5, 6);
   printf("%d\n", v);
   QAQ;
+#endif
 
+#if 1
   // Why `MAX1` is bad?
   int v1 = MAX1(5, 6) + 1;
   printf("%d\n", v1);
+#endif
 
+#if 1
   // Why `MAX2` is bad?
   int v2 = MAX2(5 & 1, 6 & 1); // 5 & 1 == 1, 6 & 1 == 0.
   printf("%d\n", v2);
+#endif
 
+#if 1
   // `MAX` is good, but...
   int v3 = MAX(5, ++v);
   printf("%d %d\n", v, v3);
+#endif
 
   return O;
 }
