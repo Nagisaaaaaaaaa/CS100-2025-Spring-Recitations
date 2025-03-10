@@ -19,12 +19,14 @@ Recitaion Slide 03 - Control flow.
 int main(void) {
 
   // Example 1: Switch case and name-lookup.
-#if 0
+#if 1
   int i = 10;
   switch (i) {
   case 1:
     int y = 7;
   case 10:
+    // Line "int y = 7;" will be skipped.
+    // Is "y" a legal variable to be accessed?
     printf("%d\n", y);
   default:
     break;
@@ -51,15 +53,15 @@ int main(void) {
 
   // Example 3: For-loop and bitwise operator.
 #if 0
-  int i = 1024;
-  for (; i; i >>= 1) {
-    printf("say hi!\n");
+  for (int i = 1024, a = 1; i; i >>= 1, ++a) {
+    printf("Say Hi! --No.%d\n", a);
   }
 #endif
 
   // Example 4: When is the updation expression in for-loop executed?
 #if 0
   for (int n = 9; n != 0; n--) {
+    // What happens when n = 1?
     printf("n=%d\n", n--);
   }
 #endif
