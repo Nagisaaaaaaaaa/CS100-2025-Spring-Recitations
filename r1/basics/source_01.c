@@ -1,14 +1,14 @@
-#include <stdio.h>
-
 /*
 
-This piece of source code corresponds to:
-Recitaion Slide 01 - Historical Artifacts of C - Empty Parameter List.
+  This piece of source code corresponds to:
+  Recitaion Slide 01 - Historical Artifacts of C - Empty Parameter List.
 
-You have not learned how to define your own functions.
-But that's Okay. We will only use simplest examples to illustrate.
+  You have not learned how to define your own functions.
+  But that's Okay. We will only use simplest examples to illustrate.
 
 */
+
+#include <stdio.h>
 
 // Accepts anything. Always returns 42.
 int always_42() {

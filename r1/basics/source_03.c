@@ -1,11 +1,11 @@
-#include <stdio.h>
-
 /*
 
 This piece of source code corresponds to:
 Recitaion Slide 01 - An example: the "A + B" problem.
 
 */
+
+#include <stdio.h>
 
 int main(void) {
   int A, B;

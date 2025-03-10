@@ -1,24 +1,24 @@
-#include <stdio.h>
-
 /*
 
-This piece of source code corresponds to:
-Recitaion Slide 01 - Historical Artifacts of C - Undeclared functions.
-You should check different behaviors between C and C++ compilers yourself!
+  This piece of source code corresponds to:
+  Recitaion Slide 01 - Historical Artifacts of C - Undeclared functions.
+  You should check different behaviors between C and C++ compilers yourself!
 
-In the "main" function, an undeclared (thus of course undefined) function
-is called. If you are using IDE or something like clangd, you should have
-noticed some warning signs, such as red underline, telling you that something
-is wrong.
+  In the "main" function, an undeclared (thus of course undefined) function
+  is called. If you are using IDE or something like clangd, you should have
+  noticed some warning signs, such as red underline, telling you that something
+  is wrong.
 
-Then let's try two different way of compiling this "wrong" code.
-Open your terminal("Ctrl + `" if you are using VSCode) and enter current folder.
+  Then let's try two different way of compiling this "wrong" code.
+  Open your terminal("Ctrl + `" if you are using VSCode) and enter current folder.
 
-1. Try "gcc source_01.c".
+  1. Try "gcc source_01.c".
 
-2. Try "g++ source_01.c".
+  2. Try "g++ source_01.c".
 
 */
+
+#include <stdio.h>
 
 int main(void) {
   int x = function_undeclared();
@@ -27,6 +27,8 @@ int main(void) {
 }
 
 /*
+
+Expected bahavior and explanation:
 
 Neither of them will be compiled and generate executable, which is fully expected.
 Now pay attention to the difference between these two return messages.
