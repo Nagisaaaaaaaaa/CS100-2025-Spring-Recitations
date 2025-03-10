@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-int main(void) {
-
-  /*
+/*
 
   This piece of source code corresponds to:
   Recitaion Slide 02 - sizeof.
@@ -14,7 +10,10 @@ int main(void) {
   ! 1. sizeof(signed T) = sizeof(unsigned T);
   ! 2. sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long);
 
-  */
+*/
+#include <stdio.h>
+
+int main(void) {
 
   printf("Size of <%s> is %d Byte(s).\n", "int", (int)sizeof(int));
   printf("Size of <%s> is %d Byte(s).\n", "unsigned int", (int)sizeof(unsigned int));

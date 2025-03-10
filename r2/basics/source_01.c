@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-int main(void) {
-
-  /*
+/*
 
   This piece of source code corresponds to:
   Recitaion Slide 02 - Integer Promotion.
@@ -28,7 +24,11 @@ int main(void) {
   * BONUS:
   * 4. You should understand why example 3 & 4 behaves differently.
 
-  */
+*/
+
+#include <stdio.h>
+
+int main(void) {
 
   // Example 1:
   char a = 42;

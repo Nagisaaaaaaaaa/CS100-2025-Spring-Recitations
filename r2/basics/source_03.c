@@ -1,3 +1,17 @@
+/*
+
+  This piece of source code corresponds to:
+  Recitaion Slide 02 - floating error.
+
+  GCC (or any standard-compliant compiler) checks：
+  if both double values have the EXACT same bit pattern in IEEE 754 representation.
+
+  ! Baseline:
+  ! 1. Understand the limited representation accuracy of floating points.
+  ! 2. Be able to answer Question1.
+
+*/
+
 #define __USE_MINGW_ANSI_STDIO 1 // MinGW artifacts
 #include <stdio.h>
 
@@ -11,22 +25,8 @@ long double avg_pro(long long x, long long y) {
 
 int main(void) {
 
-  /*
-
-  This piece of source code corresponds to:
-  Recitaion Slide 02 - floating error.
-
-  GCC (or any standard-compliant compiler) checks：
-  if both double values have the EXACT same bit pattern in IEEE 754 representation.
-
-  ! Baseline:
-  ! 1. Understand the limited representation accuracy of floating points.
-  ! 2. Be able to answer Question1.
-
-  */
-
   // A double in C (typically IEEE 754 64-bit floating-point format) has:
-  // - 53 bits of precision
+  // 53 bits of precision
   // A maximum representable integer without loss: 2^53 = 9007199254740992
   double m = avg(9007199254740993, 9007199254740993);
   long double n = avg_pro(9007199254740993, 9007199254740993);

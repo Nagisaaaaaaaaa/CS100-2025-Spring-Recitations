@@ -1,6 +1,27 @@
+/*
+
+  This piece of source code corresponds to:
+  Recitaion Slide 02 - evaluation order.
+
+  Unspecified behavior (Safety guaranteed; Correctness NOT guaranteed)
+  The compiler is free to evaluate function arguments in any order,
+  but the program remains well-defined.
+
+  Undefined behavior (Safety NOT guaranteed; Correctness NOT guaranteed)
+  The program has no predictable outcome due to violating rules in the C standard
+  (such as modifying the same variable multiple times without sequence points).
+
+  ! Baseline:
+  ! 1. Understand the difference between Undefined behavior v.s. Unspecified behavior.
+  ! 2. Be able to list some examples of undefined / unspecified behaviors.
+  ! 3. Unspecified order + Cross interference --> Undefined behavior.
+  ! 3. Fully understand the evalutaion order of [&& || ?: ,].
+
+*/
+
 #include <stdio.h>
 
-// ------------ Some helper functions ---------------
+// ------------ Some helper functions (BEGIN) -------------
 
 int Alice_student_ID(void) {
   printf("I'm Alice. My student ID is 42.\n");
@@ -36,33 +57,11 @@ int add_three(int a, int b, int c) {
   return a + b + c;
 }
 
-// ------------ Some helper functions ---------------
+// ------------ Some helper functions (END) ---------------
 
 int main(void) {
 
-  /*
-
-  This piece of source code corresponds to:
-  Recitaion Slide 02 - evaluation order.
-
-  Unspecified behavior (Safety guaranteed; Correctness NOT guaranteed)
-  The compiler is free to evaluate function arguments in any order,
-  but the program remains well-defined.
-
-  Undefined behavior (Safety NOT guaranteed; Correctness NOT guaranteed)
-  The program has no predictable outcome due to violating rules in the C standard
-  (such as modifying the same variable multiple times without sequence points).
-
-  ! Baseline:
-  ! 1. Understand the difference between Undefined behavior v.s. Unspecified behavior.
-  ! 2. Be able to list some examples of undefined / unspecified behaviors.
-  ! 3. Unspecified order + Cross interference --> Undefined behavior.
-  ! 3. Fully understand the evalutaion order of [&& || ?: ,].
-
-  */
-
   // Unspecified behavior:
-
   // In what order they are called?
   // Do a quick survey in class!
   int _ = add_three(Alice_student_ID(), Bob_student_ID(), Charlie_student_ID());
