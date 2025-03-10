@@ -1,21 +1,21 @@
 /*
 
-This piece of source code corresponds to:
-Recitaion Slide 03 - Pointers and arrays.
+  This piece of source code corresponds to:
+  Recitaion Slide 03 - Pointers and arrays.
 
-! BASELINE:
-! 1. You should be able to answer the 9 questions on the recitation slide.
-! 2. You should FULLY undertstand Takeaway #1.
-! 3. You should FULLY remember Takeaway #2 and be able to:
-!    independently answer Lec.06-p33 and r.03-p40, and
-!    independently determine some complicated nested type.
-! 4. Understand how arrays are passed in function parameters.
-! 5. Bear in mind that what you learn today is just theoritical.
-!    It helps you grow profound understanding of pointers and arrays.
-!    But it is BY NO MEANS the encouraged code style.
-
+  ! BASELINE:
+  ! 1. You should be able to answer the 9 questions on the recitation slide.
+  ! 2. You should FULLY undertstand Takeaway #1.
+  ! 3. You should FULLY remember Takeaway #2 and be able to:
+  !    independently answer Lec.06-p33 and r.03-p40, and
+  !    independently determine some complicated nested type.
+  ! 4. Understand how arrays are passed in function parameters.
+  ! 5. Bear in mind that what you learn today is just theoritical.
+  !    It helps you grow profound understanding of pointers and arrays.
+  !    But it is BY NO MEANS the encouraged code style.
 
 */
+
 #include <stdio.h>
 
 void testFunc(int *arr[30][10]) {

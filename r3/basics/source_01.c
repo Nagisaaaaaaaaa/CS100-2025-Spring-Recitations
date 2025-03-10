@@ -1,16 +1,16 @@
 /*
 
-This piece of source code corresponds to:
-Recitaion Slide 03 - Control flow.
+  This piece of source code corresponds to:
+  Recitaion Slide 03 - Control flow.
 
-! BASELINE:
-! 1. You should be familiar with the control flow of the following structure:
-!    Conditional： if-else, switch-case
-!    Loops:        while-loop, for-loop, do-while
-! 2. You should be able to anticipate the behavior for EACH of the given examples.
-! 3. Try follow TA in recitation class and use GNU debugger for Example 2.
-* BONUS:
-* 4. Learn basic console GDB commands such as "break", "continue", "next", "watch", "print"...
+  ! BASELINE:
+  ! 1. You should be familiar with the control flow of the following structure:
+  !    Conditional： if-else, switch-case
+  !    Loops:        while-loop, for-loop, do-while
+  ! 2. You should be able to anticipate the behavior for EACH of the given examples.
+  ! 3. Try follow TA in recitation class and use GNU debugger for Example 2.
+  * BONUS:
+  * 4. Learn basic console GDB commands such as "break", "continue", "next", "watch", "print"...
 
 */
 
