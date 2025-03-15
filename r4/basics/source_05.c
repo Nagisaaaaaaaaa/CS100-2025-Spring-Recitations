@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Func(int arr[]) {
+void Func(int *arr) {
   // Do something here.
 }
 
