@@ -5,7 +5,7 @@
 
   ! Baseline:
   ! 1. What is Variable-Length Arrays (VLA)?
-  ! 2. NEVER use VLA, use `malloc` and `free` instead.
+  ! 2. NEVER use VLA, ALWAYS use `malloc` and `free` instead.
 
 */
 
