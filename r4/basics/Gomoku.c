@@ -102,13 +102,13 @@ void SwapInts(int *a, int *b) {
 //
 //! Always compile with `gcc -Wall -Wextra -Wpedantic main.c` for homework.
 int main(void) {
-  //! I personally prefer the following naming style.
-  //! `nBs` means number of blacks, where
-  //!   `n`: number of,
-  //!   `B`: black,
-  //!   `s`: the plural.
+  //* I personally prefer the following naming style.
+  //* `nBs` means number of blacks, where
+  //*   `n`: number of,
+  //*   `B`: black,
+  //*   `s`: the plural.
   int nBs = 0;
-  //! `nWs` means number of whites.
+  //* `nWs` means number of whites.
   int nWs = 0;
 
   //! Never use `i, j`    for 2D loops, always use `y, x`    instead.
