@@ -1,3 +1,18 @@
+/*
+
+  This file shows how to write an elegant and secure framework for hw2 Gomoku.
+  For VSCode, it is recommended to install the `Better Comments` plugin before continue.
+
+  ! Please ALWAYS follow the rules beginning with `//!`.
+  * Rules beginning with `//*` are just personal styles.
+
+*/
+
+//
+//
+//
+//
+//
 //! `assert` will save you 95% of your debugging time.
 #include <assert.h>
 #include <stdbool.h>
