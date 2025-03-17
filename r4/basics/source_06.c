@@ -1,39 +1,43 @@
 /*
 
   This piece of source code corresponds to:
-  Recitaion Slide 04 - C Strings Library.
+  Recitaion Slide 04 - Dynamic Memory Management.
 
   ! Baseline:
-  ! 1. All C strings are terminated with '\0', called null-terminated.
-  ! 2. The usages of `strlen` and `strcpy`.
-  ! 3. Never forget the `+ 1` in `malloc(sizeof(char) * (strlen(str) + 1))`.
+  ! 1. What are the 2 ways to write a 2D array.
+  ! 2. Always use the second one.
 
 */
 
-#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 int main(void) {
-  const char *str = "Hello World!";
+  int nX = 50, nY = 60;
 
-  printf("%d\n", (int)strlen(str));
+#if 0
+  int **arr = malloc(sizeof(int *) * nY);
+  for (int y = 0; y < nY; ++y)
+    arr[y] = malloc(sizeof(int) * nX);
 
-  for (int i = 0; i < strlen(str); ++i)
-    printf("%c", str[i]);
-  printf("\n");
+  for (int y = 0; y < nY; ++y)
+    for (int x = 0; x < nX; ++x) {
+      // arr[y][x] = ...;
+    }
 
-  assert(str[strlen(str)] == '\0');
+  for (int y = 0; y < nY; ++y)
+    free(arr[y]);
+  free(arr);
+#else
+  int *arr = malloc(sizeof(int) * nX * nY);
 
-  char buffer0[100];
-  strcpy(buffer0, str);
-  printf("%s\n", buffer0);
+  for (int y = 0; y < nY; ++y)
+    for (int x = 0; x < nX; ++x) {
+      // arr[x + y * nX] = ...;
+    }
 
-  char *buffer1 = malloc(sizeof(char) * (strlen(str) + 1));
-  strcpy(buffer1, str);
-  printf("%s\n", buffer1);
-  free(buffer1);
+  free(arr);
+#endif
 
   return 0;
 }
