@@ -1,30 +1,39 @@
 /*
 
   This piece of source code corresponds to:
-  Recitaion Slide 04 - Arrays.
+  Recitaion Slide 04 - C Strings Library.
 
   ! Baseline:
-  ! 1. ALWAYS use `Func(int *arr)`, NEVER use `Func(int arr[])`, even though they are the same.
+  ! 1. All C strings are terminated with '\0', called null-terminated.
+  ! 2. The usages of `strlen` and `strcpy`.
+  ! 3. Never forget the `+ 1` in `malloc(sizeof(char) * (strlen(str) + 1))`.
 
 */
 
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-void Func(int *arr) {
-  // Do something here.
-}
+#include <string.h>
 
 int main(void) {
-  int arr0[10];
-  int *arr1 = malloc(sizeof(int) * 10);
+  const char *str = "Hello World!";
 
-  int *ptr = arr0; // Then, you can use `ptr` as if you are using `arr0`.
+  printf("%d\n", (int)strlen(str));
 
-  Func(arr0);
-  Func(arr1);
+  for (int i = 0; i < strlen(str); ++i)
+    printf("%c", str[i]);
+  printf("\n");
 
-  free(arr1);
+  assert(str[strlen(str)] == '\0');
+
+  char buffer0[100];
+  strcpy(buffer0, str);
+  printf("%s\n", buffer0);
+
+  char *buffer1 = malloc(sizeof(char) * (strlen(str) + 1));
+  strcpy(buffer1, str);
+  printf("%s\n", buffer1);
+  free(buffer1);
 
   return 0;
 }
