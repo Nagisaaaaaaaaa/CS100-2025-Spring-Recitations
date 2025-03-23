@@ -1,3 +1,14 @@
+/*
+
+  This piece of source code corresponds to:
+  Lecture 09 - `struct`.
+
+  ! Baseline:
+  ! 1. Why `typedef` is helpful for defining `struct`s.
+  ! 2. How to implement a `Vec`.
+
+*/
+
 #include <stdbool.h>
 #include <stdio.h>
 
