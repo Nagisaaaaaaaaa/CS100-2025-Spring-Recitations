@@ -1,3 +1,13 @@
+/*
+
+  This piece of source code corresponds to:
+  Recitation Slide 05 - Function Pointers.
+
+  ! Baseline:
+  ! 1. How to implement a `Transform` with the help of function pointers.
+
+*/
+
 #include <stdio.h>
 
 /// \brief Transform the given array `arr` with an operator `op`.
