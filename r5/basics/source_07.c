@@ -1,3 +1,13 @@
+/*
+
+  This piece of source code corresponds to:
+  Recitation Slide 05 - File I/O.
+
+  ! Baseline:
+  ! 1. Write to an opened file with `fputc`, `fputs`, etc.
+
+*/
+
 #include <stdio.h>
 
 int main() {
