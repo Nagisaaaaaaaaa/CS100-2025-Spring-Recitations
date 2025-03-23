@@ -7,6 +7,8 @@
   ! 1. Open or close a file with `fopen` or `fclose`.
   ! 2. The `r` means opening the file for reading. You should also know `w`, `a`, `r+`, etc.
   ! 3. Read an opened file with `fgetc`, `fgets`, etc.
+  * Bonus:
+  * 4. Get name (path) of the current file with `__FILE__`.
 
 */
 
