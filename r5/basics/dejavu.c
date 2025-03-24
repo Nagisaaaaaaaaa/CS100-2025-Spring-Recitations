@@ -44,14 +44,14 @@ int main(void) {
   // Input examination
   assert((num_world < WORLDLINE_NUM_LIMIT) && (num_event < EVENT_NUM_LIMIT));
 
-  WorldLine *wdlines = malloc((1 + num_world) * sizeof(WorldLine));
+  WorldLine *wdlines = calloc(num_world + 1, sizeof(WorldLine));
 
   // Initailize worldline
   for (unsigned idw = 1; idw <= num_world; idw++) {
     unsigned int in_sval = 0;
     scanf("%u", &in_sval);
 
-    WorldLine *curr = &wdlines[idw]; // wdlines + idw
+    WorldLine *curr = wdlines + idw; // &wdlines[idw]
     curr->sval = (u32)in_sval;
     curr->outedge = curr;
     curr->modified = false;
@@ -69,8 +69,8 @@ int main(void) {
     unsigned int next_idx = 0;
     scanf("%u%u", &init_idx, &next_idx);
 
-    WorldLine *prev = &wdlines[init_idx]; // wdlines + init_idx
-    WorldLine *next = &wdlines[next_idx]; // wdlines + next_idx
+    WorldLine *prev = wdlines + init_idx;
+    WorldLine *next = wdlines + next_idx;
 
     prev->outedge = next;
     prev->modified = true;
