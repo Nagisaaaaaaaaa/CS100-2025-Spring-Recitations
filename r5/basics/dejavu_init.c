@@ -9,6 +9,7 @@
 
 // Basic structure
 // You should be able to draft this easily within 5 minute.
+// You can practice your new implementation on this.
 
 int main(void) {
 
@@ -19,7 +20,7 @@ int main(void) {
   assert((num_world < WORLDLINE_NUM_LIMIT) && (num_event < EVENT_NUM_LIMIT));
 
   // Initailize worldline
-  for (unsigned idw = 1; idw < num_world; idw++) {
+  for (unsigned idw = 1; idw <= num_world; idw++) {
     // Read input
     unsigned in_sval = 0;
     scanf("%u", &in_sval);
@@ -27,7 +28,7 @@ int main(void) {
   }
 
   // Handle event
-  for (unsigned ide = 1; ide < num_event; ide++) {
+  for (unsigned ide = 1; ide <= num_event; ide++) {
     // Read input
     unsigned init_idx = 0;
     unsigned next_idx = 0;
