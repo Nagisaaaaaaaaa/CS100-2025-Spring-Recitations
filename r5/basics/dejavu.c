@@ -1,3 +1,17 @@
+/*
+
+  This piece of source code corresponds to:
+  Homework2, Problem5 - `Deja Vu!`
+
+  ! Baseline:
+  ! 1. You should fully understand this implementation.
+  ! 2. You should be familiar with the bit operations, struct definition we used.
+  ! 3. You should be familiar with pointer access for structs.
+  * Bonus:
+  * 4. Apply this style to your own homework implementation and have fun!
+
+*/
+
 #include <assert.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -10,7 +24,7 @@
 
 typedef uint32_t u32;
 
-u32 cycleShift(u32 x, u32 bit_to_shift) {
+u32 cycleLShift(u32 x, u32 bit_to_shift) {
 
   bit_to_shift %= 32;
 
@@ -82,9 +96,9 @@ int main(void) {
     while ((!next->modified)) {
 
       // Sekaisen changing
-      (next->sval) ^= cycleShift(base_sval, transit_stp);
+      (next->sval) ^= cycleLShift(base_sval, transit_stp);
 
-      // update
+      // update: march one step
       next->modified = true;
       prev = next;
       next = next->outedge;
