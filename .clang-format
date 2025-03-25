@@ -2,7 +2,7 @@ BasedOnStyle: LLVM
 
 ColumnLimit: 120
 
-# ARIA customizations
+# Customizations
 AlwaysBreakTemplateDeclarations: Yes
 BinPackParameters: false
 AllowShortFunctionsOnASingleLine: Inline
@@ -12,8 +12,6 @@ SeparateDefinitionBlocks: Always
 AllowShortBlocksOnASingleLine: Always
 
 # Indenting macros like
-#  #define ARIA_HOST    __host__
-#  #define ARIA_DEVICE  __device__
 AlignConsecutiveMacros: Consecutive
 
 # Indenting preprocessor directives for complex PP in platform.h
