@@ -17,7 +17,7 @@
 #include <vector>
 
 struct MemoryGuard {
-  int *ptr;
+  int *const ptr;
 
   ~MemoryGuard() {
     free(ptr);
