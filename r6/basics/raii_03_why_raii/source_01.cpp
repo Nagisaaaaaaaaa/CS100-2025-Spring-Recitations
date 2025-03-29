@@ -12,12 +12,16 @@
 #include <vector>
 
 int main() {
-  int *arr = (int *)malloc(sizeof(int) * 10);
+  try {
 
-  std::vector<int> v(0xFFFFFFFFFFFFFFFLLU);
+    int *arr = (int *)malloc(sizeof(int) * 10);
 
-  std::cout << "Start freeing" << std::endl;
-  free(arr);
+    std::vector<int> v(0xFFFFFFFFFFFFFFFLLU);
+
+    std::cout << "Start freeing" << std::endl;
+    free(arr);
+
+  } catch (std::exception &e) { std::cout << "The exception message is: " << e.what() << std::endl; }
 
   return 0;
 }
