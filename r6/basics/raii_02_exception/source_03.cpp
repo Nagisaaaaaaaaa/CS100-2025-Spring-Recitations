@@ -19,7 +19,8 @@ void SomeComplexFileTask() {
 
 void SomeComplexTask() {
   SomeComplexFileTask();
-  // ...
+
+  std::vector<int> v(0xFFFFFFFFFFFFFFFLLU);
 }
 
 int main() {
