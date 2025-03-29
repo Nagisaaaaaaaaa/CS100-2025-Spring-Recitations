@@ -14,7 +14,7 @@
 int main(void) {
   int *arr = malloc(sizeof(int) * 0xFFFFFFFFFFFFFFFLLU);
   if (arr == NULL) {
-    printf("Unable to allocate the memory\n");
+    printf("Failed to allocate the memory\n");
     return EXIT_FAILURE;
   }
 

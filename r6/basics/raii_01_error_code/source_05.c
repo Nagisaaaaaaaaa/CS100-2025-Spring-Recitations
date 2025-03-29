@@ -11,13 +11,13 @@
 int SomeComplexFileTask(void) {
   FILE *file = fopen("Try to open a non-existent file.txt", "r");
   if (file == NULL) {
-    printf("Unable to open the file\n");
+    printf("Failed to open the file\n");
     return EXIT_FAILURE;
   }
 
   int errCode = fclose(file);
   if (errCode != 0) {
-    printf("Unable to close the file\n");
+    printf("Failed to close the file\n");
     return EXIT_FAILURE;
   }
 
@@ -33,7 +33,7 @@ int SomeComplexTask(void) {
 
   int *arr = malloc(sizeof(int) * 0xFFFFFFFFFFFFFFFLLU);
   if (arr == NULL) {
-    printf("Unable to allocate the memory\n");
+    printf("Failed to allocate the memory\n");
     return EXIT_FAILURE;
   }
 

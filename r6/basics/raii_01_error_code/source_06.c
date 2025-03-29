@@ -30,10 +30,10 @@
 
 int SomeComplexFileTask(void) {
   FILE *file = fopen("Try to open a non-existent file.txt", "r");
-  MY_EXPECT(file != NULL, "Unable to open the file");
+  MY_EXPECT(file != NULL, "Failed to open the file");
 
   int errCode = fclose(file);
-  MY_EXPECT(errCode == 0, "Unable to close the file");
+  MY_EXPECT(errCode == 0, "Failed to close the file");
 
   return 0;
 }
@@ -43,7 +43,7 @@ int SomeComplexTask(void) {
   MY_EXPECT(errCode == 0, "Failed to finish the complex file task");
 
   int *arr = malloc(sizeof(int) * 0xFFFFFFFFFFFFFFFLLU);
-  MY_EXPECT(arr != NULL, "Unable to allocate the memory");
+  MY_EXPECT(arr != NULL, "Failed to allocate the memory");
 
   return 0;
 }

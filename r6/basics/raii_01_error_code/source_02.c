@@ -13,13 +13,13 @@
 int main(void) {
   FILE *file = fopen("Try to open a non-existent file.txt", "r");
   if (file == NULL) {
-    printf("Unable to open the file\n");
+    printf("Failed to open the file\n");
     return EXIT_FAILURE;
   }
 
   int errCode = fclose(file);
   if (errCode != 0) {
-    printf("Unable to close the file\n");
+    printf("Failed to close the file\n");
     return EXIT_FAILURE;
   }
 
