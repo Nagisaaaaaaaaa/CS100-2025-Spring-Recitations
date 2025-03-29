@@ -19,4 +19,6 @@ int main(void) {
   }
 
   free(arr);
+
+  return 0;
 }
