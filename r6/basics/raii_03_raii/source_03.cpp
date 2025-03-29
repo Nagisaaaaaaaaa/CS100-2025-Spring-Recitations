@@ -8,7 +8,7 @@
   !    永 远 在 _构 造_ 的 时 候 _获 取_ 资 源，
   !    永 远 在 _析 构_ 的 时 候 _释 放_ 资 源。
   !    并且将这一习惯命名为 RAII (Resource Acquisition Is Initialization)！
-  ! 3. C++ 标准库中的很多东西，例如 `std::vector`，都是遵循 RAII 实现的。
+  ! 3. C++ 标准库中的很多东西，例如 `std::vector`、`std::string`，都是遵循 RAII 的。
 
 */
 
