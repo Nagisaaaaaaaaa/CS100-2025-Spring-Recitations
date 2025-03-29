@@ -1,27 +1,24 @@
-/// \file
-/// \brief This file shows how RAII (`MemoryGuard`) helps
-/// prevent memory leaks caused by the early returns.
+/*
 
-//
-//
-//
+  ! Baseline:
+  ! 1. RAII 能帮助我们自动处理“manual frees”和“early returns”。
+  ! 2. 即使对于那些不存在异常的编程语言，RAII 同样非常重要。
+
+*/
+
 #include <cstdlib>
 #include <iostream>
 
-/// \brief A memory guard automatically frees the OWNing memory when
-/// the instance is out of scope.
 struct MemoryGuard {
-  int *ptr = nullptr;
+  int *const ptr;
 
   ~MemoryGuard() {
     free(ptr);
-    ptr = nullptr;
-    printf("Memory has been freed\n");
+    std::cout << "Finished freeing" << std::endl;
   }
 };
 
-/// \brief Some complex function where we will allocate and free many memorys.
-void SomeComplexFunction(bool earlyReturn) {
+void SomeComplexTask(bool earlyReturn) {
   MemoryGuard guard1{(int *)malloc(1 * sizeof(int))};
   MemoryGuard guard2{(int *)malloc(2 * sizeof(int))};
   MemoryGuard guard3{(int *)malloc(3 * sizeof(int))};
@@ -36,17 +33,16 @@ void SomeComplexFunction(bool earlyReturn) {
   if (earlyReturn) {
     printf("Let's early return\n");
 
-    //! We no longer need to worry about early returns.
+    //! No longer need to worry about early returns.
     return;
   }
+
+  //! No longer need to worry about manual frees.
 }
 
-//
-//
-//
 int main() {
-  SomeComplexFunction(false);
-  SomeComplexFunction(true);
+  SomeComplexTask(false);
+  SomeComplexTask(true);
 
   return 0;
 }
