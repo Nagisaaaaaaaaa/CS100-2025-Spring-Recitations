@@ -2,7 +2,8 @@
 
   ! Baseline:
   ! 1. 在 C 语言编程中，我们必须非常谨慎地确保每个 `malloc` 都有一个 `free`。
-  !    而“Early return”会让事情变得更加复杂。
+  !    而如果函数的中间出现了 `return` 语句 (称之为“early return”)，
+  !    这将会是雪上加霜。
   ! 2. C 语言程序员通常会在涉及资源获取、释放的地方，刻意地避免使用“early return”。
 
 */
