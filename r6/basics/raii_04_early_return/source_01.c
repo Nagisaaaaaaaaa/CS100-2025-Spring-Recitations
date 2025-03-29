@@ -26,7 +26,7 @@ void SomeComplexTask(bool earlyReturn) {
     //! It's really easy to forget something...
     free(ptr1);
     free(ptr2);
-    //! Forget to free `ptr3` here, Q^Q.
+    //! Forget to free `ptr3` here, Q^Q, “丢三”。
     free(ptr4);
     free(ptr5);
     return;
@@ -37,7 +37,7 @@ void SomeComplexTask(bool earlyReturn) {
   free(ptr1);
   free(ptr2);
   free(ptr3);
-  //! Forget to free `ptr4` here, T^T.
+  //! Forget to free `ptr4` here, T^T, “落四”。
   free(ptr5);
 }
 
