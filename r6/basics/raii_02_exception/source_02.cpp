@@ -12,12 +12,14 @@
 
 int main() {
   try {
+
     std::cout << "Start allocating" << std::endl;
 
     std::vector<int> v(0xFFFFFFFFFFFFFFFLLU);
 
     std::cout << "Finished allocating" << std::endl;
-  } catch (std::exception &e) {
+
+  } catch (std::exception &e) { //
     // This line prints the exception message.
     std::cout << "The exception message is: " << e.what() << std::endl;
   }

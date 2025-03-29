@@ -29,7 +29,9 @@ int main() {
 
     std::vector<int> v(0xFFFFFFFFFFFFFFFLLU);
 
-  } catch (std::exception &e) { std::cout << "The exception message is: " << e.what() << std::endl; }
+  } catch (std::exception &e) { //
+    std::cout << "The exception message is: " << e.what() << std::endl;
+  }
 
   return 0;
 }

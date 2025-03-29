@@ -21,7 +21,9 @@ int main() {
     std::cout << "Start freeing" << std::endl;
     free(arr);
 
-  } catch (std::exception &e) { std::cout << "The exception message is: " << e.what() << std::endl; }
+  } catch (std::exception &e) { //
+    std::cout << "The exception message is: " << e.what() << std::endl;
+  }
 
   return 0;
 }
