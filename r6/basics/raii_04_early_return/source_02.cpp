@@ -17,7 +17,6 @@ struct MemoryGuard {
   }
 };
 
-/// \brief Some complex task where we will allocate and free many memorys.
 void SomeComplexTask(bool earlyReturn) {
   MemoryGuard guard1{(int *)malloc(1 * sizeof(int))};
   MemoryGuard guard2{(int *)malloc(2 * sizeof(int))};

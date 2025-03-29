@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/// \brief Some complex task where we will allocate and free many memorys.
 void SomeComplexTask(bool earlyReturn) {
   int *const ptr1 = (int *)malloc(1 * sizeof(int));
   int *const ptr2 = (int *)malloc(2 * sizeof(int));
