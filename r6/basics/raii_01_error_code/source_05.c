@@ -1,7 +1,8 @@
 /*
 
   ! Baseline:
-  ! 1. 如何实现多个遵循“error code”的函数？请看下面的几个函数。
+  ! 1. 如何实现多个遵循“error code”的函数？
+  !    请看 `SomeComplexFileTask` 和 `SomeComplexTask` 的实现。
 
 */
 
