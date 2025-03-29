@@ -1,7 +1,8 @@
 /*
 
   ! Baseline:
-  ! 1. 即使有“early return”存在，RAII 也能让我们永远都不必担心资源泄漏！
+  ! 1. RAII 能帮助我们自动处理“manual frees”和“early returns”。
+  ! 2. 即使对于那些不存在异常的编程语言，RAII 同样非常重要。
 
 */
 
