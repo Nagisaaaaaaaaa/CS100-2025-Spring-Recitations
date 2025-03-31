@@ -50,24 +50,18 @@ void print_hitrec(HitRecord rec) {
 }
 
 HitRecord check_intersect(Line2d l1, Line2d l2) {
-  HitRecord rec;
-  rec.hit_x = 0.0;
-  rec.hit_y = 0.0;
   if (eq(l1.k, l2.k)) {
     // overlap
     if (eq(l1.b, l2.b)) {
-      rec.has_hit = overlap;
-      return rec;
+      return (HitRecord){overlap, 0.0, 0.0};
     }
     // parallel
-    rec.has_hit = parallel;
-    return rec;
+    return (HitRecord){parallel, 0.0, 0.0};
   }
   // intersect
-  rec.has_hit = intersect;
-  rec.hit_x = (l1.b - l2.b) / (l2.k - l1.k);
-  rec.hit_y = l1.k * rec.hit_x + l1.b;
-  return rec;
+  double x = (l1.b - l2.b) / (l2.k - l1.k);
+  double y = (l1.k * x) + l1.b;
+  return (HitRecord){intersect, x, y};
 }
 
 int main(void) {
