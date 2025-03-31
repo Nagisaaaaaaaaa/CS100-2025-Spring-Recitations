@@ -26,6 +26,7 @@ typedef uint32_t u32;
 
 u32 cycleLShift(u32 x, u32 bit_to_shift) {
 
+  // Make it efficient!
   bit_to_shift %= 32;
 
   // Make it robust!
@@ -73,23 +74,23 @@ int main(void) {
 
   // handle event
   for (u32 ide = 1; ide <= num_event; ide++) {
+
     // clear modification record
     for (u32 idw = 1; idw <= num_world; idw++) {
       wdlines[idw].modified = false;
     }
 
-    // read input
-    u32 init_idx = 0;
-    u32 next_idx = 0;
+    // read input: event(x, y)
+    u32 init_idx = 0; // x
+    u32 next_idx = 0; // y
     scanf("%u%u", &init_idx, &next_idx);
 
+    // preparation
     WorldLine *prev = wdlines + init_idx;
     WorldLine *next = wdlines + next_idx;
-
     prev->outedge = next;
     prev->modified = true;
-
-    u32 transit_stp = 1;
+    u32 transit_stp = 1; // how far we've gone?
     u32 base_sval = prev->sval;
 
     // core logic
@@ -124,5 +125,8 @@ int main(void) {
   printf("%u\n", min_val);
 
   free(wdlines);
+
   return 0;
 }
+
+// EL PSY KONGROO
