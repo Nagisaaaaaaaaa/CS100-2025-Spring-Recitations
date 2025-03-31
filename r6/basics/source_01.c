@@ -12,7 +12,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-// Navie implementation, correct but messy.
+// Navie implementation, correct but potentially messy.
 bool contain_(double x, double min, double max) {
   return (min <= x) && (x <= max);
 }
@@ -27,12 +27,13 @@ bool contain(double x, Interval intv) {
   return (intv.left <= x) && (x <= intv.right);
 }
 
-//clang-format off
 double clamp(double x, Interval intv) {
-  if (x > intv.right)
+  if (x > intv.right) {
     return intv.right;
-  if (x < intv.left)
+  }
+  if (x < intv.left) {
     return intv.left;
+  }
   return x;
 }
 

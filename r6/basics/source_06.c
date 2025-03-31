@@ -21,6 +21,7 @@ typedef union {
   u16 codeVal; // 16 bit
 
   struct {
+    // Low to high
     unsigned imm : 7;
     unsigned r2 : 3;
     unsigned r1 : 3;
@@ -36,8 +37,11 @@ int main() {
   MachineCode16bit input = {.codeVal = 0x8401};
 
   // clang-format off
+
+  // direct access to bits, no more ">>"
   printf("Opcode = %u;\nr1 = %u;\nr2 = %u;\nImm = %u;\n", 
     input.bits.opcode, input.bits.r1, input.bits.r2, input.bits.imm);
+
   // clang-format on
 
   return 0;
