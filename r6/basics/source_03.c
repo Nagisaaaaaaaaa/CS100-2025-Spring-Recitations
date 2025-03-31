@@ -5,6 +5,8 @@
 
   ! Baseline:
   ! 1. Get familiar with the examples below.
+  * Bonus:
+  * 2. Rewrite your HW1-Problem5 code with such style.
 
 */
 
