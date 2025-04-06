@@ -31,9 +31,9 @@ public:
   ~Vector() { free(data_); }
 
 public:
-  int *data() { return data_; }
-
   const int *data() const { return data_; }
+
+  int *data() { return data_; }
 
   size_t size() const { return size_; }
 
