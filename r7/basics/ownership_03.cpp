@@ -3,6 +3,7 @@
   ! Baseline:
   ! 1. Who owns the array in this example?
   ! 2. Why?
+  ! 3. 谁负责 RAII，谁就拥有 ownership！
 
 */
 
