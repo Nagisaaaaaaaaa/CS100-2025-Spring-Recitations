@@ -1,3 +1,22 @@
+/*
+
+  ! Baseline:
+  ! 1. C++ `struct` and `class` are almost the same.
+  !   (1). `struct` members are public  by-default.
+  !   (2). `class`  members are private by-default.
+  ! 2. Constructors.
+  !   (1). How to implement constructors for C++ classes.
+  !   (2). What is the "default" constructor and why called "default"?
+  ! 3. Member functions.
+  !   (1). How to implement member functions for C++ classes.
+  !   (2). Difference between `const` and non-`const` member functions.
+
+  * Bonus:
+  * 4. It is better for all `struct` member variables to be public .
+  * 5. It is better for all `class`  member variables to be private.
+
+*/
+
 #include <iostream>
 
 class Vector {
@@ -31,6 +50,8 @@ int main() {
 
   for (size_t i = 0; i < vec.size(); ++i)
     std::cout << vec.data()[i] << std::endl;
+
+  Vector vec1; // The default constructor will be called.
 
   return 0;
 }
