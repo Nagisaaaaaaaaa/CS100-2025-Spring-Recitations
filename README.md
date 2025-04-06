@@ -63,6 +63,10 @@ int *const ptr = guard.ptr;
 //! RAII is almost the most important programming technique for C++!
 ```
 
+## Supp 7: Ownership
+
+**第二重要的一集，必看！**
+
 ## Supp 8: Hello Legacy
 
 **第三重要的一集，必看！**
