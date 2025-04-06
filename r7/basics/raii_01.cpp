@@ -9,7 +9,7 @@
 #include <iostream>
 
 struct Vector {
-  int *const data;
+  int *data;
 
   ~Vector() { free(data); }
 };
