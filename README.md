@@ -63,9 +63,13 @@ int *const ptr = guard.ptr;
 //! RAII is almost the most important programming technique for C++!
 ```
 
-## Supp 7: Hello Legacy
+## Supp 7: Hello Ownership
 
 **第二重要的一集，必看！**
+
+## Supp 8: Hello Legacy
+
+**第三重要的一集，必看！**
 
 中国有句古话叫做，祖宗之法不可变。我们将学习一系列 C++ 臭名昭著的天坑、历史遗留问题、设计缺陷。请务必将它们铭记在心并且尽量避免它们出现。
 
