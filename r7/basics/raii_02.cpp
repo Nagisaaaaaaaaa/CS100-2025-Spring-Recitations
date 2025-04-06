@@ -28,6 +28,9 @@ public:
       data_[i] = 0;
   }
 
+  Vector(const Vector &) = delete;
+  Vector &operator=(const Vector &) = delete;
+
   ~Vector() { free(data_); }
 
 public:
