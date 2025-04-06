@@ -2,8 +2,8 @@
 
   ! Baseline:
   ! 1. There is only one difference between `struct` and `class`:
-  !   (1). `struct` members are public  by-default.
-  !   (2). `class`  members are private by-default.
+  !   (1). `struct` members are public  by default.
+  !   (2). `class`  members are private by default.
   ! 2. Constructors:
   !   (1). How to implement constructors for C++ classes.
   !   (2). What is the "default" constructor and why called "default"?
