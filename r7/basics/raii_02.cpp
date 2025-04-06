@@ -24,7 +24,7 @@ public:
   Vector() = default;
 
   Vector(size_t size) : data_((int *)malloc(sizeof(int) * size)), size_(size) {
-    for (size_t i = 0; i < size; ++i)
+    for (size_t i = 0; i < size_; ++i)
       data_[i] = 0;
   }
 
