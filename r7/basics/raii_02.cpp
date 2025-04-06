@@ -36,7 +36,8 @@ public:
   ~Vector() { free(data_); }
 
 public:
-  const int *data() const { return data_; }
+  //* We will learn this next week.
+  // const int *data() const { return data_; }
 
   int *data() { return data_; }
 
