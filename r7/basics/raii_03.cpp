@@ -14,4 +14,6 @@ int main() {
 
   //! `data` does not own the array.
   int *data = vec.data();
+
+  return 0;
 }
