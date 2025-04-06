@@ -10,6 +10,7 @@
   ! 3. Member functions:
   !   (1). How to implement and call member functions.
   !   (2). `const` and non-`const` member functions.
+  ! 4. Why `Vector vec2 = vec` is dangerous?
 
   * Bonus:
   * 4. It is usually better for all `struct` member variables to be public .
@@ -27,6 +28,10 @@ public:
     for (size_t i = 0; i < size_; ++i)
       data_[i] = 0;
   }
+
+  //* We will learn this next week.
+  // Vector(const Vector &) = delete;
+  // Vector &operator=(const Vector &) = delete;
 
   ~Vector() { free(data_); }
 
