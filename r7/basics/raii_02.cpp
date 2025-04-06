@@ -12,8 +12,8 @@
   !   (2). `const` and non-`const` member functions.
 
   * Bonus:
-  * 4. It is better for all `struct` member variables to be public .
-  * 5. It is better for all `class`  member variables to be private.
+  * 4. It is usually better for all `struct` member variables to be public .
+  * 5. It is usually better for all `class`  member variables to be private.
 
 */
 
