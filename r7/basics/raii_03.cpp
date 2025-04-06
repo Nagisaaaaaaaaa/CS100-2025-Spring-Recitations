@@ -1,3 +1,11 @@
+/*
+
+  ! Baseline:
+  ! 1. Who owns the array in this example?
+  ! 2. Why?
+
+*/
+
 #include <vector>
 
 int main() {
