@@ -5,10 +5,10 @@
   !   (1). `struct` members are public  by default.
   !   (2). `class`  members are private by default.
   ! 2. Constructors:
-  !   (1). How to implement constructors for C++ classes.
-  !   (2). What is the "default" constructor and why called "default"?
+  !   (1). How to implement and call constructors.
+  !   (2). Why "default" constructors are called "default"?
   ! 3. Member functions:
-  !   (1). How to implement member functions for C++ classes.
+  !   (1). How to implement member functions.
   !   (2). Difference between `const` and non-`const` member functions.
 
   * Bonus:
