@@ -51,7 +51,8 @@ int main() {
   for (size_t i = 0; i < vec.size(); ++i)
     std::cout << vec.data()[i] << std::endl;
 
-  Vector vec1; // The default constructor will be called.
+  Vector vec1;       // The default constructor will be called.
+  Vector vec2 = vec; //! Dangerous!.
 
   return 0;
 }
