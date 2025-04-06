@@ -3,6 +3,7 @@
   ! Baseline:
   ! 1. Please review the four RAII parts of `r6/basics`, T^T...
   ! 2. How to implement `Vector` with RAII.
+  ! 3. Why `size_t` is used here instead of `int` or `unsigned int`?
 
 */
 
