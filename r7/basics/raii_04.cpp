@@ -1,3 +1,11 @@
+/*
+
+  ! Baseline:
+  ! 1. Who owns the array in this example?
+  ! 2. Why?
+
+*/
+
 #include <cstdlib>
 
 class Vector {
@@ -29,8 +37,10 @@ private:
 };
 
 int main() {
+  //! `vec` owns the array.
   Vector vec(5);
 
+  //! `data` does not own the array.
   int *data = vec.data();
 
   return 0;
