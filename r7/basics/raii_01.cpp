@@ -15,7 +15,7 @@ struct Vector {
 };
 
 int main() {
-  Vector v{(int *)malloc(sizeof(int) * 10)};
+  Vector vec{(int *)malloc(sizeof(int) * 10)};
 
   return 0;
 }
