@@ -8,8 +8,8 @@
   !   (1). How to implement and call constructors.
   !   (2). Why "default" constructors are called "default"?
   ! 3. Member functions:
-  !   (1). How to implement member functions.
-  !   (2). Difference between `const` and non-`const` member functions.
+  !   (1). How to implement and call member functions.
+  !   (2). `const` and non-`const` member functions.
 
   * Bonus:
   * 4. It is better for all `struct` member variables to be public .
