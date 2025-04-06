@@ -1,7 +1,7 @@
 /*
 
   ! Baseline:
-  ! 1. Please review the RAII part of `r6/basics`, T^T...
+  ! 1. Please review the four RAII parts of `r6/basics`, T^T...
   ! 2. How to implement a `Vector` with RAII.
 
 */
