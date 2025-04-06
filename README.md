@@ -67,6 +67,14 @@ int *const ptr = guard.ptr;
 
 **第二重要的一集，必看！**
 
+```cpp
+//! `vec` owns the array.
+std::vector<int> vec(5);
+
+//! `data` does not own the array.
+int *data = vec.data();
+```
+
 ## Supp 8: Hello Legacy
 
 **第三重要的一集，必看！**
