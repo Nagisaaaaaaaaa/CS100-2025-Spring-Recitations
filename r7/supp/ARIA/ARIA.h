@@ -48,7 +48,7 @@ static_assert(sizeof(int64) == sizeof(uint64), "Size of `int64` and `uint64` sho
 //
 //
 /// \brief `Real` is a universal number type defined by cmake options.
-using Real = ${aria_real_type};
+using Real = float; // ${aria_real_type};
 
 /// \brief Use `100.0_R` to define a `Real` equals to one hundred.
 ARIA_HOST_DEVICE constexpr Real operator"" _R(long double value) {

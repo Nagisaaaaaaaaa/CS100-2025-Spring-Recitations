@@ -234,17 +234,9 @@
 /// ```
 #define ARIA_UNIMPLEMENTED                                                                                             \
   do {                                                                                                                 \
-    fmt::print(stderr, "Reached unimplemented code at [{}:{}]\n", __FILE__, __LINE__);                                 \
+    fprintf(stderr, "Reached unimplemented code at [%s:%d]\n", __FILE__, __LINE__);                                    \
     std::abort();                                                                                                      \
   } while (0)
-
-/// \brief Throw an exception with automatically formatted file name and line number.
-///
-/// \example ```cpp
-/// ARIA_THROW(std::runtime_error, "Runtime error");
-/// ```
-#define ARIA_THROW(err, ...)                                                                                           \
-  throw __ARIA_EXPAND(err)(fmt::format("Exception at [{}:{}]: ", __FILE__, __LINE__) + fmt::format(__VA_ARGS__))
 
 #if !defined(NDEBUG)
   #if ARIA_IS_DEVICE_CODE
