@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ARIA/ARIA.h"
+// #include "ARIA/ARIA.h"
+#include "../ARIA.h"
 
 namespace ARIA {
 

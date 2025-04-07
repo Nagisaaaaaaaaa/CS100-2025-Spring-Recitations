@@ -7,7 +7,7 @@
 //
 //
 //
-#include <fmt/core.h>
+#include <cstdio>
 
 // Compilers.
 
