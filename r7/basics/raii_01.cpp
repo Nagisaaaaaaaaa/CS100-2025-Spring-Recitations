@@ -7,7 +7,8 @@
 
 */
 
-#include <iostream>
+#include <cstdio>
+#include <cstdlib>
 
 struct Vector {
   int *data;
@@ -22,7 +23,7 @@ int main() {
     vec.data[i] = i;
 
   for (size_t i = 0; i < 5; ++i)
-    std::cout << vec.data[i] << std::endl;
+    printf("%d\n", vec.data[i]);
 
   return 0;
 }
