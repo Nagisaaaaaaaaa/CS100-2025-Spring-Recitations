@@ -13,5 +13,8 @@ int main() {
   int *ptr = &a;
   int &ref = a;
 
+  const int *ptr = &a;
+  const int &ref = a;
+
   return 0;
 }
