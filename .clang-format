@@ -1,6 +1,11 @@
+# Visit the official documentation for more info:
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
 BasedOnStyle: LLVM
 
+# Basic things
 ColumnLimit: 120
+IndentWidth: 2
 
 # Customizations
 AlwaysBreakTemplateDeclarations: Yes
