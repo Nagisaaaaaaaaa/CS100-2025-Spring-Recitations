@@ -1,6 +1,8 @@
 /// \file
 /// \brief This file introduces a C++ version of the HW4 `Registry.h`.
 /// How this is implemented with RAII?
+///
+/// \note Please compile with `g++ main.cpp -std=c++20`.
 
 //
 //
