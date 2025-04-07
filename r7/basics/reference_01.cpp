@@ -13,18 +13,18 @@ struct Vec30 {
   int v[30];
 };
 
-Vec3 AddByValue(Vec3 a, Vec3 b) {
+Vec3 Add_PassByValue(Vec3 a, Vec3 b) {
   // ...
 }
 
-Vec30 AddByValue(Vec30 a, Vec30 b) {
+Vec30 Add_PassByValue(Vec30 a, Vec30 b) {
   // ...
 }
 
-Vec30 AddByPointer(const Vec30 *a, const Vec30 *b) {
+Vec30 Add_PassByPointer(const Vec30 *a, const Vec30 *b) {
   // ...
 }
 
-Vec30 AddByReference(const Vec30 &a, const Vec30 &b) {
+Vec30 Add_PassByReference(const Vec30 &a, const Vec30 &b) {
   // ...
 }
