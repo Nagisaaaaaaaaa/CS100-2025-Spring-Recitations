@@ -1,3 +1,11 @@
+/// \file
+/// \brief This file introduces a C++ version of the HW4 `Registry.h`.
+
+//
+//
+//
+//
+//
 #include "ARIA/Registry.h"
 
 #include <vector>
