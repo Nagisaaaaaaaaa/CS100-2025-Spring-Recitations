@@ -1,5 +1,6 @@
 /// \file
 /// \brief This file introduces a C++ version of the HW4 `Registry.h`.
+/// How this is implemented with RAII?
 
 //
 //
