@@ -18,7 +18,8 @@
 
 */
 
-#include <iostream>
+#include <cstdio>
+#include <cstdlib>
 
 class Vector {
 public:
@@ -55,7 +56,7 @@ int main() {
     vec.data()[i] = i;
 
   for (size_t i = 0; i < vec.size(); ++i)
-    std::cout << vec.data()[i] << std::endl;
+    printf("%d\n", vec.data()[i]);
 
   Vector vec1;       // The default constructor will be called.
   Vector vec2 = vec; //! Dangerous!.
