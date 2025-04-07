@@ -7,7 +7,7 @@ struct Vec {
 };
 
 struct Tank : public ARIA::Registry<Tank> {
-  using Base = Registry<Tank>;
+  using Base = ARIA::Registry<Tank>;
   using Base::range;
   using Base::size;
 
