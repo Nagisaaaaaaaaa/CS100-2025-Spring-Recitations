@@ -29,3 +29,12 @@ Vec30 Add_PassByPointer(const Vec30 *a, const Vec30 *b) {
 Vec30 Add_PassByReference(const Vec30 &a, const Vec30 &b) {
   // ...
 }
+
+int main() {
+  Vec30 a, b;
+
+  Vec30 c = Add_PassByPointer(&a, &b);
+  Vec30 c = Add_PassByReference(a, b);
+
+  return 0;
+}
