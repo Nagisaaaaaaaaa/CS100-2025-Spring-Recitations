@@ -7,8 +7,6 @@
 
 */
 
-#include <cstdio>
-
 int main() {
   int a = 5;
 
