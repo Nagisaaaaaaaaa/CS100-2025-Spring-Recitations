@@ -19,25 +19,27 @@ int main() {
   std::cout << Tank::size() << std::endl;
 
   {
-    // 0 + 1 = 1.
-    Tank tank;
+    // 0 + 2 = 2.
+    Tank tank0;
+    Tank tank1;
     std::cout << Tank::size() << std::endl;
 
     {
-      // 1 + 5 = 6.
+      // 2 + 5 = 7.
       std::vector<Tank> tanks(5);
       std::cout << Tank::size() << std::endl;
 
+      // Iterate through all the tanks.
       for (const auto &tank : Tank::range()) {
         // ...
       }
     }
 
-    // 6 - 5 = 1.
+    // 7 - 5 = 2.
     std::cout << Tank::size() << std::endl;
   }
 
-  // 1 - 1 = 0.
+  // 2 - 2 = 0.
   std::cout << Tank::size() << std::endl;
 
   return 0;
