@@ -7,11 +7,11 @@ struct Vec {
 };
 
 struct Tank : public ARIA::Registry<Tank> {
-  Vec pos;
-
   using Base = Registry<Tank>;
   using Base::range;
   using Base::size;
+
+  Vec pos;
 };
 
 int main() {
