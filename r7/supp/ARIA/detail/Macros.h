@@ -239,47 +239,21 @@
   } while (0)
 
 #if !defined(NDEBUG)
-  #if ARIA_IS_DEVICE_CODE
-    #define __ARIA_ASSERT1(cond)                                                                                       \
-      do {                                                                                                             \
-        if (!(cond)) {                                                                                                 \
-          printf("Assertion (%s) failed at [%s:%d]\n", #cond, __FILE__, __LINE__);                                     \
-          assert(false);                                                                                               \
-        }                                                                                                              \
-      } while (0)
+  #define __ARIA_ASSERT1(cond)                                                                                         \
+    do {                                                                                                               \
+      if (!(cond)) {                                                                                                   \
+        printf("Assertion (%s) failed at [%s:%d]\n", #cond, __FILE__, __LINE__);                                       \
+        assert(false);                                                                                                 \
+      }                                                                                                                \
+    } while (0)
 
-    #define __ARIA_ASSERT2(cond, explanation)                                                                          \
-      do {                                                                                                             \
-        if (!(cond)) {                                                                                                 \
-          printf("Assertion (%s) failed at [%s:%d] (" explanation ")\n", #cond, __FILE__, __LINE__);                   \
-          assert(false);                                                                                               \
-        }                                                                                                              \
-      } while (0)
-  #else
-    #define __ARIA_ASSERT1(cond)                                                                                       \
-      do {                                                                                                             \
-        if (!(cond)) {                                                                                                 \
-          fmt::print(stderr,                                                                                           \
-                     "Assertion ({:s}) failed at "                                                                     \
-                     "[{:s}:{:d}]\n",                                                                                  \
-                     #cond, __FILE__, __LINE__);                                                                       \
-          fflush(stderr);                                                                                              \
-          std::abort();                                                                                                \
-        }                                                                                                              \
-      } while (0)
-
-    #define __ARIA_ASSERT2(cond, explanation)                                                                          \
-      do {                                                                                                             \
-        if (!(cond)) {                                                                                                 \
-          fmt::print(stderr,                                                                                           \
-                     "Assertion ({:s}) failed at "                                                                     \
-                     "[{:s}:{:d}] (" explanation ")\n",                                                                \
-                     #cond, __FILE__, __LINE__);                                                                       \
-          fflush(stderr);                                                                                              \
-          std::abort();                                                                                                \
-        }                                                                                                              \
-      } while (0)
-  #endif
+  #define __ARIA_ASSERT2(cond, explanation)                                                                            \
+    do {                                                                                                               \
+      if (!(cond)) {                                                                                                   \
+        printf("Assertion (%s) failed at [%s:%d] (" explanation ")\n", #cond, __FILE__, __LINE__);                     \
+        assert(false);                                                                                                 \
+      }                                                                                                                \
+    } while (0)
 
   /// \brief Assert that the condition is true.
   ///
