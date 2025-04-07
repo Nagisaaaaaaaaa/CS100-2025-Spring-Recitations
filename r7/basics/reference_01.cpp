@@ -1,34 +1,30 @@
 /*
 
   ! Baseline:
-  ! 1. There is only one difference between pointer and reference:
-  !   (1). Pointers   may   point     to nothing (`NULL` or `nullptr`).
-  !   (2). References never reference to nothing.
+  ! 1. Why reference? Why not pointer?
 
 */
 
-#include <iostream>
+struct Vec3 {
+  int v[3];
+};
 
-void SwapByPointer(int *a, int *b) {
-  int c = *a;
-  *a = *b;
-  *b = c;
+struct Vec30 {
+  int v[30];
+};
+
+Vec3 AddByValue(Vec3 a, Vec3 b) {
+  // ...
 }
 
-void SwapByReference(int &a, int &b) {
-  int c = a;
-  a = b;
-  b = c;
+Vec30 AddByValue(Vec30 a, Vec30 b) {
+  // ...
 }
 
-int main() {
-  int a = 5, b = 6;
+Vec30 AddByPointer(const Vec30 *a, const Vec30 *b) {
+  // ...
+}
 
-  SwapByPointer(&a, &b);
-  std::cout << a << " " << b << std::endl;
-
-  SwapByReference(a, b);
-  std::cout << a << " " << b << std::endl;
-
-  return 0;
+Vec30 AddByReference(const Vec30 &a, const Vec30 &b) {
+  // ...
 }
