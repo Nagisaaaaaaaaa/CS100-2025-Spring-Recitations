@@ -10,7 +10,6 @@ struct Tank : public ARIA::Registry<Tank> {
   Vec pos;
 
   using Base = Registry<Tank>;
-  using Base::crange;
   using Base::range;
   using Base::size;
 };
@@ -28,6 +27,10 @@ int main() {
       // 1 + 5 = 6.
       std::vector<Tank> tanks(5);
       std::cout << Tank::size() << std::endl;
+
+      for (const auto &tank : Tank::range()) {
+        // ...
+      }
     }
 
     // 6 - 5 = 1.
