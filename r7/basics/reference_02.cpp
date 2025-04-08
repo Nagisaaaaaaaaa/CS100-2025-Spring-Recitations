@@ -10,8 +10,8 @@
 int main() {
   int a = 5;
 
-  int *ptr = &a;
-  int &ref = a;
+  //   int *ptr = &a;
+  //   int &ref = a;
 
   const int *ptr = &a;
   const int &ref = a;
