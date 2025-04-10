@@ -2,9 +2,6 @@
 
 编译器大小姐想帮我化简～天才们的编程头脑战～
 
-  辉夜大小姐想让我告白～天才们的恋爱头脑战～
-  https://bgm.tv/subject/248175
-
 */
 
 #include "ARIA/Tup.h"
@@ -15,10 +12,12 @@ int main() {
   int x, y;
   std::cin >> x >> y;
 
+  constexpr auto _0 = 0_I;
+
   // 我是一个三维向量 (x, 0, 0)，我在编译的时候就知道我有两个 0。
-  Tec a{x, 0_I, 0_I};
+  Tec a(x, _0, _0);
   // 我也是一个三维向量 (0, y, 0)，我也在编译的时候就知道我有两个 0。
-  Tec b{0_I, y, 0_I};
+  Tec b(_0, y, _0);
 
   // 我们来做个叉乘：
   //   [0] = a[1] * b[2] - a[2] * b[1];
@@ -37,9 +36,9 @@ int main() {
   Tec c = Cross(a, b);
 
   // 编译器大小姐：“才不会告诉你 [0] 和 [1] 一定是 0 呢~”
-  std::cout << get<0>(c) << std::endl;
-  std::cout << get<1>(c) << std::endl;
-  std::cout << get<2>(c) << std::endl;
+  std::cout << "a: " << a << std::endl;
+  std::cout << "b: " << b << std::endl;
+  std::cout << "c: " << c << std::endl;
 
   return 0;
 }
