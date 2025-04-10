@@ -35,7 +35,11 @@
 #include "../numeric/integral_constant.hpp"  // cute::true_type, cute::false_type
 #include "../numeric/integer_sequence.hpp"
 
-//#include <cute/container/array.hpp>            // Advanced optimizations
+#if 0
+#include "../container/cuda_types.hpp"
+#endif
+
+//#include "../container/array.hpp"            // Advanced optimizations
 
 //
 // cute::tuple is like std::tuple, with two differences.
@@ -626,7 +630,6 @@ operator!=(TupleT const& t, TupleU const& u)
 // Display utilities
 //
 
-#if 0
 namespace detail {
 
 template <class Tuple, size_t... Is>
@@ -670,7 +673,6 @@ CUTE_HOST std::ostream& operator<<(std::ostream& os, Tuple const& t)
   return detail::print_tuple_os(os, t, make_index_sequence<tuple_size<Tuple>::value>{});
 }
 #endif // !defined(__CUDACC_RTC__)
-#endif
 
 } // end namespace cute
 

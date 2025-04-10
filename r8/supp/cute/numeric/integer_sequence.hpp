@@ -32,7 +32,7 @@
 
 #include "../config.hpp"
 #include "../util/type_traits.hpp"
-#include "./integral_constant.hpp"
+#include "../numeric/integral_constant.hpp"
 
 namespace cute
 {

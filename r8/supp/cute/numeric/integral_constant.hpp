@@ -30,8 +30,9 @@
  **************************************************************************************************/
 #pragma once
 
+#include "../util/print.hpp"
 #include "../util/type_traits.hpp"
-#include "./math.hpp"
+#include "../numeric/math.hpp"
 
 namespace cute
 {
