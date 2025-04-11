@@ -24,7 +24,8 @@ int main() {
 
   // Vector vec1 = vec0;
 
-  //! 下集预告：https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom.
+  //! 下集预告：我们将学习如何正确地实现它们，而不是把它们禁止。
+  //!   https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom.
 
   return 0;
 }
