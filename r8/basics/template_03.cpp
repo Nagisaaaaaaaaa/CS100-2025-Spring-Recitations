@@ -30,19 +30,21 @@ int main() {
 
   // 可以想象，编译器或许做了这样的事情：
   //
-  // 当我们写下 Vector<int> 时，编译器把 Vector 中所有的 T 都替换成了 int，
-  // 生成了一个新的类型：
-  //   struct VectorInt {
-  //     int *data;
-  //     ~Vector() { delete[] data; }
-  //   };
+  // 当我们写下 Vector<int> 时，
+  // 编译器把 Vector 中所有的 T 都替换成了 int，
+  //! 生成了一个新的类型：
+  //     struct VectorInt {
+  //       int *data;
+  //       ~Vector() { delete[] data; }
+  //     };
   //
-  // 当我们又写下 Vector<double> 时，编译器把 Vector 中所有的 T 都替换成了 double，
-  // 又生成了一个新的类型：
-  //   struct VectorDouble {
-  //     double *data;
-  //     ~Vector() { delete[] data; }
-  //   };
+  // 当我们又写下 Vector<double> 时，
+  // 编译器又把 Vector 中所有的 T 都替换成了 double，
+  //! 又生成了一个新的类型：
+  //     struct VectorDouble {
+  //       double *data;
+  //       ~Vector() { delete[] data; }
+  //     };
   //
   // 当我们双写下……
   // 当我们叒写下……
