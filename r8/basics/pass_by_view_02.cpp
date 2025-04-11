@@ -1,12 +1,18 @@
 #include <iostream>
 #include <vector>
 
+//? 《我的函数传参方式果然有问题》
+
+// 假设我们想打印出各种数组。
+
+// 实现 std::vector<int> 版本。
 void Print(const std::vector<int> &vec) {
   for (const auto &v : vec)
     std::cout << v << " ";
   std::cout << std::endl;
 }
 
+// 实现 int* 版本。
 void Print(const int *vec, size_t n) {
   for (size_t i = 0; i < n; ++i)
     std::cout << vec[i] << " ";
@@ -19,6 +25,8 @@ int main() {
 
   Print(vec0);
   Print(vec1, 5);
+
+  //! 好烦啊，明明代码大差不差，为什么还要再写一遍！
 
   return 0;
 }
