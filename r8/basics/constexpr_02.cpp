@@ -17,7 +17,7 @@ int main() {
     // 我有实体，当程序运行到这儿时，会真实地出现在栈上。
     int v[3] = {0, -1, -2};
 
-    // 因为是“运行时”的，所以只支持 assert，不支持 static_assert。
+    // 因为我是“运行时”的，所以只支持 assert，不支持 static_assert。
     assert(v[0] == 0);
     assert(v[1] == -1);
     assert(v[2] == -2);
@@ -31,7 +31,7 @@ int main() {
 #define v1 -1
 #define v2 -2
 
-    // 因为是“预编译时”的，所以支持 static_assert。
+    // 因为我是“预编译时”的，所以支持 static_assert。
     static_assert(v0 == 0);
     static_assert(v1 == -1);
     static_assert(v2 == -2);
@@ -45,6 +45,7 @@ int main() {
     //! 但我尽可能地让大家不会察觉到这件事情，努力地装作自己也是一个“运行时”的数组 (泪目)。
     constexpr int v[3] = {0, -1, -2};
 
+    //! 因为我在“编译时”就出生了，所以支持 static_assert。
     static_assert(v[0] == 0);
     static_assert(v[1] == -1);
     static_assert(v[2] == -2);
