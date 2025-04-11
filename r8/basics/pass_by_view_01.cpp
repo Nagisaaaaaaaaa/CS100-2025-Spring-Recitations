@@ -16,11 +16,11 @@ int main() {
   //! 我真正地拥有整个数组 (owning)。
   std::vector<int> vec(5);
 
-  // 我叫 data，是一个指针，感谢 vec 大哥施舍，他愿意让我看看他的数组。
+  // 我叫 data，是一个指针，感谢 vec 大哥施舍，他愿意把数组借给我。
   //! 但我并不拥有这个数组 (non-owning)。
   int *data = vec.data();
 
-  // 我叫 view (视图)，是一个“跨度” (span)，感谢 vec 大哥施舍，他愿意让我看看他的数组。
+  // 我叫 view (视图)，是一个“跨度” (span)，感谢 vec 大哥施舍，他愿意把数组借给我。
   //! 但我并不拥有这个数组 (non-owning)。
   std::span<int> view = vec;
 
