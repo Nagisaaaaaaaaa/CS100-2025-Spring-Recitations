@@ -12,7 +12,7 @@
 
 //? 《我的函数传参方式果然有问题》
 
-// 假设我们想打印出各种数组。
+// 假设我们想打印出各种类型的数组。
 
 // 实现 std::vector<int> 版本。
 void Print(const std::vector<int> &vec) {
@@ -21,7 +21,7 @@ void Print(const std::vector<int> &vec) {
   std::cout << std::endl;
 }
 
-// 实现 int* 版本。
+// 实现 int * 版本。
 void Print(const int *vec, size_t n) {
   for (size_t i = 0; i < n; ++i)
     std::cout << vec[i] << " ";
