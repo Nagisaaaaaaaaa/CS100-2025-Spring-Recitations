@@ -24,7 +24,7 @@ int main() {
   std::vector<int> vec0 = {0, 1, 2, 3, 4};
   int vec1[5] = {0, 1, 2, 3, 4};
 
-  //! 两个大哥都能够被隐式转化成 non-owning 的 std::span<int> view。
+  //! 两个大哥都能够被隐式转化成 non-owning 的 view。
   //! 最终，view 抗下了所有，打印出来了两个大哥的数组。
   Print(vec0);
   Print(vec1);
