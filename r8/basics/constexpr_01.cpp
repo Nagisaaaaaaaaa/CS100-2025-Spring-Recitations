@@ -1,3 +1,13 @@
+/*
+
+  ! Baseline:
+  ! 1. There are 3 ways to hack OJ:
+  !    (1). assert,
+  !    (2). try-catch,
+  !    (3). static_assert.
+
+*/
+
 #include <cassert>
 #include <vector>
 
