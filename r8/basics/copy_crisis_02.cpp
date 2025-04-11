@@ -6,8 +6,6 @@
 
 */
 
-#include <iostream>
-
 //? 《因为太怕出错就全禁止了。》
 
 struct Vector {

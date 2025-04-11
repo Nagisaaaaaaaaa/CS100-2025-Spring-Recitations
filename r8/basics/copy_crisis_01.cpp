@@ -5,8 +5,6 @@
 
 */
 
-#include <iostream>
-
 // 请找到这几行代码中的 bug。
 
 struct Vector {
