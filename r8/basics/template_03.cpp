@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-// 《Template/stay night》
+//? 《Template/stay night》
 
 // 什么是模板 (template)？
 //   在任何一个 struct/class 前面加上 template <typename T>，
