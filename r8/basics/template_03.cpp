@@ -11,11 +11,12 @@
 
 // 《Template/stay night》
 
-// 什么是 template？
-// 加上这一行，我们就把一个 struct 变成了一个 template。
-// 这里的 T 被称为模板参数 (template parameter)。
-//   当我们写 Vector<int>    时，T 就是 int，
-//   当我们写 Vector<double> 时，T 就是 double。
+// 什么是模板 (template)？
+//   在任何一个 struct/class 前面加上 template <typename T>，
+//   就能把这个 struct/class 变成一个 template。
+// 这里的 T 被称为模板参数 (template parameter)：
+//   当我们写 Vector<int>    时，T 就是 int   ，得到 int    *data。
+//   当我们写 Vector<double> 时，T 就是 double，得到 double *data。
 template <typename T>
 struct Vector {
   T *data;
