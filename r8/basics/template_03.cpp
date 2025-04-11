@@ -9,6 +9,8 @@
 
 // 《Template/stay night》
 
+// 加上这行，我们就把一个 struct 变成了一个 template。
+// 这里的 T 被称为模板参数 (template parameter)。
 template <typename T>
 struct Vector {
   T *data;
