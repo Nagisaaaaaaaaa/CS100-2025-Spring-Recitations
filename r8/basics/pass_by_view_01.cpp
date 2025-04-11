@@ -21,7 +21,7 @@ int main() {
   int *data = vec.data();
 
   // 我叫 view (视图)，是一个“跨度” (span)，感谢 vec 大哥施舍，他愿意把数组借给我。
-  //! 但我并不拥有这个数组 (non-owning)。
+  //! 但我也不拥有这个数组 (non-owning)。
   std::span<int> view = vec;
 
   // data: 坏，我不知道大哥的数组里有多少元素啊？
