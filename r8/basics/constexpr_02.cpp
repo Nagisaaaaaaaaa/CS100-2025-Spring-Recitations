@@ -49,6 +49,7 @@ int main() {
     static_assert(v[0] == 0);
     static_assert(v[1] == -1);
     static_assert(v[2] == -2);
+    //! 程序员想要看看我的地址，太好了，这样编译器大人就会帮我创造一个实体了呢……
     std::cout << v << std::endl; // 看看地址。
   }
 
