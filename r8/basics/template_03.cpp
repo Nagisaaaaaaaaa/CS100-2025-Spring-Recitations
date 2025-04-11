@@ -2,6 +2,8 @@
 
   ! Baseline:
   ! 1. Use `template <typename T>` to define a template.
+  ! 2. Now, `Vector` is no longer a class, it is a template.
+  ! 3. But, `Vector<int>` is a class.
 
 */
 
