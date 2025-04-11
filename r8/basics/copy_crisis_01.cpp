@@ -1,7 +1,7 @@
 /*
 
   ! Baseline:
-  ! 1. Why copying "owner" is dangerous.
+  ! 1. Why copying "RAII owner" is dangerous.
 
 */
 
