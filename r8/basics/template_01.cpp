@@ -1,6 +1,7 @@
 /*
 
   ! Baseline:
+  ! 1. Always use `new` and `delete` instead of `malloc` and `free`.
 
 */
 
@@ -9,11 +10,11 @@
 struct Vector {
   int *data;
 
-  ~Vector() { free(data); }
+  ~Vector() { delete[] data; }
 };
 
 int main() {
-  Vector vec{(int *)malloc(sizeof(int) * 5)};
+  Vector vec{new int[5]};
 
   for (size_t i = 0; i < 5; ++i)
     vec.data[i] = i;
