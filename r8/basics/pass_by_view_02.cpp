@@ -1,3 +1,12 @@
+/*
+
+  ! 请使用 g++ -std=c++20 来编译。
+
+  ! Baseline:
+  ! 1. Why pass by owner is bad?
+
+*/
+
 #include <iostream>
 #include <vector>
 
