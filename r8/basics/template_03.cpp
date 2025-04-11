@@ -30,13 +30,15 @@ int main() {
 
   // 可以想象，编译器或许做了这样的事情：
   //
-  // 当我们写下 Vector<int> 时，编译器把所有的 T 都替换成了 int，生成了一个类型：
+  // 当我们写下 Vector<int> 时，编译器把 Vector 中所有的 T 都替换成了 int，
+  // 生成了一个新的类型：
   //   struct VectorInt {
   //     int *data;
   //     ~Vector() { delete[] data; }
   //   };
   //
-  // 当我们又写下 Vector<double> 时，编译器把所有的 T 都替换成了 double，又生成了一个类型：
+  // 当我们又写下 Vector<double> 时，编译器把 Vector 中所有的 T 都替换成了 double，
+  // 又生成了一个新的类型：
   //   struct VectorDouble {
   //     double *data;
   //     ~Vector() { delete[] data; }
@@ -53,6 +55,7 @@ int main() {
   //! 答案是：
   //!   1. Vector      不是一个“类型”，它是一个“模板”。
   //!   2. Vector<int> 是一个“类型”没错。
+  //! 我们称，从“模板”生成“类型”的过程，叫做：模板实例化 (template instantiation)。
 
   return 0;
 }
