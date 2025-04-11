@@ -1,4 +1,12 @@
+/*
+
+  ! Baseline:
+  ! 1. Always use `constexpr` to define constants instead of macros.
+
+*/
+
 #include <cassert>
+#include <iostream>
 
 int main() {
   //? 《我们仍未知道那天所看见的常量的名字。》
@@ -12,8 +20,7 @@ int main() {
     assert(v[0] == 0);
     assert(v[1] == -1);
     assert(v[2] == -2);
-    assert(*v == 0);
-    assert(sizeof(v) == sizeof(int) * 3);
+    std::cout << v << std::endl; // 看看地址。
   }
 
   {
@@ -30,15 +37,15 @@ int main() {
   }
 
   {
-    // 我是一个“编译时”的数组，只存活于“编译时”。
-    // 我也没有实体，但我尽可能地让大家不会察觉到这件事情，努力地装作是一个“运行时”的数组。
+    // 我是一个“在编译时求值”的数组，我在“编译时”就出生了，但我不知道自己能活多久。
+    // 我既可能没有实体，无法活到“运行时”，也可能有实体，能活到“运行时”。
+    // 但我尽可能地让大家不会察觉到这件事情，努力地装作自己是一个“运行时”的数组。
     constexpr int v[3] = {0, -1, -2};
 
     static_assert(v[0] == 0);
     static_assert(v[1] == -1);
     static_assert(v[2] == -2);
-    static_assert(*v == 0);
-    static_assert(sizeof(v) == sizeof(int) * 3);
+    std::cout << v << std::endl; // 看看地址。
   }
 
   return 0;
