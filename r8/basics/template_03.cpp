@@ -2,8 +2,10 @@
 
   ! Baseline:
   ! 1. Use `template <typename T>` to define a template.
-  ! 2. Now, `Vector` is no longer a class, it is a template.
-  ! 3. But, `Vector<int>` is a class.
+  ! 2. `Vector`      is a template, not a class.
+  !    `Vector<int>` is a class.
+  ! 3. Understand template instantiation.
+  ! 4. `std::vector` is a template.
 
 */
 
@@ -17,6 +19,7 @@
 // 这里的 T 被称为模板参数 (template parameter)：
 //   当我们写 Vector<int>    时，T 就是 int   ，得到 int    *data。
 //   当我们写 Vector<double> 时，T 就是 double，得到 double *data。
+//! 有没有发现，它越来越像 std::vector 了呢？
 template <typename T>
 struct Vector {
   T *data;
