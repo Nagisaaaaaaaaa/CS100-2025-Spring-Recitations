@@ -1,3 +1,12 @@
+/*
+
+  ! 请使用 g++ -std=c++20 来编译。
+
+  ! Baseline:
+  ! 1. Always pass by view, and never pass by owner.
+
+*/
+
 #include <iostream>
 #include <span>
 #include <vector>
