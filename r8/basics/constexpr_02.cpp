@@ -2,6 +2,7 @@
 
   ! Baseline:
   ! 1. Always use `constexpr` to define constants instead of macros.
+  ! 2. `constexpr` 的意思不是“编译时”，而是“在编译时求值”。
 
 */
 
