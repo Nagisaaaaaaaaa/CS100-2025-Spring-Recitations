@@ -22,6 +22,9 @@ struct VectorDouble {
   ~VectorDouble() { delete[] data; }
 };
 
+// 这也太累了吧……
+//! 这就是为什么 C++ 引入了模板。
+
 int main() {
   VectorInt vecI{new int[5]};
   VectorDouble vecD{new double[5]};
