@@ -33,7 +33,7 @@ int main() {
   // 当我们写下 Vector<int> 时，
   // 编译器把 Vector 中所有的 T 都替换成了 int，
   //! 生成了一个新的类型：
-  //     struct VectorInt {
+  //     struct Vector {
   //       int *data;
   //       ~Vector() { delete[] data; }
   //     };
@@ -41,7 +41,7 @@ int main() {
   // 当我们又写下 Vector<double> 时，
   // 编译器又把 Vector 中所有的 T 都替换成了 double，
   //! 又生成了一个新的类型：
-  //     struct VectorDouble {
+  //     struct Vector {
   //       double *data;
   //       ~Vector() { delete[] data; }
   //     };
