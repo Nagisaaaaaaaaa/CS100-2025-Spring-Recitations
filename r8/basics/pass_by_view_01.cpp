@@ -28,9 +28,11 @@ int main() {
   // data: 坏，我不知道大哥的数组里有多少元素啊？
   // view: 嘿嘿嘿，我知道元素的数量，这下我就能冒充大哥了呢。
 
+  // view 编辑了 vec 大哥的数组。
   for (size_t i = 0; i < view.size(); ++i)
     view[i] = i;
 
+  // view 打印了 vec 大哥的数组。
   for (const auto &v : view)
     std::cout << v << std::endl;
 
