@@ -5,8 +5,6 @@
 
 */
 
-#include <iostream>
-
 struct Vector {
   int *data;
 
