@@ -62,7 +62,9 @@ int main() {
   //! 答案是：
   //!   1. Vector      不是一个“类型”，它是一个“模板”。
   //!   2. Vector<int> 是一个“类型”没错。
-  //! 我们称，从“模板”生成“类型”的过程，叫做：模板实例化 (template instantiation)。
+  //!
+  //! 我们称，从“模板”生成“类型”的过程，叫做：
+  //!   模板实例化 (template instantiation)。
 
   return 0;
 }
