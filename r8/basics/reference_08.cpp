@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+//? 《右值终末旅行》
+
 int main() {
   {
     // 默认情况下，str1 = str0 会做个拷贝。
