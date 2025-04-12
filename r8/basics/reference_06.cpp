@@ -24,7 +24,7 @@ int main() {
   Student student1(std::string("Zhen Ding"));
 
   // 答案：
-  //!  1. 参数是 const std::string &，传入“纯净”右值，延长生命周期，没有拷贝。
+  //!  1. 参数是 const std::string &，延长右值生命周期，没有拷贝。
   //   2. name_(name)，一次拷贝。
 
   return 0;
