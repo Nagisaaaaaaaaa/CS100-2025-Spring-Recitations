@@ -1,3 +1,11 @@
+/*
+
+  ! Baseline:
+  ! 1. For 99% C++ classes in the future, it will be easy to
+  !    support copy, move, and RAII.
+
+*/
+
 #include <string>
 #include <vector>
 
