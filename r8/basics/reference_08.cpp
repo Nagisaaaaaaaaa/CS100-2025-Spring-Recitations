@@ -61,6 +61,9 @@ int main() {
   //* 也就是说：
   //* 1. C++ 的表达式可以分为 lvalue，prvalue，xvalue 三种“类别”。
   //* 2. 其中 prvalue 和 xvalue 这两种“类别”统称为 rvalue。
+  //*
+  //* 这就是所谓的 value category：
+  //* https://en.cppreference.com/w/cpp/language/value_category
 
   return 0;
 }
