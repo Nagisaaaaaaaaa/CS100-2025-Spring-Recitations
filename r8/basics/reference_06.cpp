@@ -17,15 +17,15 @@ int main() {
   Student student0(name);
 
   // 答案：
-  //!  1. 参数是 const std::string &，传入左值，没发生拷贝。
-  //   2. name_(name) 做了一次拷贝。
+  //!  1. 参数是 const std::string &，传入左值，没有拷贝。
+  //   2. name_(name)，一次拷贝。
 
   // 那我问你，调用构造函数会拷贝几次 std::string？
   Student student1(std::string("Zhen Ding"));
 
   // 答案：
-  //!  1. 参数是 const std::string &，传入“纯净”右值，延长生命周期，没发生拷贝。
-  //   2. name_(name) 做了一次拷贝。
+  //!  1. 参数是 const std::string &，传入“纯净”右值，延长生命周期，没有拷贝。
+  //   2. name_(name)，一次拷贝。
 
   return 0;
 }
