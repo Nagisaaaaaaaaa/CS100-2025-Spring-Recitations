@@ -4,7 +4,6 @@
 
 class Student {
 public:
-  //! 如果改为 const std::string & 呢？
   explicit Student(const std::string &name) : name_(name) {}
 
 private:
@@ -12,6 +11,8 @@ private:
 };
 
 int main() {
+  // 如果改为 const std::string & 呢？
+
   // 那我问你，调用构造函数会拷贝几次 std::string？
   std::string name("Zhen Ding");
   Student student0(name);
