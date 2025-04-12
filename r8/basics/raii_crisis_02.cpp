@@ -20,7 +20,7 @@ struct Vector {
 int main() {
   Vector vec0{new int[5]};
 
-  // C++ 的默认“掠夺”行为，会递归地“掠夺”所有的成员。
+  // C++ 的默认“掠夺”行为，会一一对应地“掠夺”所有成员。
   // 所以，下面这行代码等价于 vec1.data = std::move(vec0.data)。
   Vector vec1 = std::move(vec0);
 

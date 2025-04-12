@@ -21,7 +21,7 @@ int main() {
   Vector vec0{new int[5]};
 
   // 和 C 语言的规则一样，
-  // C++ 的默认拷贝行为，会递归地拷贝所有的成员。
+  // C++ 的默认拷贝行为，会一一对应地拷贝所有成员。
   // 所以，下面这行代码等价于 vec1.data = vec0.data。
   Vector vec1 = vec0;
 
