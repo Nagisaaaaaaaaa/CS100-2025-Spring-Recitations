@@ -47,10 +47,12 @@ private:
 //! 2. 或者甚至可以全省略，一个都不写！
 //!
 //! 剩下那 1% 是什么呢？
-//! 大概率是那些需要手写 RAII 的 class，比如 Vector。
+//! 1. 一部分是那些需要手写 RAII 的 class，比如 Vector。
+//! 2. 会在未来的课程中学习到。
 
 int main() {
   Student stu0;
+
   Student stu1 = stu0;
   Student stu2 = std::move(stu0);
 
