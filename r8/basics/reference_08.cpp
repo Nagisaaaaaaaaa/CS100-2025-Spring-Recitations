@@ -70,10 +70,10 @@ int main() {
   //* 2. 其中 prvalue 和 xvalue 这两种“类别”统称为 rvalue。
 
   //* 下集预告：
-  //*   我们将会在下周介绍神秘的第三种“类别”，将亡值，xvalue。
-  //*   并且将会更系统地介绍“表达式”这个概念，
-  //*   这将会涉及到一个叫做 value category 的重要知识点：
-  //*   https://en.cppreference.com/w/cpp/language/value_category
+  //* 1. 我们将会在下周介绍神秘的第三种“类别”，将亡值，xvalue。
+  //* 2. 并且将会更系统地介绍“表达式”这个概念，
+  //*    这将会涉及到一个叫做 value category 的重要知识点：
+  //*    https://en.cppreference.com/w/cpp/language/value_category。
 
   return 0;
 }
