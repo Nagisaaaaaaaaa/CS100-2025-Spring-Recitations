@@ -27,7 +27,7 @@ int main() {
   Student student1(std::string("Zhen Ding"));
 
   // 答案：
-  //!  1. 参数是 std::string，传入“纯净”右值，没有拷贝。
+  //!  1. 参数是 std::string，“孤魂野鬼找地方住”，没有拷贝。
   //!  2. name_(std::move(name))，直接“夺舍”，没有拷贝。
 
   return 0;
