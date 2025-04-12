@@ -34,7 +34,7 @@ public:
   //! 默认“掠夺”赋值，这行代码甚至可以省略不写。
   Student &operator=(Student &&) = default;
 
-  //! 默认析构，这行代码甚至可以省略不写。
+  //! 默认析构，自动实现 RAII，这行代码甚至可以省略不写。
   ~Student() = default;
 
 private:
