@@ -5,6 +5,9 @@
 class Student {
 public:
   //! 我们只需要调用一次 std::move 就能够得到最优解！
+  //! name_(std::move(name)) 这段代码的意思是：
+  //! 让 name_ 直接“夺舍”掉 name，从此，name 名存实亡！
+  //! 所以，std::move 这个函数的意思是“夺舍”，跟“移动”没有任何关系。
   explicit Student(std::string name) : name_(std::move(name)) {}
 
 private:
