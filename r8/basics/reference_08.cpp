@@ -29,7 +29,7 @@ int main() {
     std::cout << str1.length() << std::endl;
   }
 
-  //! 至此，我们已经见识到了三种写法：
+  //! 至此，我们已经见识到了等于号的三种写法：
   //! 1. std::string str1 = std::string("QAQ");
   //! 2. std::string str1 = str0;
   //! 3. std::string str1 = std::move(str0);
