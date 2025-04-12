@@ -2,9 +2,9 @@
 
 //? 《右值终末旅行》
 
-void Func0(std::string) {}
+void Func0(std::string str) {}
 
-void Func1(const std::string &) {}
+void Func1(const std::string &str) {}
 
 int main() {
   // 我们先构造了一个 std::string，然后将它作为参数传给函数。
