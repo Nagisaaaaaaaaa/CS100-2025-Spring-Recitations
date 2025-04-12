@@ -1,6 +1,13 @@
-//? 《右值终末旅行》
+/*
+
+  ! Baseline:
+  ! 1. How many copies in this example?
+
+*/
 
 #include <string>
+
+//? 《右值终末旅行》
 
 class Student {
 public:
