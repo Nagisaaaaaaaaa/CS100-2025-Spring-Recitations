@@ -1,3 +1,10 @@
+/*
+
+  ! Baseline:
+  ! 1. Rules are the same for C++ classes.
+
+*/
+
 #include <string>
 
 //? 《右值终末旅行》
