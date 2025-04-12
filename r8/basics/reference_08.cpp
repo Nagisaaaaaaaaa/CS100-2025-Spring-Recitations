@@ -2,6 +2,9 @@
 
   ! Baseline:
   ! 1. Use `std::move` to “把拷贝换成掠夺”。
+  * Bonus:
+  * 2. C++ 的表达式可以分为 lvalue，prvalue，xvalue 三种“类别”。
+  * 3. 其中 prvalue 和 xvalue 这两种“类别”统称为 rvalue。
 
 */
 
