@@ -29,7 +29,7 @@ int main() {
   }
 
   //! 只有 const reference 可以，non-const reference 可不行。
-  //! 因为 C++ 设计师认为，non-const reference 就只能引用有名有姓的大人物，
+  //! 这么设计是为了避免生命周期混乱。
   // int &v = 5;
 
   return 0;
