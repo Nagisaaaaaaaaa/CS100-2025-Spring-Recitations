@@ -12,7 +12,7 @@ private:
 
 int main() {
   //! 那我问你，调用构造函数会拷贝几次 std::string？
-  std::string name = "Zhen Ding";
+  std::string name("Zhen Ding");
   Student student0(name);
 
   // 答案：
