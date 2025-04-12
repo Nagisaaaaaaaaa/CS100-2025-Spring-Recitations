@@ -1,27 +1,16 @@
-#include <iostream>
+#include <string>
 
-struct Type {
-  Type() = default;
-
-  Type(const Type &) { printf("0\n"); }
-
-  Type &operator=(const Type &) {
-    printf("1\n");
-    return *this;
-  }
-
-  Type(Type &&) { printf("2\n"); }
-
-  Type &operator=(Type &&) {
-    printf("3\n");
-    return *this;
-  }
-};
-
-void Func(const Type &type) {}
+//? 《右值终末旅行》
 
 int main() {
-  Func(Type{});
+  // 等号的右手边，构造了一个 std::string。
+  //! 那我问你，这里的等号，有没有拷贝？调用了什么函数？
+  std::string str = std::string("QAQ");
+
+  //! 原因很复杂，我们今天只说结论：
+  //!   这 个 等 号 没 有 调 用 任 何 函 数！
+  //!   也 没 有 任 何 拷 贝！
+  //!   (因为它是个很纯净的右值嘛)
 
   return 0;
 }
