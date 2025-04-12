@@ -65,5 +65,8 @@ int main() {
   //* 这就是所谓的 value category：
   //* https://en.cppreference.com/w/cpp/language/value_category
 
+  //* 下集预告：
+  //* 我们将会在下周介绍神秘的第三种“类别”，将亡值，xvalue。
+
   return 0;
 }
