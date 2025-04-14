@@ -1,26 +1,18 @@
 /*
 
   ! Baseline:
-  ! 1. `delete` the 4 methods if you don't know how to implement them.
+  ! 1. Why moving "RAII owner" is dangerous.
 
 */
 
-#include <utility>
+#include <iostream>
 
-//? 《因为太怕出错就全禁止了。》
+//? 《Ban Dream! It's My构!!!!!》
+
+// 请找到这几行代码中的 bug。
 
 struct Vector {
   int *data;
-
-  //! 禁止拷贝构造：Vector vec1 = vec0。
-  Vector(const Vector &) = delete;
-  //! 禁止拷贝赋值：vec1 = vec0。
-  Vector &operator=(const Vector &) = delete;
-
-  //! 禁止“掠夺”构造：Vector vec1 = std::move(vec0)。
-  Vector(Vector &&) = delete;
-  //! 禁止“掠夺”赋值：vec1 = std::move(vec0)。
-  Vector &operator=(Vector &&) = delete;
 
   ~Vector() { delete[] data; }
 };
@@ -28,12 +20,13 @@ struct Vector {
 int main() {
   Vector vec0{new int[5]};
 
-  // Vector vec1 = vec0;
-  // Vector vec1 = std::move(vec0);
+  // C++ 的默认“掠夺”行为，会一一对应地“掠夺”所有成员。
+  // 所以，下面这行代码等价于 vec1.data = std::move(vec0.data)。
+  Vector vec1 = std::move(vec0);
 
-  //! 下集预告：
-  //!   我们将学习如何正确地实现它们，而不是把它们禁止。
-  //!   https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom.
+  //! 很不幸的是，对指针这类 C 语言基础类型做“拷贝”和“掠夺”是等价的。
+  std::cout << vec0.data << std::endl;
+  std::cout << vec1.data << std::endl;
 
   return 0;
 }
