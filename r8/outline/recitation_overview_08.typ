@@ -16,7 +16,7 @@
 
 == 1. Warming up (10 min)
 - Sign-in & Attendance
-- Some comments on code check
+- We are having code check for homework 4
 - Some comments on homework 5
 
 == 2. Main Session \#1 (60 min)
