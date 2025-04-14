@@ -29,7 +29,7 @@
 
 == 4. Bonus Application -- Tools teaching (15 min)
 - Simplify math expressions at compile-time
-- Vim: How to type fast
+- Vim: How to code fast
 
 == Supplementary Materials
 - #link("https://youtu.be/X6AR2RMB5tE?si=ZGvvEAO31AyizPDV")[#underline("Vim As Your Editor - Introduction")]
