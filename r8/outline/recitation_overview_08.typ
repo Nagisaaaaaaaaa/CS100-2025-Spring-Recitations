@@ -26,7 +26,7 @@
 == 3. Main Session \#2 (40 min)
 - #codetxt[Pass by view]: Why pass-by-view is good?
 - #codetxt[Template]: Template and class
-- #codetxt[Constexpr]: The 3 ways to hack OJ
+- #codetxt[Constexpr]: The 3 ways to #r[hack OJ]
 
 == 4. Bonus Application -- Tools teaching (15 min)
 - Simplify math expressions #r[at compile-time?]
