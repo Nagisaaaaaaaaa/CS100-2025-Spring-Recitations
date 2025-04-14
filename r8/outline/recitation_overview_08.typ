@@ -8,6 +8,7 @@
 )
 
 #let codetxt(txt) = [#text(font: "Segoe UI", fill: blue)[#txt]]
+#let r(txt) = [#text(red)[#txt]]
 
 #set text(size: 15pt)
 
@@ -19,16 +20,16 @@
 - Some comments on homework 5
 
 == 2. Main Session \#1 (60 min)
-- References, r-values, and expressions
-- The rules of 5
+- #codetxt[Reference]: References, r-values, and expressions
+- #codetxt[RAII crisis]: The rules of 5
 
 == 3. Main Session \#2 (40 min)
-- Why pass-by-view is good?
-- Template and class
-- The 3 ways to hack OJ
+- #codetxt[Pass by view]: Why pass-by-view is good?
+- #codetxt[Template]: Template and class
+- #codetxt[Constexpr]: The 3 ways to hack OJ
 
 == 4. Bonus Application -- Tools teaching (15 min)
-- Simplify math expressions at compile-time
+- Simplify math expressions #r[at compile-time?]
 - Vim: How to code fast
 
 == Supplementary Materials
