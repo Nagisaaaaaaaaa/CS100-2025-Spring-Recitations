@@ -4,7 +4,7 @@
 
 // 又幻想了，幻想你校开设了一门名叫“高级 C++ 编程”的专业必修课，CS1000，
 // 我成功当上了这门课的助教，并且出了一道这样的题目：
-//   请实现一个 class Student，使得以下代码能够运行。
+//   请实现一个 class Student，使得以下代码能够正确执行。
 
 void Print(const Student &student) {
   std::cout << "name: " << student.name() << std::endl //
@@ -27,9 +27,8 @@ int main() {
   //   year: 2028
 
   // 丁臻穿越回了 4 年前，这一次，他要学好 C/C++！
-  student.year() = 2020;
+  student.year() = 2024;
   Print(student);
-
   // 会打印出：
   //   name: Zhen Ding
   //!  id  : 2024533999
