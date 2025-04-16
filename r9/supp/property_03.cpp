@@ -40,12 +40,13 @@ int main() {
   Student student;
 
   // 丁臻是一位研一老登，他很后悔自己 4 年前没有好好学习 CS100，
-  // 导致自己科研道路非常艰辛。
+  // 导致自己的科研道路非常艰辛。
   student.name() = "Zhen Ding";
   student.id() = 2028'533'999;
   Print(student);
 
-  // 丁臻穿越回了 4 年前，这一次，他要学好 C/C++！
+  // 有一天，一觉醒来，丁臻发现自己竟然穿越回了 4 年前！
+  // 这一次，他要学好 CS100！
   student.year() -= 4;
   Print(student);
 
