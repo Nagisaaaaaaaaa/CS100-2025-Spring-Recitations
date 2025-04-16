@@ -4,7 +4,7 @@
 
 // 又幻想了，幻想你校开设了一门名叫“高级 C++ 编程”的专业必修课，CS1000，
 // 我成功当上了这门课的助教，并且出了一道这样的 HW5：
-//   请正确地实现 class Student，使得以下代码能够正确执行。
+//   请实现 class Student，使得以下代码能够正确执行。
 
 class Student {
   // TODO: Your code here.
