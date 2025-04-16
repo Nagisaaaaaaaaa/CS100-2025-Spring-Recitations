@@ -29,7 +29,7 @@ private:
   }
 };
 
-void PrintStudent(const Student &student) {
+void Print(const Student &student) {
   std::cout << "name: " << student.name() << std::endl //
             << "id  : " << student.id() << std::endl   //
             << "year: " << student.year() << std::endl //
@@ -43,11 +43,11 @@ int main() {
   // 导致自己科研道路非常艰辛。
   student.name() = "Zhen Ding";
   student.id() = 2024'533'999;
-  PrintStudent(student);
+  Print(student);
 
   // 丁臻穿越回了 4 年前，这一次，他要学好 C/C++！
   student.year() = 2020;
-  PrintStudent(student);
+  Print(student);
 
   return 0;
 }
