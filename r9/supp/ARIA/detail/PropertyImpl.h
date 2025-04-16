@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ARIA/Auto.h"
-#include "ARIA/TypeArray.h"
-
-#include <cuda/std/tuple>
+// #include "ARIA/Auto.h"
+// #include "ARIA/TypeArray.h"
+#include "../Auto.h"
+#include "../TypeArray.h"
 
 #include <ostream>
 
@@ -44,14 +44,14 @@ ARIA_HOST_DEVICE constexpr auto ConstructWithArray(const T *args, std::index_seq
 //! This is necessary to fetch the values before temporary variables die.
 #define __ARIA_PROP_BASE_DEFINE_PREFIX_UNARY_OPERATOR(op)                                                              \
                                                                                                                        \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty &x) {                                             \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty & x) {                                            \
     return Auto(op x.value());                                                                                         \
   }
 
 // Automatically generate implementations for the given suffix unary operator.
 #define __ARIA_PROP_BASE_DEFINE_SUFFIX_UNARY_OPERATOR(op)                                                              \
                                                                                                                        \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty &x) {                                             \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty & x) {                                            \
     return Auto(x.value() op);                                                                                         \
   }
 
@@ -60,19 +60,19 @@ ARIA_HOST_DEVICE constexpr auto ConstructWithArray(const T *args, std::index_seq
 #define __ARIA_PROP_BASE_DEFINE_BINARY_OPERATOR_WITHOUT_ASSIGNMENT(op)                                                 \
                                                                                                                        \
   template <NonPropertyType TRhs>                                                                                      \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty &lhs, const TRhs &rhs) {                          \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty & lhs, const TRhs & rhs) {                        \
     return Auto(lhs.value() op rhs);                                                                                   \
   }                                                                                                                    \
   template <NonPropertyType TLhs> /* This requirement is added to support sol2. */                                     \
     requires(!std::is_same_v<std::decay_t<TLhs>, std::ostringstream>)                                                  \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TLhs &lhs, const TProperty &rhs) {                          \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TLhs & lhs, const TProperty & rhs) {                        \
     return Auto(lhs op rhs.value());                                                                                   \
   }                                                                                                                    \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty &lhs, const TProperty &rhs) {                     \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty & lhs, const TProperty & rhs) {                   \
     return Auto(lhs.value() op rhs.value());                                                                           \
   }                                                                                                                    \
   template <PropertyType TPropertyThat>                                                                                \
-  ARIA_HOST_DEVICE decltype(auto) operator op(const TPropertyThat &rhs) const {                                        \
+  ARIA_HOST_DEVICE decltype(auto) operator op(const TPropertyThat & rhs) const {                                       \
     return Auto(derived().value() op rhs.value());                                                                     \
   }
 
@@ -81,19 +81,19 @@ ARIA_HOST_DEVICE constexpr auto ConstructWithArray(const T *args, std::index_seq
 #define __ARIA_PROP_BASE_DEFINE_BINARY_OPERATOR_WITH_ASSIGNMENT(op)                                                    \
                                                                                                                        \
   template <NonPropertyType TRhs>                                                                                      \
-  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty &lhs, const TRhs &rhs) {                \
+  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty & lhs, const TRhs & rhs) {              \
     return lhs = (lhs.value() op rhs);                                                                                 \
   }                                                                                                                    \
   template <PropertyType TPropertyThat>                                                                                \
-  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty &lhs, const TPropertyThat &rhs) {       \
+  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty & lhs, const TPropertyThat & rhs) {     \
     return lhs = (lhs.value() op rhs.value());                                                                         \
   }                                                                                                                    \
   template <NonPropertyType TRhs>                                                                                      \
-  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty &&lhs, const TRhs &rhs) {               \
+  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty && lhs, const TRhs & rhs) {             \
     return std::move(lhs = (lhs.value() op rhs));                                                                      \
   }                                                                                                                    \
   template <PropertyType TPropertyThat>                                                                                \
-  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty &&lhs, const TPropertyThat &rhs) {      \
+  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty && lhs, const TPropertyThat & rhs) {    \
     return std::move(lhs = (lhs.value() op rhs.value()));                                                              \
   }
 
@@ -329,7 +329,7 @@ private:
     /* That is why `auto` is dangerous. */                                                                             \
     TObjectMaybeConst &object;                                                                                         \
                                                                                                                        \
-    cuda::std::tuple<std::decay_t<TUVWArgs>...> propArgs;                                                              \
+    std::tuple<std::decay_t<TUVWArgs>...> propArgs;                                                                    \
                                                                                                                        \
     /* Constructor of the property, called by the property methods. */                                                 \
     SPECIFIERS explicit ARIA_ANON(PROP_NAME)(TObjectMaybeConst & object, const TUVWArgs &...propArgs)                  \
@@ -411,12 +411,12 @@ private:
                                                                                                                        \
     /* Calls the user-defined getter. */                                                                               \
     [[nodiscard]] SPECIFIERS decltype(auto) value() {                                                                  \
-      return cuda::std::apply(                                                                                         \
-          [&](const auto &...propArgsTuple) -> decltype(auto) { return Get(object, propArgsTuple...); }, propArgs);    \
+      return std::apply([&](const auto &...propArgsTuple) -> decltype(auto) { return Get(object, propArgsTuple...); }, \
+                        propArgs);                                                                                     \
     }                                                                                                                  \
     [[nodiscard]] SPECIFIERS decltype(auto) value() const {                                                            \
-      return cuda::std::apply(                                                                                         \
-          [&](const auto &...propArgsTuple) -> decltype(auto) { return Get(object, propArgsTuple...); }, propArgs);    \
+      return std::apply([&](const auto &...propArgsTuple) -> decltype(auto) { return Get(object, propArgsTuple...); }, \
+                        propArgs);                                                                                     \
     }                                                                                                                  \
                                                                                                                        \
     /* Calls the user-defined getter. */                                                                               \
@@ -428,10 +428,10 @@ private:
     }                                                                                                                  \
                                                                                                                        \
     /* `operator->()` cannot be handled by CRTP, because it should be defined in-class */                              \
-    [[nodiscard]] SPECIFIERS ARIA_ANON(PROP_NAME) *operator-> () {                                                     \
+    [[nodiscard]] SPECIFIERS ARIA_ANON(PROP_NAME) *operator->() {                                                      \
       return this;                                                                                                     \
     }                                                                                                                  \
-    [[nodiscard]] SPECIFIERS const ARIA_ANON(PROP_NAME) *operator-> () const {                                         \
+    [[nodiscard]] SPECIFIERS const ARIA_ANON(PROP_NAME) *operator->() const {                                          \
       return this;                                                                                                     \
     }                                                                                                                  \
                                                                                                                        \
@@ -441,14 +441,14 @@ private:
     /* Calls the user-defined setter. */                                                                               \
     template <typename TUVW>                                                                                           \
      SPECIFIERS ARIA_ANON(PROP_NAME) &operator=(TUVW &&value) {                                                        \
-      cuda::std::apply(                                                                                                \
+      std::apply(                                                                                                      \
           [&](const auto &...propArgsTuple) { Set(object, std::forward<TUVW>(value), propArgsTuple...); }, propArgs);  \
       return *this;                                                                                                    \
     }                                                                                                                  \
     /* Calls the user-defined setter with an array. */                                                                 \
     template <typename TUVW, size_t n>                                                                                 \
      SPECIFIERS ARIA_ANON(PROP_NAME) &operator=(const TUVW (&args)[n]) {                                               \
-      cuda::std::apply([&](const auto &...propArgsTuple) {                                                             \
+      std::apply([&](const auto &...propArgsTuple) {                                                                   \
         Set(object, property::detail::ConstructWithArray<std::decay_t<Type>>(args, std::make_index_sequence<n>{}),     \
             propArgsTuple...);                                                                                         \
       }, propArgs);                                                                                                    \
@@ -534,7 +534,7 @@ public:                                                                         
     /* As explained above, all sub-properties also owns the actual object. */                                          \
     TObjectMaybeConst &object;                                                                                         \
                                                                                                                        \
-    cuda::std::tuple<std::decay_t<TUVWArgs>...> propArgs;                                                              \
+    std::tuple<std::decay_t<TUVWArgs>...> propArgs;                                                                    \
                                                                                                                        \
     SPECIFIERS explicit ARIA_ANON(PROP_NAME)(TObjectMaybeConst & object, const TUVWArgs &...propArgs)                  \
         : object(object), propArgs(propArgs...) {}                                                                     \
@@ -650,12 +650,12 @@ public:                                                                         
     }                                                                                                                  \
                                                                                                                        \
     [[nodiscard]] SPECIFIERS decltype(auto) value() {                                                                  \
-      return cuda::std::apply(                                                                                         \
-          [&](const auto &...propArgsTuple) -> decltype(auto) { return Get(object, propArgsTuple...); }, propArgs);    \
+      return std::apply([&](const auto &...propArgsTuple) -> decltype(auto) { return Get(object, propArgsTuple...); }, \
+                        propArgs);                                                                                     \
     }                                                                                                                  \
     [[nodiscard]] SPECIFIERS decltype(auto) value() const {                                                            \
-      return cuda::std::apply(                                                                                         \
-          [&](const auto &...propArgsTuple) -> decltype(auto) { return Get(object, propArgsTuple...); }, propArgs);    \
+      return std::apply([&](const auto &...propArgsTuple) -> decltype(auto) { return Get(object, propArgsTuple...); }, \
+                        propArgs);                                                                                     \
     }                                                                                                                  \
                                                                                                                        \
     [[nodiscard]] SPECIFIERS operator decltype(auto)() {                                                               \
@@ -665,22 +665,22 @@ public:                                                                         
       return value();                                                                                                  \
     }                                                                                                                  \
                                                                                                                        \
-    [[nodiscard]] SPECIFIERS ARIA_ANON(PROP_NAME) *operator-> () {                                                     \
+    [[nodiscard]] SPECIFIERS ARIA_ANON(PROP_NAME) *operator->() {                                                      \
       return this;                                                                                                     \
     }                                                                                                                  \
-    [[nodiscard]] SPECIFIERS const ARIA_ANON(PROP_NAME) *operator-> () const {                                         \
+    [[nodiscard]] SPECIFIERS const ARIA_ANON(PROP_NAME) *operator->() const {                                          \
       return this;                                                                                                     \
     }                                                                                                                  \
                                                                                                                        \
     template <typename TUVW>                                                                                           \
     SPECIFIERS ARIA_ANON(PROP_NAME) &operator=(TUVW &&value) {                                                         \
-      cuda::std::apply(                                                                                                \
-          [&](const auto &...propArgsTuple) { Set(object, std::forward<TUVW>(value), propArgsTuple...); }, propArgs);  \
+      std::apply([&](const auto &...propArgsTuple) { Set(object, std::forward<TUVW>(value), propArgsTuple...); },      \
+                 propArgs);                                                                                            \
       return *this;                                                                                                    \
     }                                                                                                                  \
     template <typename TUVW, size_t n>                                                                                 \
     SPECIFIERS ARIA_ANON(PROP_NAME) &operator=(const TUVW (&args)[n]) {                                                \
-      cuda::std::apply([&](const auto &...propArgsTuple) {                                                             \
+      std::apply([&](const auto &...propArgsTuple) {                                                                   \
         Set(object, property::detail::ConstructWithArray<std::decay_t<Type>>(args, std::make_index_sequence<n>{}),     \
             propArgsTuple...);                                                                                         \
       }, propArgs);                                                                                                    \
