@@ -46,7 +46,7 @@ int main() {
   Print(student);
 
   // 丁臻穿越回了 4 年前，这一次，他要学好 C/C++！
-  student.year() = 2024;
+  student.year() -= 4;
   Print(student);
 
   return 0;
