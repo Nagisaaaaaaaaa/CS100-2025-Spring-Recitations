@@ -19,12 +19,21 @@ int main() {
   // 丁臻是一位研一老登，他很后悔自己 4 年前没有好好学习 CS100，
   // 导致自己科研道路非常艰辛。
   student.name() = "Zhen Ding";
-  student.id() = 2024'533'999;
+  student.id() = 2028'533'999;
   Print(student);
+  // 会打印出：
+  //   name: Zhen Ding
+  //   id  : 2028533999
+  //   year: 2028
 
   // 丁臻穿越回了 4 年前，这一次，他要学好 C/C++！
   student.year() = 2020;
   Print(student);
+
+  // 会打印出：
+  //   name: Zhen Ding
+  //!  id  : 2024533999
+  //!  year: 2024
 
   return 0;
 }
