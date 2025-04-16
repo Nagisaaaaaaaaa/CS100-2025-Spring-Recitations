@@ -22,7 +22,8 @@
 //
 //
 //
-#include "ARIA/detail/PropertyType.h"
+// #include "ARIA/detail/PropertyType.h"
+#include "./detail/PropertyType.h"
 
 namespace ARIA {
 

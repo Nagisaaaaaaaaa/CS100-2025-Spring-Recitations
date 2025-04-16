@@ -345,7 +345,8 @@
 //
 //
 //
-#include "ARIA/detail/PropertyImpl.h"
+// #include "ARIA/detail/PropertyImpl.h"
+#include "./detail/PropertyImpl.h"
 
 //
 //

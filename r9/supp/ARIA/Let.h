@@ -23,7 +23,8 @@
 //
 //
 //
-#include "ARIA/Auto.h"
+// #include "ARIA/Auto.h"
+#include "./Auto.h"
 
 namespace ARIA {
 
