@@ -36,7 +36,7 @@ int main() {
   Print(student);
   // 会打印出：
   //   name: Zhen Ding
-  //!  id  : 2024533999
+  //!  id  : 2024533999 // 注：穿越回 4 年前，丁臻的学号也变回了他本科时候的学号。
   //!  year: 2024
 
   return 0;
