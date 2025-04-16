@@ -92,9 +92,6 @@ ARIA_HOST_DEVICE constexpr auto Auto(T &&v) {
   else if constexpr (std::is_same_v<std::decay_t<T>,
                                     std::decay_t<decltype(std::vector<bool>()[0])>>) //! For `std::vector<bool>`.
     return static_cast<bool>(std::forward<T>(v));
-  else if constexpr (!std::is_same_v<std::decay_t<T>,
-                                     std::decay_t<decltype(thrust::raw_reference_cast(v))>>) //! For `thrust`.
-    return static_cast<typename std::decay_t<T>::value_type>(std::forward<T>(v));
   else if constexpr //! For `Eigen`.
       (requires {
          { std::forward<T>(v).eval() };
