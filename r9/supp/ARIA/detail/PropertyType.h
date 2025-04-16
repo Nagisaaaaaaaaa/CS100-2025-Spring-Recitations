@@ -1,8 +1,6 @@
 #pragma once
 
-#include "ARIA/ARIA.h"
-
-#include <thrust/detail/raw_reference_cast.h>
+#include "../ARIA.h"
 
 #include <concepts>
 #include <vector>
@@ -36,14 +34,13 @@ concept NonPropertyType = !PropertyType<T>;
 /// or it will be dangerous when multiple proxy systems are used together.
 template <typename T>
 static constexpr bool is_proxy_type_v =
-    PropertyType<std::decay_t<T>>                                                                               ? true
-    : (std::is_same_v<std::decay_t<T>, std::decay_t<decltype(std::vector<bool>()[0])>>)                         ? true
-    : (!std::is_same_v<std::decay_t<T>, std::decay_t<decltype(thrust::raw_reference_cast(std::declval<T>()))>>) ? true
+    PropertyType<std::decay_t<T>>                                                       ? true
+    : (std::is_same_v<std::decay_t<T>, std::decay_t<decltype(std::vector<bool>()[0])>>) ? true
     : (requires(T &&v) {
         { v.eval() };
         requires !std::is_same_v<std::decay_t<T>, std::decay_t<decltype(v.eval())>>;
-      })                                                                                                        ? true
-                                                                                                                : false;
+      })                                                                                ? true
+                                                                                        : false;
 
 template <typename T>
 concept ProxyType = is_proxy_type_v<T>;
@@ -65,14 +62,13 @@ concept NonProxyType = !ProxyType<T>;
 /// or it will be dangerous when multiple proxy systems are used together.
 template <typename T>
 static constexpr bool is_settable_proxy_type_v =
-    PropertyType<std::decay_t<T>>                                                                               ? true
-    : (std::is_same_v<std::decay_t<T>, std::decay_t<decltype(std::vector<bool>()[0])>>)                         ? true
-    : (!std::is_same_v<std::decay_t<T>, std::decay_t<decltype(thrust::raw_reference_cast(std::declval<T>()))>>) ? true
+    PropertyType<std::decay_t<T>>                                                       ? true
+    : (std::is_same_v<std::decay_t<T>, std::decay_t<decltype(std::vector<bool>()[0])>>) ? true
     : (requires(T &&v) {
         { v.eval() };
         requires !std::is_same_v<std::decay_t<T>, std::decay_t<decltype(v.eval())>>;
-      })                                                                                                        ? false
-                                                                                                                : false;
+      })                                                                                ? false
+                                                                                        : false;
 
 template <typename T>
 concept SettableProxyType = is_settable_proxy_type_v<T>;
