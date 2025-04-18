@@ -2,6 +2,8 @@
 
 //? 《Re：从零开始的大一生活》
 
+// 我们需要为 class Student
+// 实现 name(), id(), year() 这三个功能。
 class Student {
 public:
   const std::string &name() const { return name_; }
