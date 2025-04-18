@@ -14,6 +14,8 @@ public:
 
   int year() const { return id_ / 1000000; } // 取学号的前 4 位。
 
+  //! 一切的困难都来源于我们需要支持 year() -= 4，
+  //! 如果只需要支持 setYear(year - 4) 的话，这题就没那么难了。
   void setYear(int value) { id_ = id_ % 1000000 + value * 1000000; } // 修改学号的前 4 位。
 
 private:
@@ -35,6 +37,7 @@ int main() {
   student.id() = 2028533999;
   Print(student);
 
+  //! 如果只需要支持 setYear(year - 4) 的话，这题就没那么难了。
   // student.year() -= 4;
   student.setYear(student.year() - 4);
   Print(student);
