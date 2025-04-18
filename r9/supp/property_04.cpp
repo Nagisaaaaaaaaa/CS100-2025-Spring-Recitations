@@ -39,5 +39,11 @@ int main() {
   student.setYear(student.year() - 4);
   Print(student);
 
+  //* 总结一下这题难在哪里：
+  //* 1. 我们需要同时支持 id() = ... 和 year() -= ...，
+  //*    说明 id() 和 year() 这两个成员函数都得返回 reference。
+  //* 2. 当我们修改 id   的时候，year 需要被自动修改，
+  //*    当我们修改 year 的时候，id   也需要被自动修改。
+
   return 0;
 }
