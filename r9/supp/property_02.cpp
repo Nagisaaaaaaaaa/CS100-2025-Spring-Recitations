@@ -12,6 +12,9 @@ public:
 
   int &id() { return id_; }
 
+  //! 我们知道，id 的前 4 位就是 year。
+  //! 所以我们理所当然地，只存储 id，每次需要用到 year 的时候，
+  //! 当场把它计算出来就完事了，反正只需要一次除法嘛。
   int year() const { return id_ / 1000000; } // 取学号的前 4 位。
 
 private:
