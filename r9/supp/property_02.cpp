@@ -32,10 +32,15 @@ void Print(const Student &student) {
 int main() {
   Student student;
 
+  // 我们能够轻松地搞定这三行。
   student.name() = "Zhen Ding";
   student.id() = 2028533999;
   Print(student);
 
+  //! 但是，这两行怎么办？
+  //! 既然它需要支持 year() -= 4 这样的操作，
+  //! 意味着 year() 这个成员函数的返回值不能只是个 int，
+  //! 它必须返回一个 reference 对吧。
   student.year() -= 4;
   Print(student);
 
