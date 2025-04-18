@@ -4,7 +4,7 @@
   ! 这份代码依赖于 cute 和 ARIA 这两个开源库，如果编译不过，随机都可以找助教帮忙啊。
 
   * Bonus:
-  * 1. std::vector<bool> 是 STL 中使用“代理”的典型案例。
+  * 1. std::vector<bool> 是 STL 中使用“代理” (proxy) 的典型案例。
   * 2. 那么，代价是什么？
 
 */
