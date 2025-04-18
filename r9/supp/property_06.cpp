@@ -20,7 +20,8 @@ int main() {
   Student student;
   std::cout << typeid(student.year()).name() << std::endl;
 
-  //! 猜猜分别会打印出什么？
+  // std::vector 的中括号本质上也是函数。
+  // 猜猜分别会打印出什么？
   std::vector<int> vec0;
   std::cout << typeid(vec0[0]).name() << std::endl;
 
