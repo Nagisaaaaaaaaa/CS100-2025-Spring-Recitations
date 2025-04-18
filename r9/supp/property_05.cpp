@@ -25,7 +25,7 @@ public:
   //! 这行神秘代码的作用是：
   //!   每当我们调用 student.year() 时，
   //!   都将返回一个神秘“变量”，它拥有一个神秘“类型”。
-  //! 这个神秘变量，就是我们所说的“代理”。
+  //! 这个神秘“变量”，就是我们所说的“代理”。
   ARIA_PROP(public, public, ARIA_HOST, int, year);
 
 private:
