@@ -20,12 +20,12 @@ private:
 
   int ARIA_PROP_GETTER(year)() const {
     // 取学号的前 4 位。
-    return id_ / 1'000'000;
+    return id_ / 1000000;
   }
 
   void ARIA_PROP_SETTER(year)(const int &value) {
     // 修改学号的前 4 位。
-    id_ = id_ % 1'000'000 + value * 1'000'000;
+    id_ = id_ % 1000000 + value * 1000000;
   }
 };
 
@@ -39,14 +39,10 @@ void Print(const Student &student) {
 int main() {
   Student student;
 
-  // 丁臻是一位研一老登，他很后悔自己 4 年前没有好好学习 CS100，
-  // 导致自己的科研道路非常艰辛。
   student.name() = "Zhen Ding";
-  student.id() = 2028'533'999;
+  student.id() = 2028533999;
   Print(student);
 
-  // 有一天，一觉醒来，丁臻发现自己竟然穿越回了 4 年前！
-  // 这一次，他要学好 CS100！
   student.year() -= 4;
   Print(student);
 
