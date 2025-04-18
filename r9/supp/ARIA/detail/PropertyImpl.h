@@ -44,15 +44,15 @@ ARIA_HOST_DEVICE constexpr auto ConstructWithArray(const T *args, std::index_seq
 //! This is necessary to fetch the values before temporary variables die.
 #define __ARIA_PROP_BASE_DEFINE_PREFIX_UNARY_OPERATOR(op)                                                              \
                                                                                                                        \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty & x) {                                            \
-    return Auto(op x.value());                                                                                         \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty &x) {                                             \
+    return ::ARIA::Auto(op x.value());                                                                                 \
   }
 
 // Automatically generate implementations for the given suffix unary operator.
 #define __ARIA_PROP_BASE_DEFINE_SUFFIX_UNARY_OPERATOR(op)                                                              \
                                                                                                                        \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty & x) {                                            \
-    return Auto(x.value() op);                                                                                         \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty &x) {                                             \
+    return ::ARIA::Auto(x.value() op);                                                                                 \
   }
 
 // Automatically generate implementations for the given binary operator.
@@ -60,20 +60,20 @@ ARIA_HOST_DEVICE constexpr auto ConstructWithArray(const T *args, std::index_seq
 #define __ARIA_PROP_BASE_DEFINE_BINARY_OPERATOR_WITHOUT_ASSIGNMENT(op)                                                 \
                                                                                                                        \
   template <NonPropertyType TRhs>                                                                                      \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty & lhs, const TRhs & rhs) {                        \
-    return Auto(lhs.value() op rhs);                                                                                   \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty &lhs, const TRhs &rhs) {                          \
+    return ::ARIA::Auto(lhs.value() op rhs);                                                                           \
   }                                                                                                                    \
   template <NonPropertyType TLhs> /* This requirement is added to support sol2. */                                     \
     requires(!std::is_same_v<std::decay_t<TLhs>, std::ostringstream>)                                                  \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TLhs & lhs, const TProperty & rhs) {                        \
-    return Auto(lhs op rhs.value());                                                                                   \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TLhs &lhs, const TProperty &rhs) {                          \
+    return ::ARIA::Auto(lhs op rhs.value());                                                                           \
   }                                                                                                                    \
-  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty & lhs, const TProperty & rhs) {                   \
-    return Auto(lhs.value() op rhs.value());                                                                           \
+  ARIA_HOST_DEVICE friend decltype(auto) operator op(const TProperty &lhs, const TProperty &rhs) {                     \
+    return ::ARIA::Auto(lhs.value() op rhs.value());                                                                   \
   }                                                                                                                    \
   template <PropertyType TPropertyThat>                                                                                \
-  ARIA_HOST_DEVICE decltype(auto) operator op(const TPropertyThat & rhs) const {                                       \
-    return Auto(derived().value() op rhs.value());                                                                     \
+  ARIA_HOST_DEVICE decltype(auto) operator op(const TPropertyThat &rhs) const {                                        \
+    return ::ARIA::Auto(derived().value() op rhs.value());                                                             \
   }
 
 // Automatically generate implementations for the given binary operator.
@@ -81,19 +81,19 @@ ARIA_HOST_DEVICE constexpr auto ConstructWithArray(const T *args, std::index_seq
 #define __ARIA_PROP_BASE_DEFINE_BINARY_OPERATOR_WITH_ASSIGNMENT(op)                                                    \
                                                                                                                        \
   template <NonPropertyType TRhs>                                                                                      \
-  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty & lhs, const TRhs & rhs) {              \
+  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty &lhs, const TRhs &rhs) {                \
     return lhs = (lhs.value() op rhs);                                                                                 \
   }                                                                                                                    \
   template <PropertyType TPropertyThat>                                                                                \
-  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty & lhs, const TPropertyThat & rhs) {     \
+  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty &lhs, const TPropertyThat &rhs) {       \
     return lhs = (lhs.value() op rhs.value());                                                                         \
   }                                                                                                                    \
   template <NonPropertyType TRhs>                                                                                      \
-  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty && lhs, const TRhs & rhs) {             \
+  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty &&lhs, const TRhs &rhs) {               \
     return std::move(lhs = (lhs.value() op rhs));                                                                      \
   }                                                                                                                    \
   template <PropertyType TPropertyThat>                                                                                \
-  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty && lhs, const TPropertyThat & rhs) {    \
+  ARIA_HOST_DEVICE friend decltype(auto) operator ARIA_CONCAT(op, =)(TProperty &&lhs, const TPropertyThat &rhs) {      \
     return std::move(lhs = (lhs.value() op rhs.value()));                                                              \
   }
 
@@ -271,7 +271,7 @@ private:
 #define __ARIA_PROP_BEGIN(ACCESS_GET, ACCESS_SET, SPECIFIERS, TYPE, PROP_NAME)                                         \
                                                                                                                        \
   /* Users should not directly access the underlying property types. */                                                \
-  static_assert(!property::detail::PropertyType<std::decay_t<TYPE>>,                                                   \
+  static_assert(!::ARIA::property::detail::PropertyType<std::decay_t<TYPE>>,                                           \
                 "The given property value type should not be a property type");                                        \
                                                                                                                        \
   static_assert(!std::is_const_v<std::remove_reference_t<TYPE>>,                                                       \
@@ -310,7 +310,7 @@ private:
   /* Use CRTP to automatically generate operators, and also, satisfies the `PropertyType` concept. */                  \
   template <typename TObjectMaybeConst, typename... TUVWArgs>                                                          \
       class ARIA_ANON(PROP_NAME) final                                                                                 \
-      : public property::detail::PropertyBase < ARIA_ANON(PROP_NAME) < TObjectMaybeConst,                              \
+      : public ::ARIA::property::detail::PropertyBase < ARIA_ANON(PROP_NAME) < TObjectMaybeConst,                      \
       TUVWArgs... >> {                                                                                                 \
     /* Using the `Type` to support `ARIA_PROP_FUNC` */                                                                 \
   private:                                                                                                             \
@@ -349,28 +349,28 @@ private:
     /* This function is defined `static` to handle `auto c = obj.a().b().c();`. */                                     \
     /* See comments of `ARIA_SUB_PROP_BEGIN`. */                                                                       \
     [[nodiscard]] static SPECIFIERS decltype(auto) Get(TObjectMaybeConst &object, const auto &...propArgs)             \
-      requires property::detail::isReferenceOrPointer<Type>                                                            \
+      requires ::ARIA::property::detail::isReferenceOrPointer<Type>                                                    \
     {                                                                                                                  \
-      static_assert(                                                                                                   \
-          !property::detail::isReferenceOrPointer<Type> ||                                                             \
-              property::detail::isReferenceOrPointer<decltype(object.__ARIA_PROP_GETTER(PROP_NAME)(propArgs...))>,     \
-          "The getter is only allowed to return reference or pointer when "                                            \
-          "the specified property value type is a reference or a pointer");                                            \
+      static_assert(!::ARIA::property::detail::isReferenceOrPointer<Type> ||                                           \
+                        ::ARIA::property::detail::isReferenceOrPointer<decltype(object.__ARIA_PROP_GETTER(PROP_NAME)(  \
+                            propArgs...))>,                                                                            \
+                    "The getter is only allowed to return reference or pointer when "                                  \
+                    "the specified property value type is a reference or a pointer");                                  \
                                                                                                                        \
       /* Calls the user-defined getter. */                                                                             \
       return object.__ARIA_PROP_GETTER(PROP_NAME)(propArgs...);                                                        \
     }                                                                                                                  \
     [[nodiscard]] static SPECIFIERS Type Get(TObjectMaybeConst &object, const auto &...propArgs)                       \
-      requires(!property::detail::isReferenceOrPointer<Type>)                                                          \
+      requires(!::ARIA::property::detail::isReferenceOrPointer<Type>)                                                  \
     {                                                                                                                  \
-      static_assert(                                                                                                   \
-          !property::detail::isReferenceOrPointer<Type> ||                                                             \
-              property::detail::isReferenceOrPointer<decltype(object.__ARIA_PROP_GETTER(PROP_NAME)(propArgs...))>,     \
-          "The getter is only allowed to return reference or pointer when "                                            \
-          "the specified property value type is a reference or a pointer");                                            \
+      static_assert(!::ARIA::property::detail::isReferenceOrPointer<Type> ||                                           \
+                        ::ARIA::property::detail::isReferenceOrPointer<decltype(object.__ARIA_PROP_GETTER(PROP_NAME)(  \
+                            propArgs...))>,                                                                            \
+                    "The getter is only allowed to return reference or pointer when "                                  \
+                    "the specified property value type is a reference or a pointer");                                  \
                                                                                                                        \
       /* Calls the user-defined getter. */                                                                             \
-      return Auto(object.__ARIA_PROP_GETTER(PROP_NAME)(propArgs...));                                                  \
+      return ::ARIA::Auto(object.__ARIA_PROP_GETTER(PROP_NAME)(propArgs...));                                          \
     }                                                                                                                  \
     template <typename TUVW>                                                                                           \
     static SPECIFIERS void Set(TObject &object, TUVW &&value, const auto &...propArgs) {                               \
@@ -379,7 +379,8 @@ private:
       /* For example, users should not set a dog to a cat, */                                                          \
       /* even though their setters can handle this case. */                                                            \
       static_assert(std::convertible_to<decltype(value), std::decay_t<Type>> ||                                        \
-                        std::is_same_v<std::decay_t<TUVW>, On> || std::is_same_v<std::decay_t<TUVW>, Off>,             \
+                        std::is_same_v<std::decay_t<TUVW>, ::ARIA::On> ||                                              \
+                        std::is_same_v<std::decay_t<TUVW>, ::ARIA::Off>,                                               \
                     "The value given to the setter should be convertible to the given property value type");           \
                                                                                                                        \
       /* Also, return type of the setter is restricted to `void`. */                                                   \
@@ -428,10 +429,10 @@ private:
     }                                                                                                                  \
                                                                                                                        \
     /* `operator->()` cannot be handled by CRTP, because it should be defined in-class */                              \
-    [[nodiscard]] SPECIFIERS ARIA_ANON(PROP_NAME) *operator->() {                                                      \
+    [[nodiscard]] SPECIFIERS ARIA_ANON(PROP_NAME) *operator-> () {                                                     \
       return this;                                                                                                     \
     }                                                                                                                  \
-    [[nodiscard]] SPECIFIERS const ARIA_ANON(PROP_NAME) *operator->() const {                                          \
+    [[nodiscard]] SPECIFIERS const ARIA_ANON(PROP_NAME) *operator-> () const {                                         \
       return this;                                                                                                     \
     }                                                                                                                  \
                                                                                                                        \
@@ -449,7 +450,8 @@ private:
     template <typename TUVW, size_t n>                                                                                 \
      SPECIFIERS ARIA_ANON(PROP_NAME) &operator=(const TUVW (&args)[n]) {                                               \
       std::apply([&](const auto &...propArgsTuple) {                                                                   \
-        Set(object, property::detail::ConstructWithArray<std::decay_t<Type>>(args, std::make_index_sequence<n>{}),     \
+        Set(object,                                                                                                    \
+            ::ARIA::property::detail::ConstructWithArray<std::decay_t<Type>>(args, std::make_index_sequence<n>{}),     \
             propArgsTuple...);                                                                                         \
       }, propArgs);                                                                                                    \
       return *this;                                                                                                    \
@@ -479,7 +481,7 @@ private:                                                                        
 #define __ARIA_SUB_PROP_BEGIN(SPECIFIERS, TYPE, PROP_NAME)                                                             \
                                                                                                                        \
   /* Very similar to `ARIA_PROP_BEGIN`, please read the comments there. */                                             \
-  static_assert(!property::detail::PropertyType<std::decay_t<TYPE>>,                                                   \
+  static_assert(!::ARIA::property::detail::PropertyType<std::decay_t<TYPE>>,                                           \
                 "The given sub-property value type should not be a property type");                                    \
                                                                                                                        \
   static_assert(!std::is_const_v<std::remove_reference_t<TYPE>>,                                                       \
@@ -515,7 +517,7 @@ public:                                                                         
                                                                                                                        \
   /* Sub-properties are also property types. */                                                                        \
   template <typename ARIA_ANON(ARIA_CONCAT(TPropertyBaseMaybeConst, PROP_NAME)), typename... TUVWArgs>                 \
-      class ARIA_ANON(PROP_NAME) final : public property::detail::PropertyBase < ARIA_ANON(PROP_NAME) <                \
+      class ARIA_ANON(PROP_NAME) final : public ::ARIA::property::detail::PropertyBase < ARIA_ANON(PROP_NAME) <        \
                                          ARIA_ANON(ARIA_CONCAT(TPropertyBaseMaybeConst, PROP_NAME)),                   \
       TUVWArgs... >> {                                                                                                 \
   private:                                                                                                             \
@@ -540,70 +542,75 @@ public:                                                                         
         : object(object), propArgs(propArgs...) {}                                                                     \
                                                                                                                        \
     [[nodiscard]] static SPECIFIERS decltype(auto) Get(TObjectMaybeConst &object, const auto &...propArgs)             \
-      requires property::detail::isReferenceOrPointer<Type>                                                            \
+      requires ::ARIA::property::detail::isReferenceOrPointer<Type>                                                    \
     {                                                                                                                  \
       decltype(auto) tmp = TPropertyBase::Get(object);                                                                 \
                                                                                                                        \
-      static_assert(property::detail::isReferenceOrPointer<decltype(tmp)> ||                                           \
-                        !property::detail::isReferenceOrPointer<Type>,                                                 \
+      static_assert(::ARIA::property::detail::isReferenceOrPointer<decltype(tmp)> ||                                   \
+                        !::ARIA::property::detail::isReferenceOrPointer<Type>,                                         \
                     "Sub-property value type of a non-reference and non-pointer property should "                      \
                     "not be a reference or a pointer type");                                                           \
                                                                                                                        \
       if constexpr (std::is_pointer_v<decltype(tmp)>) {                                                                \
-        static_assert(!property::detail::isReferenceOrPointer<Type> ||                                                 \
-                          (property::detail::PropertyType<std::decay_t<decltype(tmp->PROP_NAME(propArgs...))>> ||      \
-                           property::detail::isReferenceOrPointer<decltype(tmp->PROP_NAME(propArgs...))>),             \
-                      "The getter is only allowed to return reference or pointer when "                                \
-                      "the specified sub-property value type is a reference or a pointer");                            \
+        static_assert(                                                                                                 \
+            !::ARIA::property::detail::isReferenceOrPointer<Type> ||                                                   \
+                (::ARIA::property::detail::PropertyType<std::decay_t<decltype(tmp->PROP_NAME(propArgs...))>> ||        \
+                 ::ARIA::property::detail::isReferenceOrPointer<decltype(tmp->PROP_NAME(propArgs...))>),               \
+            "The getter is only allowed to return reference or pointer when "                                          \
+            "the specified sub-property value type is a reference or a pointer");                                      \
                                                                                                                        \
-        if constexpr (property::detail::PropertyType<std::decay_t<decltype(tmp->PROP_NAME(propArgs...))>>)             \
+        if constexpr (::ARIA::property::detail::PropertyType<std::decay_t<decltype(tmp->PROP_NAME(propArgs...))>>)     \
           return tmp->PROP_NAME(propArgs...).value();                                                                  \
         else                                                                                                           \
           return tmp->PROP_NAME(propArgs...);                                                                          \
       } else {                                                                                                         \
-        static_assert(!property::detail::isReferenceOrPointer<Type> ||                                                 \
-                          (property::detail::PropertyType<std::decay_t<decltype(tmp.PROP_NAME(propArgs...))>> ||       \
-                           property::detail::isReferenceOrPointer<decltype(tmp.PROP_NAME(propArgs...))>),              \
-                      "The getter is only allowed to return reference or pointer when "                                \
-                      "the specified sub-property value type is a reference or a pointer");                            \
+        static_assert(                                                                                                 \
+            !::ARIA::property::detail::isReferenceOrPointer<Type> ||                                                   \
+                (::ARIA::property::detail::PropertyType<std::decay_t<decltype(tmp.PROP_NAME(propArgs...))>> ||         \
+                 ::ARIA::property::detail::isReferenceOrPointer<decltype(tmp.PROP_NAME(propArgs...))>),                \
+            "The getter is only allowed to return reference or pointer when "                                          \
+            "the specified sub-property value type is a reference or a pointer");                                      \
                                                                                                                        \
-        if constexpr (property::detail::PropertyType<std::decay_t<decltype(tmp.PROP_NAME(propArgs...))>>)              \
+        if constexpr (::ARIA::property::detail::PropertyType<std::decay_t<decltype(tmp.PROP_NAME(propArgs...))>>)      \
           return tmp.PROP_NAME(propArgs...).value();                                                                   \
         else                                                                                                           \
           return tmp.PROP_NAME(propArgs...);                                                                           \
       }                                                                                                                \
     }                                                                                                                  \
     [[nodiscard]] static SPECIFIERS Type Get(TObjectMaybeConst &object, const auto &...propArgs)                       \
-      requires(!property::detail::isReferenceOrPointer<Type>)                                                          \
+      requires(!::ARIA::property::detail::isReferenceOrPointer<Type>)                                                  \
     {                                                                                                                  \
       decltype(auto) tmp = TPropertyBase::Get(object);                                                                 \
                                                                                                                        \
-      static_assert(property::detail::isReferenceOrPointer<decltype(tmp)> ||                                           \
-                        !property::detail::isReferenceOrPointer<Type>,                                                 \
+      static_assert(::ARIA::property::detail::isReferenceOrPointer<decltype(tmp)> ||                                   \
+                        !::ARIA::property::detail::isReferenceOrPointer<Type>,                                         \
                     "Sub-property value type of a non-reference property should not be a reference type");             \
                                                                                                                        \
       if constexpr (std::is_pointer_v<decltype(tmp)>) {                                                                \
-        static_assert(!property::detail::isReferenceOrPointer<Type> ||                                                 \
-                          (property::detail::PropertyType<std::decay_t<decltype(tmp->PROP_NAME(propArgs...))>> ||      \
-                           property::detail::isReferenceOrPointer<decltype(tmp->PROP_NAME(propArgs...))>),             \
-                      "The getter is only allowed to return reference or pointer when "                                \
-                      "the specified sub-property value type is a reference");                                         \
+        static_assert(                                                                                                 \
+            !::ARIA::property::detail::isReferenceOrPointer<Type> ||                                                   \
+                (::ARIA::property::detail::PropertyType<std::decay_t<decltype(tmp->PROP_NAME(propArgs...))>> ||        \
+                 ::ARIA::property::detail::isReferenceOrPointer<decltype(tmp->PROP_NAME(propArgs...))>),               \
+            "The getter is only allowed to return reference or pointer when "                                          \
+            "the specified sub-property value type is a reference");                                                   \
                                                                                                                        \
-        return Auto(tmp->PROP_NAME(propArgs...));                                                                      \
+        return ::ARIA::Auto(tmp->PROP_NAME(propArgs...));                                                              \
       } else {                                                                                                         \
-        static_assert(!property::detail::isReferenceOrPointer<Type> ||                                                 \
-                          (property::detail::PropertyType<std::decay_t<decltype(tmp.PROP_NAME(propArgs...))>> ||       \
-                           property::detail::isReferenceOrPointer<decltype(tmp.PROP_NAME(propArgs...))>),              \
-                      "The getter is only allowed to return reference or pointer when "                                \
-                      "the specified sub-property value type is a reference");                                         \
+        static_assert(                                                                                                 \
+            !::ARIA::property::detail::isReferenceOrPointer<Type> ||                                                   \
+                (::ARIA::property::detail::PropertyType<std::decay_t<decltype(tmp.PROP_NAME(propArgs...))>> ||         \
+                 ::ARIA::property::detail::isReferenceOrPointer<decltype(tmp.PROP_NAME(propArgs...))>),                \
+            "The getter is only allowed to return reference or pointer when "                                          \
+            "the specified sub-property value type is a reference");                                                   \
                                                                                                                        \
-        return Auto(tmp.PROP_NAME(propArgs...));                                                                       \
+        return ::ARIA::Auto(tmp.PROP_NAME(propArgs...));                                                               \
       }                                                                                                                \
     }                                                                                                                  \
     template <typename TUVW>                                                                                           \
     static SPECIFIERS void Set(TObject &object, TUVW &&value, const auto &...propArgs) {                               \
       static_assert(std::convertible_to<decltype(value), std::decay_t<Type>> ||                                        \
-                        std::is_same_v<std::decay_t<TUVW>, On> || std::is_same_v<std::decay_t<TUVW>, Off>,             \
+                        std::is_same_v<std::decay_t<TUVW>, ::ARIA::On> ||                                              \
+                        std::is_same_v<std::decay_t<TUVW>, ::ARIA::Off>,                                               \
                     "The value given to the setter should be convertible to the given property value type");           \
                                                                                                                        \
       decltype(auto) tmp = TPropertyBase::Get(object);                                                                 \
@@ -611,8 +618,8 @@ public:                                                                         
       if constexpr (std::is_pointer_v<decltype(tmp)>) {                                                                \
         using TGet = decltype(tmp->PROP_NAME(propArgs...));                                                            \
                                                                                                                        \
-        constexpr bool isGetProxy = property::detail::ProxyType<TGet>;                                                 \
-        constexpr bool isGetReferenceOrPointer = property::detail::isReferenceOrPointer<TGet>;                         \
+        constexpr bool isGetProxy = ::ARIA::property::detail::ProxyType<TGet>;                                         \
+        constexpr bool isGetReferenceOrPointer = ::ARIA::property::detail::isReferenceOrPointer<TGet>;                 \
         constexpr bool isGetValue = !isGetReferenceOrPointer && !isGetProxy;                                           \
                                                                                                                        \
         static_assert(!isGetValue, "Return type of this member should not be a non-proxy value type");                 \
@@ -623,8 +630,8 @@ public:                                                                         
       } else {                                                                                                         \
         using TGet = decltype(tmp.PROP_NAME(propArgs...));                                                             \
                                                                                                                        \
-        constexpr bool isGetProxy = property::detail::ProxyType<TGet>;                                                 \
-        constexpr bool isGetReferenceOrPointer = property::detail::isReferenceOrPointer<TGet>;                         \
+        constexpr bool isGetProxy = ::ARIA::property::detail::ProxyType<TGet>;                                         \
+        constexpr bool isGetReferenceOrPointer = ::ARIA::property::detail::isReferenceOrPointer<TGet>;                 \
         constexpr bool isGetValue = !isGetReferenceOrPointer && !isGetProxy;                                           \
                                                                                                                        \
         static_assert(!isGetValue, "Return type of this member should not be a non-proxy value type");                 \
@@ -665,10 +672,10 @@ public:                                                                         
       return value();                                                                                                  \
     }                                                                                                                  \
                                                                                                                        \
-    [[nodiscard]] SPECIFIERS ARIA_ANON(PROP_NAME) *operator->() {                                                      \
+    [[nodiscard]] SPECIFIERS ARIA_ANON(PROP_NAME) *operator-> () {                                                     \
       return this;                                                                                                     \
     }                                                                                                                  \
-    [[nodiscard]] SPECIFIERS const ARIA_ANON(PROP_NAME) *operator->() const {                                          \
+    [[nodiscard]] SPECIFIERS const ARIA_ANON(PROP_NAME) *operator-> () const {                                         \
       return this;                                                                                                     \
     }                                                                                                                  \
                                                                                                                        \
@@ -681,7 +688,8 @@ public:                                                                         
     template <typename TUVW, size_t n>                                                                                 \
     SPECIFIERS ARIA_ANON(PROP_NAME) &operator=(const TUVW (&args)[n]) {                                                \
       std::apply([&](const auto &...propArgsTuple) {                                                                   \
-        Set(object, property::detail::ConstructWithArray<std::decay_t<Type>>(args, std::make_index_sequence<n>{}),     \
+        Set(object,                                                                                                    \
+            ::ARIA::property::detail::ConstructWithArray<std::decay_t<Type>>(args, std::make_index_sequence<n>{}),     \
             propArgsTuple...);                                                                                         \
       }, propArgs);                                                                                                    \
       return *this;                                                                                                    \
@@ -727,64 +735,64 @@ private:                                                                        
 //
 //
 //
-#define __ARIA_PROP_FUNC(ACCESS, SPECIFIERS, DOT_OR_ARROW, FUNC_NAME)                                                  \
-  /* Supporting of member functions for properties is non-trivial because */                                           \
-  /* there are actually 4 kinds of member functions: */                                                                \
-  /*   0. Return something, non-const, */                                                                              \
-  /*   1. Void, non-const, */                                                                                          \
-  /*   2. Return something, const, */                                                                                  \
-  /*   3. Void, const. */                                                                                              \
-                                                                                                                       \
-  /* What we should do is to provide a function wrapper, */                                                            \
-  /* which is called by (const or non-const) property instances, and */                                                \
-  /* will call the actual underlying member function. */                                                               \
-                                                                                                                       \
-  /*! What is difficult is that, there are 4 kinds of member functions. */                                             \
-  /*! So, our function wrapper should exactly match their types. */                                                    \
-  /*! One way to solve this problem is to provide 4 kinds of */                                                        \
-  /*! function wrappers for each kind of member functions. */                                                          \
-  /*! But, how to call the proper wrapper for any given function? */                                                   \
-  /*! Use concepts, or the so-called SFINAE techniques. */                                                             \
-                                                                                                                       \
-  /* TODO: A lot of supporting functions are added here to bypass the NVCC bug. */                                     \
-private:                                                                                                               \
-  /* clang-format off */                                                                                             \
+#define __ARIA_PROP_FUNC(ACCESS, SPECIFIERS, DOT_OR_ARROW, FUNC_NAME)                                                     \
+  /* Supporting of member functions for properties is non-trivial because */                                              \
+  /* there are actually 4 kinds of member functions: */                                                                   \
+  /*   0. Return something, non-const, */                                                                                 \
+  /*   1. Void, non-const, */                                                                                             \
+  /*   2. Return something, const, */                                                                                     \
+  /*   3. Void, const. */                                                                                                 \
+                                                                                                                          \
+  /* What we should do is to provide a function wrapper, */                                                               \
+  /* which is called by (const or non-const) property instances, and */                                                   \
+  /* will call the actual underlying member function. */                                                                  \
+                                                                                                                          \
+  /*! What is difficult is that, there are 4 kinds of member functions. */                                                \
+  /*! So, our function wrapper should exactly match their types. */                                                       \
+  /*! One way to solve this problem is to provide 4 kinds of */                                                           \
+  /*! function wrappers for each kind of member functions. */                                                             \
+  /*! But, how to call the proper wrapper for any given function? */                                                      \
+  /*! Use concepts, or the so-called SFINAE techniques. */                                                                \
+                                                                                                                          \
+  /* TODO: A lot of supporting functions are added here to bypass the NVCC bug. */                                        \
+private:                                                                                                                  \
+  /* clang-format off */                                                                                               \
   /* 0. Return something, non-const. */                                                                                \
   template <typename T>                                                                                                \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable0Args0, FUNC_NAME)() {                             \
     return (requires(T &v) { { v DOT_OR_ARROW FUNC_NAME(                                                               \
         )                                                                                                              \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0>                                                                                   \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable0Args1, FUNC_NAME)() {                             \
     return (requires(T &v, T0 &&t0) { { v DOT_OR_ARROW FUNC_NAME(                                                      \
         std::forward<T0>(t0))                                                                                          \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0, typename T1>                                                                      \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable0Args2, FUNC_NAME)() {                             \
     return (requires(T &v, T0 &&t0, T1 &&t1) { { v DOT_OR_ARROW FUNC_NAME(                                             \
         std::forward<T0>(t0), std::forward<T1>(t1))                                                                    \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0, typename T1, typename T2>                                                         \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable0Args3, FUNC_NAME)() {                             \
     return (requires(T &v, T0 &&t0, T1 &&t1, T2 &&t2) { { v DOT_OR_ARROW FUNC_NAME(                                    \
         std::forward<T0>(t0), std::forward<T1>(t1), std::forward<T2>(t2))                                              \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0, typename T1, typename T2, typename T3>                                            \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable0Args4, FUNC_NAME)() {                             \
     return (requires(T &v, T0 &&t0, T1 &&t1, T2 &&t2, T3 &&t3) { { v DOT_OR_ARROW FUNC_NAME(                           \
         std::forward<T0>(t0), std::forward<T1>(t1), std::forward<T2>(t2), std::forward<T3>(t3))                        \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0, typename T1, typename T2, typename T3, typename T4>                               \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable0Args5, FUNC_NAME)() {                             \
     return (requires(T &v, T0 &&t0, T1 &&t1, T2 &&t2, T3 &&t3, T4 &&t4) { { v DOT_OR_ARROW FUNC_NAME(                  \
         std::forward<T0>(t0), std::forward<T1>(t1), std::forward<T2>(t2), std::forward<T3>(t3), std::forward<T4>(t4))  \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   /* 1. Void, non-const. */                                                                                            \
   template <typename T>                                                                                                \
@@ -828,37 +836,37 @@ private:                                                                        
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable2Args0, FUNC_NAME)() {                             \
     return (requires(const T &v) { { v DOT_OR_ARROW FUNC_NAME(                                                         \
         )                                                                                                              \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0>                                                                                   \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable2Args1, FUNC_NAME)() {                             \
     return (requires(const T &v, T0 &&t0) { { v DOT_OR_ARROW FUNC_NAME(                                                \
         std::forward<T0>(t0))                                                                                          \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0, typename T1>                                                                      \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable2Args2, FUNC_NAME)() {                             \
     return (requires(const T &v, T0 &&t0, T1 &&t1) { { v DOT_OR_ARROW FUNC_NAME(                                       \
         std::forward<T0>(t0), std::forward<T1>(t1))                                                                    \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0, typename T1, typename T2>                                                         \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable2Args3, FUNC_NAME)() {                             \
     return (requires(const T &v, T0 &&t0, T1 &&t1, T2 &&t2) { { v DOT_OR_ARROW FUNC_NAME(                              \
         std::forward<T0>(t0), std::forward<T1>(t1), std::forward<T2>(t2))                                              \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0, typename T1, typename T2, typename T3>                                            \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable2Args4, FUNC_NAME)() {                             \
     return (requires(const T &v, T0 &&t0, T1 &&t1, T2 &&t2, T3 &&t3) { { v DOT_OR_ARROW FUNC_NAME(                     \
         std::forward<T0>(t0), std::forward<T1>(t1), std::forward<T2>(t2), std::forward<T3>(t3))                        \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   template <typename T, typename T0, typename T1, typename T2, typename T3, typename T4>                               \
   [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable2Args5, FUNC_NAME)() {                             \
     return (requires(const T &v, T0 &&t0, T1 &&t1, T2 &&t2, T3 &&t3, T4 &&t4) { { v DOT_OR_ARROW FUNC_NAME(            \
         std::forward<T0>(t0), std::forward<T1>(t1), std::forward<T2>(t2), std::forward<T3>(t3), std::forward<T4>(t4))  \
-      } -> property::detail::DiffFrom<void>; }); }                                                                     \
+      } -> ::ARIA::property::detail::DiffFrom<void>; }); }                                                             \
                                                                                                                        \
   /* 3. Void, const. */                                                                                                \
   template <typename T>                                                                                                \
@@ -896,205 +904,208 @@ private:                                                                        
     return (requires(const T &v, T0 &&t0, T1 &&t1, T2 &&t2, T3 &&t3, T4 &&t4) { { v DOT_OR_ARROW FUNC_NAME(            \
         std::forward<T0>(t0), std::forward<T1>(t1), std::forward<T2>(t2), std::forward<T3>(t3), std::forward<T4>(t4))  \
       } -> std::same_as<void>; }); } \
-  /* clang-format on */                                                                                                \
-                                                                                                                       \
-  /* 0. Return something, non-const. */                                                                                \
-  template <typename T, typename... Ts>                                                                                \
-  [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable0, FUNC_NAME)() {                                  \
-    /* return (requires(T &v, Ts &&...ts) { */                                                                         \
-    /*   { v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...) } -> property::detail::DiffFrom<void>; */                 \
-    /* }); */                                                                                                          \
-    using TArray = MakeTypeArray<Ts...>;                                                                               \
-    if constexpr (TArray::size == 0)                                                                                   \
-      return ARIA_CONCAT(IsPropFuncCallable0Args0, FUNC_NAME)<T>();                                                    \
-    else if constexpr (TArray::size == 1)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable0Args1, FUNC_NAME)<T, typename TArray::template Get<0>>();                  \
-    else if constexpr (TArray::size == 2)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable0Args2,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>>();          \
-    else if constexpr (TArray::size == 3)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable0Args3,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>>();                                               \
-    else if constexpr (TArray::size == 4)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable0Args4,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>, typename TArray::template Get<3>>();             \
-    else if constexpr (TArray::size == 5)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable0Args5,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>, typename TArray::template Get<3>,                \
-                                    typename TArray::template Get<4>>();                                               \
-    else                                                                                                               \
-      ARIA_STATIC_ASSERT_FALSE("Too many arguments passed to the property function, please contact the developers");   \
-  }                                                                                                                    \
-                                                                                                                       \
-  /* 1. Void, non-const. */                                                                                            \
-  template <typename T, typename... Ts>                                                                                \
-  [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable1, FUNC_NAME)() {                                  \
-    /* return (requires(T &v, Ts &&...ts) { */                                                                         \
-    /*   { v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...) } -> std::same_as<void>; */                               \
-    /* }); */                                                                                                          \
-    using TArray = MakeTypeArray<Ts...>;                                                                               \
-    if constexpr (TArray::size == 0)                                                                                   \
-      return ARIA_CONCAT(IsPropFuncCallable1Args0, FUNC_NAME)<T>();                                                    \
-    else if constexpr (TArray::size == 1)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable1Args1, FUNC_NAME)<T, typename TArray::template Get<0>>();                  \
-    else if constexpr (TArray::size == 2)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable1Args2,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>>();          \
-    else if constexpr (TArray::size == 3)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable1Args3,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>>();                                               \
-    else if constexpr (TArray::size == 4)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable1Args4,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>, typename TArray::template Get<3>>();             \
-    else if constexpr (TArray::size == 5)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable1Args5,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>, typename TArray::template Get<3>,                \
-                                    typename TArray::template Get<4>>();                                               \
-    else                                                                                                               \
-      ARIA_STATIC_ASSERT_FALSE("Too many arguments passed to the property function, please contact the developers");   \
-  }                                                                                                                    \
-                                                                                                                       \
-  /* 2. Return something, const. */                                                                                    \
-  template <typename T, typename... Ts>                                                                                \
-  [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME)() {                                  \
-    /* return (requires(const T &v, Ts &&...ts) { */                                                                   \
-    /*   { v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...) } -> property::detail::DiffFrom<void>; */                 \
-    /* }); */                                                                                                          \
-    using TArray = MakeTypeArray<Ts...>;                                                                               \
-    if constexpr (TArray::size == 0)                                                                                   \
-      return ARIA_CONCAT(IsPropFuncCallable2Args0, FUNC_NAME)<T>();                                                    \
-    else if constexpr (TArray::size == 1)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable2Args1, FUNC_NAME)<T, typename TArray::template Get<0>>();                  \
-    else if constexpr (TArray::size == 2)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable2Args2,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>>();          \
-    else if constexpr (TArray::size == 3)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable2Args3,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>>();                                               \
-    else if constexpr (TArray::size == 4)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable2Args4,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>, typename TArray::template Get<3>>();             \
-    else if constexpr (TArray::size == 5)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable2Args5,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>, typename TArray::template Get<3>,                \
-                                    typename TArray::template Get<4>>();                                               \
-    else                                                                                                               \
-      ARIA_STATIC_ASSERT_FALSE("Too many arguments passed to the property function, please contact the developers");   \
-  }                                                                                                                    \
-                                                                                                                       \
-  /* 3. Void, const. */                                                                                                \
-  template <typename T, typename... Ts>                                                                                \
-  [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME)() {                                  \
-    /* return (requires(const T &v, Ts &&...ts) { */                                                                   \
-    /*   { v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...) } -> std::same_as<void>; */                               \
-    /* }); */                                                                                                          \
-    using TArray = MakeTypeArray<Ts...>;                                                                               \
-    if constexpr (TArray::size == 0)                                                                                   \
-      return ARIA_CONCAT(IsPropFuncCallable3Args0, FUNC_NAME)<T>();                                                    \
-    else if constexpr (TArray::size == 1)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable3Args1, FUNC_NAME)<T, typename TArray::template Get<0>>();                  \
-    else if constexpr (TArray::size == 2)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable3Args2,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>>();          \
-    else if constexpr (TArray::size == 3)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable3Args3,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>>();                                               \
-    else if constexpr (TArray::size == 4)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable3Args4,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>, typename TArray::template Get<3>>();             \
-    else if constexpr (TArray::size == 5)                                                                              \
-      return ARIA_CONCAT(IsPropFuncCallable3Args5,                                                                     \
-                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,             \
-                                    typename TArray::template Get<2>, typename TArray::template Get<3>,                \
-                                    typename TArray::template Get<4>>();                                               \
-    else                                                                                                               \
-      ARIA_STATIC_ASSERT_FALSE("Too many arguments passed to the property function, please contact the developers");   \
-  }                                                                                                                    \
-                                                                                                                       \
-  ACCESS:                                                                                                              \
-  /* 0. Return something, non-const. */                                                                                \
-  /* This wrapper requires the underlying functions to be called only with non-const instances. */                     \
-  /* And should return something. */                                                                                   \
-  template <typename... Ts>                                                                                            \
-    requires(!ARIA_CONCAT(IsPropFuncCallable1, FUNC_NAME) < Type,                                                      \
-             Ts... > () && !ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME) < Type,                                        \
-             Ts... > () && !ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME) < Type,                                        \
-             Ts... > () && ARIA_CONCAT(IsPropFuncCallable0, FUNC_NAME) < Type, Ts... > ())                             \
-  [[nodiscard]] SPECIFIERS decltype(auto) FUNC_NAME(Ts &&...ts) {                                                      \
-    decltype(auto) v = value();                                                                                        \
-    using TGet = decltype(v);                                                                                          \
-                                                                                                                       \
-    using TRes = decltype(v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...));                                          \
-                                                                                                                       \
-    if constexpr (property::detail::SettableProxyType<TRes>) {                                                         \
-      /* This requirement is necessary to avoid settable proxies pointing to temporary variables. */                   \
-      ARIA_STATIC_ASSERT_FALSE("Return type of the property function should not be a settable proxy type");            \
-    } else {                                                                                                           \
-      if constexpr (property::detail::isReferenceOrPointer<TRes>) {                                                    \
-        ARIA_STATIC_ASSERT_FALSE("Return type of the property function should not be a reference or a pointer");       \
-      } else {                                                                                                         \
-        auto resAuto = Auto(v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...));                                        \
-        *this = v; /* Because this is a wrapper for non-const functions. */                                            \
-        return resAuto;                                                                                                \
-      }                                                                                                                \
-    }                                                                                                                  \
-  }                                                                                                                    \
-                                                                                                                       \
-  /* 1. Void, non-const. */                                                                                            \
-  template <typename... Ts>                                                                                            \
-    requires(!ARIA_CONCAT(IsPropFuncCallable0, FUNC_NAME) < Type,                                                      \
-             Ts... > () && !ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME) < Type,                                        \
-             Ts... > () && !ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME) < Type,                                        \
-             Ts... > () && ARIA_CONCAT(IsPropFuncCallable1, FUNC_NAME) < Type, Ts... > ())                             \
-  SPECIFIERS void FUNC_NAME(Ts &&...ts) {                                                                              \
-    decltype(auto) v = value();                                                                                        \
-                                                                                                                       \
-    v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...);                                                                 \
-    *this = v; /* Because this is a wrapper for non-const functions. */                                                \
-  }                                                                                                                    \
-                                                                                                                       \
-  /* 2. Return something, const. */                                                                                    \
-  template <typename... Ts>                                                                                            \
-    requires(!ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME) < Type,                                                      \
-             Ts... > () && ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME) < Type, Ts... > ())                             \
-  [[nodiscard]] SPECIFIERS decltype(auto) FUNC_NAME(Ts &&...ts) const {                                                \
-    decltype(auto) v = value();                                                                                        \
-    using TGet = decltype(v);                                                                                          \
-                                                                                                                       \
-    using TRes = decltype(v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...));                                          \
-                                                                                                                       \
-    if constexpr (property::detail::SettableProxyType<TRes>) {                                                         \
-      /* This requirement is necessary to avoid settable proxies pointing to temporary variables. */                   \
-      ARIA_STATIC_ASSERT_FALSE("Return type of the property function should not be a settable proxy type");            \
-    } else {                                                                                                           \
-      if constexpr (property::detail::isReferenceOrPointer<TRes>) {                                                    \
-        ARIA_STATIC_ASSERT_FALSE("Return type of the property function should not be a reference or a pointer");       \
-      } else {                                                                                                         \
-        return Auto(v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...));                                                \
-      }                                                                                                                \
-    }                                                                                                                  \
-  }                                                                                                                    \
-                                                                                                                       \
-  /* 3. Void, const. */                                                                                                \
-  template <typename... Ts>                                                                                            \
-    requires(!ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME) < Type,                                                      \
-             Ts... > () && ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME) < Type, Ts... > ())                             \
-  SPECIFIERS void FUNC_NAME(Ts &&...ts) const {                                                                        \
-    value() DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...);                                                           \
-  }                                                                                                                    \
-                                                                                                                       \
-private:                                                                                                               \
+  /* clang-format on */                                                                                                   \
+                                                                                                                          \
+  /* 0. Return something, non-const. */                                                                                   \
+  template <typename T, typename... Ts>                                                                                   \
+  [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable0, FUNC_NAME)() {                                     \
+    /* return (requires(T &v, Ts &&...ts) { */                                                                            \
+    /*   { v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...) } -> ::ARIA::property::detail::DiffFrom<void>; */            \
+    /* }); */                                                                                                             \
+    using TArray = MakeTypeArray<Ts...>;                                                                                  \
+    if constexpr (TArray::size == 0)                                                                                      \
+      return ARIA_CONCAT(IsPropFuncCallable0Args0, FUNC_NAME)<T>();                                                       \
+    else if constexpr (TArray::size == 1)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable0Args1, FUNC_NAME)<T, typename TArray::template Get<0>>();                     \
+    else if constexpr (TArray::size == 2)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable0Args2,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>>();             \
+    else if constexpr (TArray::size == 3)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable0Args3,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>>();                                                  \
+    else if constexpr (TArray::size == 4)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable0Args4,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>, typename TArray::template Get<3>>();                \
+    else if constexpr (TArray::size == 5)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable0Args5,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>, typename TArray::template Get<3>,                   \
+                                    typename TArray::template Get<4>>();                                                  \
+    else                                                                                                                  \
+      ARIA_STATIC_ASSERT_FALSE("Too many arguments passed to the property function, please contact the developers");      \
+  }                                                                                                                       \
+                                                                                                                          \
+  /* 1. Void, non-const. */                                                                                               \
+  template <typename T, typename... Ts>                                                                                   \
+  [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable1, FUNC_NAME)() {                                     \
+    /* return (requires(T &v, Ts &&...ts) { */                                                                            \
+    /*   { v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...) } -> std::same_as<void>; */                                  \
+    /* }); */                                                                                                             \
+    using TArray = MakeTypeArray<Ts...>;                                                                                  \
+    if constexpr (TArray::size == 0)                                                                                      \
+      return ARIA_CONCAT(IsPropFuncCallable1Args0, FUNC_NAME)<T>();                                                       \
+    else if constexpr (TArray::size == 1)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable1Args1, FUNC_NAME)<T, typename TArray::template Get<0>>();                     \
+    else if constexpr (TArray::size == 2)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable1Args2,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>>();             \
+    else if constexpr (TArray::size == 3)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable1Args3,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>>();                                                  \
+    else if constexpr (TArray::size == 4)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable1Args4,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>, typename TArray::template Get<3>>();                \
+    else if constexpr (TArray::size == 5)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable1Args5,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>, typename TArray::template Get<3>,                   \
+                                    typename TArray::template Get<4>>();                                                  \
+    else                                                                                                                  \
+      ARIA_STATIC_ASSERT_FALSE("Too many arguments passed to the property function, please contact the developers");      \
+  }                                                                                                                       \
+                                                                                                                          \
+  /* 2. Return something, const. */                                                                                       \
+  template <typename T, typename... Ts>                                                                                   \
+  [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME)() {                                     \
+    /* return (requires(const T &v, Ts &&...ts) { */                                                                      \
+    /*   { v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...) } -> ::ARIA::property::detail::DiffFrom<void>; */            \
+    /* }); */                                                                                                             \
+    using TArray = MakeTypeArray<Ts...>;                                                                                  \
+    if constexpr (TArray::size == 0)                                                                                      \
+      return ARIA_CONCAT(IsPropFuncCallable2Args0, FUNC_NAME)<T>();                                                       \
+    else if constexpr (TArray::size == 1)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable2Args1, FUNC_NAME)<T, typename TArray::template Get<0>>();                     \
+    else if constexpr (TArray::size == 2)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable2Args2,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>>();             \
+    else if constexpr (TArray::size == 3)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable2Args3,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>>();                                                  \
+    else if constexpr (TArray::size == 4)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable2Args4,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>, typename TArray::template Get<3>>();                \
+    else if constexpr (TArray::size == 5)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable2Args5,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>, typename TArray::template Get<3>,                   \
+                                    typename TArray::template Get<4>>();                                                  \
+    else                                                                                                                  \
+      ARIA_STATIC_ASSERT_FALSE("Too many arguments passed to the property function, please contact the developers");      \
+  }                                                                                                                       \
+                                                                                                                          \
+  /* 3. Void, const. */                                                                                                   \
+  template <typename T, typename... Ts>                                                                                   \
+  [[nodiscard]] static consteval bool ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME)() {                                     \
+    /* return (requires(const T &v, Ts &&...ts) { */                                                                      \
+    /*   { v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...) } -> std::same_as<void>; */                                  \
+    /* }); */                                                                                                             \
+    using TArray = MakeTypeArray<Ts...>;                                                                                  \
+    if constexpr (TArray::size == 0)                                                                                      \
+      return ARIA_CONCAT(IsPropFuncCallable3Args0, FUNC_NAME)<T>();                                                       \
+    else if constexpr (TArray::size == 1)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable3Args1, FUNC_NAME)<T, typename TArray::template Get<0>>();                     \
+    else if constexpr (TArray::size == 2)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable3Args2,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>>();             \
+    else if constexpr (TArray::size == 3)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable3Args3,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>>();                                                  \
+    else if constexpr (TArray::size == 4)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable3Args4,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>, typename TArray::template Get<3>>();                \
+    else if constexpr (TArray::size == 5)                                                                                 \
+      return ARIA_CONCAT(IsPropFuncCallable3Args5,                                                                        \
+                         FUNC_NAME)<T, typename TArray::template Get<0>, typename TArray::template Get<1>,                \
+                                    typename TArray::template Get<2>, typename TArray::template Get<3>,                   \
+                                    typename TArray::template Get<4>>();                                                  \
+    else                                                                                                                  \
+      ARIA_STATIC_ASSERT_FALSE("Too many arguments passed to the property function, please contact the developers");      \
+  }                                                                                                                       \
+                                                                                                                          \
+  ACCESS:                                                                                                                 \
+  /* 0. Return something, non-const. */                                                                                   \
+  /* This wrapper requires the underlying functions to be called only with non-const instances. */                        \
+  /* And should return something. */                                                                                      \
+  template <typename... Ts>                                                                                               \
+    requires(!ARIA_CONCAT(IsPropFuncCallable1, FUNC_NAME) < Type,                                                         \
+             Ts...>() && !ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME) < Type,                                             \
+             Ts...>() && !ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME) < Type,                                             \
+      Ts...>() && ARIA_CONCAT(IsPropFuncCallable0, FUNC_NAME) < Type, Ts...>())                                           \
+  [[nodiscard]] SPECIFIERS decltype(auto) FUNC_NAME(Ts &&...ts) {                                                         \
+    decltype(auto) v = value();                                                                                           \
+    using TGet = decltype(v);                                                                                             \
+                                                                                                                          \
+    using TRes = decltype(v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...));                                             \
+                                                                                                                          \
+    if constexpr (::ARIA::property::detail::SettableProxyType<TRes>) {                                                    \
+      /* This requirement is necessary to avoid settable proxies pointing to temporary variables. */                      \
+      ARIA_STATIC_ASSERT_FALSE("Return type of the property function should not be a settable proxy type");               \
+    } else {                                                                                                              \
+      if constexpr (::ARIA::property::detail::isReferenceOrPointer<TRes>) {                                               \
+        ARIA_STATIC_ASSERT_FALSE("Return type of the property function should not be a reference or a pointer");          \
+      } else {                                                                                                            \
+        auto resAuto = ::ARIA::Auto(v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...));                                   \
+        *this = v; /* Because this is a wrapper for non-const functions. */                                               \
+        return resAuto;                                                                                                   \
+      }                                                                                                                   \
+    }                                                                                                                     \
+  }                                                                                                                       \
+                                                                                                                          \
+  /* 1. Void, non-const. */                                                                                               \
+  template <typename... Ts>                                                                                               \
+    requires(!ARIA_CONCAT(IsPropFuncCallable0, FUNC_NAME) < Type,                                                         \
+             Ts...>() && !ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME) < Type,                                             \
+             Ts...>() && !ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME) < Type,                                             \
+      Ts...>() && ARIA_CONCAT(IsPropFuncCallable1, FUNC_NAME) < Type,                                                     \
+      Ts...>())                                                                                                           \
+    SPECIFIERS void FUNC_NAME(Ts &&...ts) {                                                                               \
+    decltype(auto) v = value();                                                                                           \
+                                                                                                                          \
+    v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...);                                                                    \
+    *this = v; /* Because this is a wrapper for non-const functions. */                                                   \
+  }                                                                                                                       \
+                                                                                                                          \
+  /* 2. Return something, const. */                                                                                       \
+  template <typename... Ts>                                                                                               \
+    requires(!ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME) < Type,                                                         \
+             Ts...>() && ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME) < Type,                                              \
+             Ts...>())                                                                                                    \
+  [[nodiscard]] SPECIFIERS decltype(auto) FUNC_NAME(Ts &&...ts) const {                                                   \
+    decltype(auto) v = value();                                                                                           \
+    using TGet = decltype(v);                                                                                             \
+                                                                                                                          \
+    using TRes = decltype(v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...));                                             \
+                                                                                                                          \
+    if constexpr (::ARIA::property::detail::SettableProxyType<TRes>) {                                                    \
+      /* This requirement is necessary to avoid settable proxies pointing to temporary variables. */                      \
+      ARIA_STATIC_ASSERT_FALSE("Return type of the property function should not be a settable proxy type");               \
+    } else {                                                                                                              \
+      if constexpr (::ARIA::property::detail::isReferenceOrPointer<TRes>) {                                               \
+        ARIA_STATIC_ASSERT_FALSE("Return type of the property function should not be a reference or a pointer");          \
+      } else {                                                                                                            \
+        return ::ARIA::Auto(v DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...));                                           \
+      }                                                                                                                   \
+    }                                                                                                                     \
+  }                                                                                                                       \
+                                                                                                                          \
+  /* 3. Void, const. */                                                                                                   \
+  template <typename... Ts>                                                                                               \
+    requires(!ARIA_CONCAT(IsPropFuncCallable2, FUNC_NAME) < Type,                                                         \
+             Ts...>() && ARIA_CONCAT(IsPropFuncCallable3, FUNC_NAME) < Type,                                              \
+             Ts...>())                                                                                                    \
+  SPECIFIERS void FUNC_NAME(Ts &&...ts) const {                                                                           \
+    value() DOT_OR_ARROW FUNC_NAME(std::forward<Ts>(ts)...);                                                              \
+  }                                                                                                                       \
+                                                                                                                          \
+private:                                                                                                                  \
   class ARIA_CONCAT(DummyClassForPropFunc, FUNC_NAME) {}
 
 } // namespace ARIA
