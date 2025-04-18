@@ -37,5 +37,10 @@ int main() {
   //! 返回的是某个 bool 的“代理”。
   //! 和 student.year() 非常类似。
 
+  //! 那么，代价是什么？
+  for (auto &v : vec0) {}
+
+  for (auto &v : vec1) {}
+
   return 0;
 }
