@@ -14,6 +14,8 @@ public:
 
   int year() const { return id_ / 1000000; } // 取学号的前 4 位。
 
+  void setYear(int value) { id_ = id_ % 1000000 + value * 1000000; } // 修改学号的前 4 位。
+
 private:
   std::string name_;
   int id_ = 0;
@@ -33,7 +35,8 @@ int main() {
   student.id() = 2028533999;
   Print(student);
 
-  student.year() -= 4;
+  // student.year() -= 4;
+  student.setYear(student.year() - 4);
   Print(student);
 
   return 0;
