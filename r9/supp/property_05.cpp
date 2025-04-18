@@ -36,7 +36,6 @@ private:
   //* 我们希望能这么写代码：
   //*   int y = student.year();
   //*
-  //* 这意味着，每次都需要当场根据 id 计算 year。
   //* 只需要为 year 这个“代理”定义一个叫做“getter”的神秘函数，
   //* year 就能够自动支持这个功能了。
   int ARIA_PROP_GETTER(year)() const {
@@ -48,9 +47,8 @@ private:
   //*   student.year() = y;
   //*   student.year() -= 4;
   //*
-  //* 因为我们只存储了 id，所以需要根据给定的 year 修改 id。
   //* 只需要为 year 这个“代理”定义一个叫做“setter”的神秘函数，
-  //* year 就能够自动支持所有相关功能，包括 += 和 -=。
+  //* year 就能够自动支持所有相关功能，包括 += 和 -= 这些运算符。
   void ARIA_PROP_SETTER(year)(const int &value) {
     // 修改学号的前 4 位。
     id_ = id_ % 1000000 + value * 1000000;
