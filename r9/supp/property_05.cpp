@@ -56,7 +56,7 @@ private:
 };
 
 //! student.year() 会返回一个神秘“变量”，这个变量就是我们所说的“代理”。
-//* 当我们试图读取这个“代理”时，它会悄悄调用“getter”，
+//* 当我们试图“读取” (get) 这个“代理”时，它会悄悄调用“getter”，
 //* “getter”会根据 id 计算出 year。
 void Print(const Student &student) {
   std::cout << "name: " << student.name() << std::endl //
@@ -73,7 +73,7 @@ int main() {
   Print(student);
 
   //! student.year() 会返回一个神秘“变量”，这个变量就是我们所说的“代理”。
-  //* 当我们试图修改这个“代理”时，它会悄悄调用“setter”，
+  //* 当我们试图“修改” (set) 这个“代理”时，它会悄悄调用“setter”，
   //* “setter”会根据给定的 year 修改 id。
   student.year() -= 4;
   Print(student);
