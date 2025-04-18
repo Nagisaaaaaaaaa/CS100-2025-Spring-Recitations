@@ -1,7 +1,5 @@
 #include "ARIA/Property.h"
 
-using namespace ARIA;
-
 //? 《Re：从零开始的大一生活》
 
 //* 我们来直观地感受一下“代理” (proxy) 的强大之处。
