@@ -3,7 +3,20 @@
 //? 《Re：从零开始的大一生活》
 
 class Student {
-  // TODO: Your code here.
+public:
+  const std::string &name() const { return name_; }
+
+  std::string &name() { return name_; }
+
+  const int &id() const { return id_; }
+
+  int &id() { return id_; }
+
+  int year() const { return id_ / 1000000; } // 取学号的前 4 位。
+
+private:
+  std::string name_;
+  int id_ = 0;
 };
 
 void Print(const Student &student) {
