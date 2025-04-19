@@ -2,8 +2,8 @@
 
 //? 《右值终末旅行》第二季
 
+//! 为了让参数的“江湖地位”不再相同，
 //! 我们把 const std::string & 改成 std::string &，
-//! 这样他们的“江湖地位”肯定就不相同了对吧。
 void Print(std::string &str) {
   std::cout << str + "!" << std::endl;
 }
