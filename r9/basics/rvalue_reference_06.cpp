@@ -26,6 +26,9 @@ void Go(std::string &&str) {
   // 这样就能调用 && 的那个版本了。
   // Print(std::string(str));
 
+  //! 但很多时候，我们不希望做拷贝。
+  //! 比如这个例子，最优解一定是不需要任何拷贝的。
+
   //! 还记得我们上节课介绍了 std::move，它能够“把拷贝换成掠夺”，
   //* 我们也提到过，std::move(str) 这个“表达式”的“类别”是
   //* 将亡值 (expiring value, xvalue)。
