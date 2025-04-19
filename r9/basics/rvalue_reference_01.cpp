@@ -1,7 +1,7 @@
 /*
 
   ! Baseline:
-  ! 1. const & 能够延长纯右值的生命周期：
+  ! 1. const & 能够延长纯右值的生命周期。
   !   (1). const int &         能延长 5                  这个纯右值的生命周期。
   !   (2). const std::string & 能延长 std::string("QAQ") 这个纯右值的生命周期。
   !
