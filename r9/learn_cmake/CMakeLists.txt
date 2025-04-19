@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.25.2)
 project(LearnCMake LANGUAGES CXX)
 
+if(NOT DEFINED ENV{CPM_SOURCE_CACHE})
+  set(ENV{CPM_SOURCE_CACHE} "${CMAKE_SOURCE_DIR}/cpm")
+endif()
+
 include(FetchContent)
 FetchContent_Declare(
   CPM
@@ -11,8 +15,9 @@ FetchContent_MakeAvailable(CPM)
 
 CPMAddPackage(
   NAME glm
-  GITHUB_REPOSITORY g-truc/glm
-  GIT_TAG 1.0.1
+  # GITHUB_REPOSITORY g-truc/glm
+  # GIT_TAG 1.0.1
+  URL https://github.com/g-truc/glm/releases/download/1.0.1/glm-1.0.1-light.zip
 )
 
 add_executable(${PROJECT_NAME} main.cpp)
