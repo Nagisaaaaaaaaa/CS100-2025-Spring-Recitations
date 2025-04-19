@@ -14,7 +14,7 @@ void Print(const std::string &str) {
   std::cout << str + "!" << std::endl;
 }
 
-//! 我们希望函数在接收右值的时候，做一点小优化，做个函数重载。
+//! 重载：我们希望函数在接收右值的时候，做一点小优化。
 void Print(std::string str) {
   //! 有时候用 += 会比 + 跑得更快。
   str += "!";
