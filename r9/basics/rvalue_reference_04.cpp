@@ -1,6 +1,6 @@
-//? 《右值终末旅行》第二季
-
 #include <iostream>
+
+//? 《右值终末旅行》第二季
 
 void Print(const std::string &str) {
   std::cout << str + "!" << std::endl;
