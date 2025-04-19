@@ -1,7 +1,7 @@
 #include <glm/glm.hpp>
 #include <iostream>
 
-using namespace glm;
+using glm::vec3, glm::cross;
 
 int main() {
   vec3 a{1, 0, 0};
