@@ -11,7 +11,10 @@ void Print(const std::string &str) {
 //! C++ 设计师引入了 右值引用 (r-value reference) 这个东西。
 //!
 //! 我们把 std::string 改成 std::string &&，
-//! 这里的 && 就表示它是一个 右值引用。
+//! std::string && 就是一个 右值引用“类型”。
+//!
+//! 右值引用 也是一种引用，但它只能接收右值，不能接收左值。
+//! 所以当传入左值时，调用的永远是隔壁重载。
 void Print(std::string &&str) {
   str += "!";
   std::cout << str << std::endl;
