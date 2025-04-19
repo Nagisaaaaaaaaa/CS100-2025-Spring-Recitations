@@ -64,6 +64,7 @@ build/
 build-*/
 cmake-build-*/
 .vs/
+cpm/
 
 # MacOS
 .DS_Store
