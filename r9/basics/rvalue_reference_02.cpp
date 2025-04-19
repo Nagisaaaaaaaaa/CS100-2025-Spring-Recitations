@@ -34,7 +34,7 @@ int main() {
   //! error: call of overloaded function is ambiguous.
 
   // 为什么会这样？
-  //! C++ 的函数传参，写 std::string 和 const std::string & 这两种写法，
+  //! C++ 的函数参数，std::string 和 const std::string & 这两种写法，
   //! 它们的“江湖地位”是相同的，因为它们都能接收左值和右值。
 
   return 0;
