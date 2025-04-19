@@ -11,7 +11,7 @@ void Print(std::string &&str) {
   std::cout << str << std::endl;
 }
 
-// 假设我们有个叫 Go 的函数，它会调用 Print。
+// 假设我们还有一个叫 Go 的函数，它会调用 Print。
 // 和 Print 一样，Go 也需要有两个版本。
 
 void Go(const std::string &str) {
