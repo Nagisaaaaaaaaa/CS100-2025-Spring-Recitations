@@ -4,20 +4,24 @@
   ! 1. const & 能够延长纯右值的生命周期：
   !   (1). const int &         能延长 5                  这个纯右值的生命周期。
   !   (2). const std::string & 能延长 std::string("QAQ") 这个纯右值的生命周期。
+  !
   ! 2. 函数参数写 (int x)           和写 (const int &x)           有什么区别？
   !    函数参数写 (std::string str) 和写 (const std::string &str) 有什么区别？
-  !   (1). int: 孤魂野鬼找地方住。
+  !   (1). int        : 孤魂野鬼找地方住。
   !   (2). const int &: 延长纯右值的生命周期。
-  ! 3. 如何在函数传参的时候减少拷贝次数？
-  !   (1). 大多数时候，用 const & 就够了。
+  !
+  ! 3. 调用 Student 的构造函数会拷贝几次 std::string？
+  !   (1). 有多少种排列组合？它们的区别是什么？
   !   (2). std::move 这个函数的意思是“把拷贝换成掠夺”。
-  ! 4. 等于号的三种写法：
+  !
+  ! 4. 这三个等于号的含义分别是什么？
   !   (1). std::string str = std::string("QAQ"); // 孤魂野鬼找地方住。
   !   (2). std::string str = str0;               // 拷贝。
   !   (3). std::string str = std::move(str0);    // “掠夺”。
+
   * Bonus:
-  * 2. C++ 的表达式可以分为 lvalue，prvalue，xvalue 三种“类别”。
-  * 3. 其中 prvalue 和 xvalue 这两种“类别”统称为 rvalue。
+  * 5. C++ 的表达式可以分为 lvalue，prvalue，xvalue 三种“类别”。
+  * 6. 其中 prvalue 和 xvalue 这两种“类别”统称为 rvalue。
 
 */
 
