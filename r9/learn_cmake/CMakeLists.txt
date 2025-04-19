@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.25.2)
 project(LearnCMake LANGUAGES CXX)
 
-if(NOT DEFINED ENV{CPM_SOURCE_CACHE})
-  set(ENV{CPM_SOURCE_CACHE} "${CMAKE_SOURCE_DIR}/cpm")
-endif()
+# if(NOT DEFINED ENV{CPM_SOURCE_CACHE})
+set(ENV{CPM_SOURCE_CACHE} "${CMAKE_SOURCE_DIR}/cpm")
+# endif()
 
 include(FetchContent)
 FetchContent_Declare(
