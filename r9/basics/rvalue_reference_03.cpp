@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-//! 我们把 const T & 改成 T &，
+//! 我们把 const std::string & 改成 std::string &，
 //! 这样他们的“江湖地位”肯定就不相同了对吧。
 void Print(std::string &str) {
   std::cout << str + "!" << std::endl;

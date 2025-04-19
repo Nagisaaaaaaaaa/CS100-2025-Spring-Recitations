@@ -1,14 +1,14 @@
 /*
 
   ! Baseline:
-  ! 1. const & 能够延长纯右值的生命周期。
-  !   (1). const int &         能延长 5                  这个纯右值的生命周期。
-  !   (2). const std::string & 能延长 std::string("QAQ") 这个纯右值的生命周期。
+  ! 1. const & 能够延长右值的生命周期。
+  !   (1). const int &         能延长 5                  这个右值的生命周期。
+  !   (2). const std::string & 能延长 std::string("QAQ") 这个右值的生命周期。
   !
   ! 2. 函数参数写 (int x)           和写 (const int &x)           有什么区别？
   !    函数参数写 (std::string str) 和写 (const std::string &str) 有什么区别？
   !   (1). int        : 孤魂野鬼找地方住。
-  !   (2). const int &: 延长纯右值的生命周期。
+  !   (2). const int &: 延长右值的生命周期。
   !
   ! 3. 调用 Student 的构造函数会拷贝几次 std::string？
   !   (1). 有多少种排列组合？它们的区别是什么？
