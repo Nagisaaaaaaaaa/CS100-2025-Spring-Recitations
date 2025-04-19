@@ -6,7 +6,7 @@ void Print(const std::string &str) {
   std::cout << str + "!" << std::endl;
 }
 
-//! 一切的根源都是重载导致的 ambiguous。
+//! 一切的根源都是重载导致的 ambiguity。
 //! 为了绕开这个问题，
 //! C++ 设计师引入了 右值引用 (r-value reference) 这个东西。
 //!
