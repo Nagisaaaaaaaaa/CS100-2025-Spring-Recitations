@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.25.2)
 project(LearnCMake LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
-
 include(FetchContent)
 FetchContent_Declare(
   CPM
@@ -19,8 +17,10 @@ CPMAddPackage(
 
 add_executable(${PROJECT_NAME} main.cpp)
 
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC glm::glm)
+
 set_target_properties(${PROJECT_NAME} PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
 )
-
-target_link_libraries(${PROJECT_NAME} PUBLIC glm::glm)
