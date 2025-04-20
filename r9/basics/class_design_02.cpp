@@ -55,7 +55,11 @@ int main() {
   //! 1. 99% 的情况下，不要让构造函数的参数超过 2 个。
   //! 2. 95% 的情况下，不要让构造函数的参数超过 1 个。
   //! 3. 尽可能支持默认构造 (0 个参数)。
-  //! 4. 如果真的希望超过 2 个，使用“builder pattern” (见下一集)。
+  //! 4. 如果真的希望超过 2 个，请使用下一集的写法。
+
+  std::cout << student.name() << std::endl;
+  std::cout << student.id() << std::endl;
+  std::cout << student.email() << std::endl;
 
   return 0;
 }
