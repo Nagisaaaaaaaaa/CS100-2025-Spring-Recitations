@@ -82,6 +82,7 @@ int main() {
   // HW5 Problem2:
   //   (OJ) At least one class should have a user-provided constructor
   //        that is not a default, copy or move constructor.
+  //! 仅限 HW5。
 
   return 0;
 }
