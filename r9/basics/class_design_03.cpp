@@ -69,6 +69,11 @@ int main() {
                      .id(2024533999)
                      .email("Dingzh6@shanghaitech.edu.cn");
 
+  //* 类似的，如果普通函数的参数超过 2 个，我们也应该使用这种设计。
+
+  //* 这种设计模式的名字叫做“builder pattern”，其核心思想是：
+  //*   通过多个简单的小步骤，来构建出一个复杂的大东西。
+
   std::cout << student.name() << std::endl;
   std::cout << student.id() << std::endl;
   std::cout << student.email() << std::endl;
