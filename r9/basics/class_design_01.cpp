@@ -35,9 +35,9 @@ public:
 
   //! 为什么这里还要写一次 public？
 public:
-  // TODO: 在这里实现一些成员函数。
+  // TODO: 在这里实现一些 public 成员函数。
 
-  //! private 的成员和函数通常放在最下面，
+  //! private 的成员变量和函数通常放在最下面，
   //! 因为使用这个 class 的人没有义务了解任何实现细节。
 private:
   //! 成员变量推荐使用这几种命名方式：
@@ -47,6 +47,10 @@ private:
   std::string name_;
   int id_;
   std::string email_;
+
+  //! 为什么这里还要写一次 private？
+private:
+  // TODO: 在这里实现一些 private 成员函数。
 };
 
 int main() {
