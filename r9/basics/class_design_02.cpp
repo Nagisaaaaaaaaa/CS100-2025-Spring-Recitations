@@ -9,6 +9,9 @@
 
 class Student {
 public:
+  //! 这个构造函数，设计得足够好吗？
+  //! 为什么参数顺序要设计成：名字、学号、邮箱 呢？
+  //! 难道名字一定比学号重要吗？不一定吧？我还觉得邮箱最重要呢！
   Student(std::string name, int id, std::string email) //
       : name_(std::move(name)), id_(id), email_(std::move(email)) {}
 
@@ -41,7 +44,8 @@ private:
 };
 
 int main() {
-  Student student{"Zhen Ding", 2024533999, "Dingzh6@shanghaitech.edu.cn"};
+  //! 请找到这行代码中的 bug。
+  Student student{"Dingzh6@shanghaitech.edu.cn", 2024533999, "Zhen Ding"};
 
   Student student1 = student;
   Student student2 = std::move(student);
