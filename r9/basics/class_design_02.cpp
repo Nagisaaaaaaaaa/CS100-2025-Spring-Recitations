@@ -47,8 +47,11 @@ int main() {
   //! 请找到这行代码中的 bug。
   Student student{"Dingzh6@shanghaitech.edu.cn", 2024533999, "Zhen Ding"};
 
-  Student student1 = student;
-  Student student2 = std::move(student);
+  //! 构造函数的设计原则：
+  //! 1. 99% 的情况下，不要让构造函数的参数超过 2 个。
+  //! 2. 95% 的情况下，不要让构造函数的参数超过 1 个。
+  //! 3. 尽可能支持默认构造 (0 个参数)。
+  //! 4. 如果真的希望超过 2 个，使用“builder pattern” (见下一集)。
 
   return 0;
 }
