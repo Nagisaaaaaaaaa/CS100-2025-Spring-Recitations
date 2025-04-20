@@ -1,3 +1,10 @@
+/*
+
+  ! Baseline:
+  ! 1. 设计一个 class 需要考虑哪些问题？
+
+*/
+
 #include <iostream>
 
 class Student {
