@@ -1,6 +1,7 @@
 /*
 
-  ! Baseline:
+  * Bonus:
+  * 1. 如何使用“builder pattern”这种设计模式，来让传参更方便？
 
 */
 
