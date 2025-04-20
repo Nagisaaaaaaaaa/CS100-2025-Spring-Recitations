@@ -14,10 +14,10 @@ public:
   //* Step 1: 支持默认构造。
   Student() = default;
 
-  //* Step 2: 为每个成员定义一个这样的函数：
+  //* Step 2: 为每个成员变量定义一个这样的成员函数：
   //* 1. 接收对应类型的 value。
   //* 2. 根据给定的 value 修改成员。
-  //* 3. 返回值类型为 Student &，并且 return *this。
+  //* 3. 返回值类型为 Student &，并且 return *this，返回自己。
   Student &name(std::string value) {
     name() = std::move(value);
     return *this;
