@@ -8,8 +8,15 @@
 
 class Student {
 public:
+  //* 如何实现下面那种梦幻的构造方式？
+
+  //* Step 1: 支持默认构造。
   Student() = default;
 
+  //* Step 2: 为每个成员定义一个这样的函数：
+  //* 1. 接收对应类型的 value。
+  //* 2. 根据给定的 value 修改成员。
+  //* 3. 返回值类型为 Student &，并且 return *this。
   Student &name(std::string value) {
     name() = std::move(value);
     return *this;
@@ -45,7 +52,7 @@ public:
   //
   //
 private:
-  //! 我们希望支持默认构造，因此所有成员都需要指定默认值：
+  //! 为了支持默认构造，所有成员都需要指定默认值：
   std::string name_;  //! 默认值是空字符串。
   int id_ = 0;        //! 默认值是 0。
   std::string email_; //! 默认值是空字符串。
@@ -55,6 +62,8 @@ private:
 };
 
 int main() {
+  //* 如果构造函数的参数超过 2 个，构造的时候带上它们的名字。
+  //* 这么做的好处是，不再要求传参顺序，永远都不会出错！
   auto student = Student() //
                      .name("Zhen Ding")
                      .id(2024533999)
