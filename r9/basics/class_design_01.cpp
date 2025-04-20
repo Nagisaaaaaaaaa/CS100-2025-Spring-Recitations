@@ -59,7 +59,8 @@ private:
 };
 
 int main() {
-  //! 构造函数能用花括号调用就不要用圆括号。
+  //! 构造函数能用花括号调用，就不要用圆括号调用。
+  //! 不到万不得已，请永远不要使用 std::initializer_list！
   Student student{"Zhen Ding", 2024533999, "Dingzh6@shanghaitech.edu.cn"};
 
   //! 我们上节课讲过，拷贝/移动 构造/赋值 析构 那 5 个函数，
