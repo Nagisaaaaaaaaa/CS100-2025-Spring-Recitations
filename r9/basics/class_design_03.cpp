@@ -79,5 +79,9 @@ int main() {
   std::cout << student.id() << std::endl;
   std::cout << student.email() << std::endl;
 
+  // HW5 Problem2:
+  //   (OJ) At least one class should have a user-provided constructor
+  //        that is not a default, copy or move constructor.
+
   return 0;
 }
