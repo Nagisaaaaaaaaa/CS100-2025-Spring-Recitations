@@ -44,7 +44,7 @@ private:
 
 int main() {
   //! 构造函数能用花括号调用就不要用圆括号。
-  Student student{"Zhen Ding", 2028533999, "Dingzh6@shanghaitech.edu.cn"};
+  Student student{"Zhen Ding", 2024533999, "Dingzh6@shanghaitech.edu.cn"};
 
   //! 我们上节课讲过，拷贝/移动 构造/赋值 析构 那 5 个函数，
   //! 只要一个都不写，编译器就会自动使用默认的版本。
