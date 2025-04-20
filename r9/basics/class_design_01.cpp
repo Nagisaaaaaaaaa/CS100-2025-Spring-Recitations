@@ -8,7 +8,7 @@ public:
   Student(std::string name, int id, std::string email) //
       : name_(std::move(name)), id_(id), email_(std::move(email)) {}
 
-  //! 为什么这里助教还要写一次 public？
+  //! 为什么这里还要写一次 public？
   //! 仅仅是为了让 class 的结构更清晰。
 public:
   //! 对于成员变量的访问，一定要
@@ -25,6 +25,10 @@ public:
   const std::string &email() const { return email_; }
 
   std::string &email() { return email_; }
+
+  //! 为什么这里还要写一次 public？
+public:
+  // TODO: 在这里实现一些成员函数。
 
   //! private 的成员和函数通常放在最下面，
   //! 因为使用这个 class 的人没有义务了解任何实现细节。
