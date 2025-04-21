@@ -11,6 +11,7 @@ IndentWidth: 2
 AlwaysBreakTemplateDeclarations: Yes
 BinPackParameters: false
 AllowShortFunctionsOnASingleLine: Inline
+BreakConstructorInitializers: BeforeComma
 
 InsertNewlineAtEOF: true
 SeparateDefinitionBlocks: Always
