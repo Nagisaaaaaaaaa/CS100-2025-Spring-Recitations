@@ -1,3 +1,11 @@
+/*
+
+  ! Baseline:
+  ! 理解这重要的一课。
+  ! 但是不要照搬助教代码然后submit~
+
+*/
+
 #ifndef DYNARRAY_HPP
 #define DYNARRAY_HPP 1
 
@@ -17,7 +25,7 @@ public:
   // Construct by length
   explicit Dynarray(size_type size)
       : size_(size)
-      , data_(new int[size_]) {
+      , data_(size_ ? new int[size_] : nullptr) {
     for (size_type k = 0; k < size_; ++k) {
       data_[k] = 0;
     }
@@ -26,7 +34,7 @@ public:
   // Construct by length & value
   Dynarray(size_type size, int val)
       : size_(size)
-      , data_(new int[size_]) {
+      , data_(size_ ? new int[size_] : nullptr) {
     for (size_type k = 0; k < size_; ++k) {
       data_[k] = val;
     }
@@ -35,7 +43,7 @@ public:
   // Construct by span
   Dynarray(const int *begin, const int *end)
       : size_((end - begin) > 0 ? (end - begin) : 0)
-      , data_(new int[size_]) {
+      , data_(size_ ? new int[size_] : nullptr) {
     for (size_type k = 0; k < size_; ++k) {
       data_[k] = begin[k];
     }
@@ -55,6 +63,7 @@ public:
       : size_(other.size_)
       , data_(other.data_) {
     other.data_ = nullptr;
+    other.size_ = 0;
   }
 
   // Copy assignment
@@ -83,8 +92,14 @@ public:
     size_ = other.size_;
     data_ = other.data_;
     other.data_ = nullptr;
+    other.size_ = 0;
     return *this;
   }
+
+  //! 聪明伶俐的同学们一定已经发现了COPY&MOVE赋值代码的三点问题：
+  //! 1. 每次都需要做一个自指检查，但这真的必要吗？
+  //! 2. 在COPY当中，为了保证exception safety，我们如履薄冰。
+  //! 3. 这两个赋值的定义有着大段的逻辑重复。
 
 public:
   size_type size() const { return size_; }

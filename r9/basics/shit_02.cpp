@@ -25,6 +25,7 @@ int main() {
   const int &c = a;
   const int &&d = 42;
 
+  //! 我们一起来品一下参数匹配的过程~
   foo(std::move(b)); // int &&
   foo(std::move(c)); // const int &
   foo(std::move(d)); // const int &
