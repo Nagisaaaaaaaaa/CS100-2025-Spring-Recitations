@@ -29,6 +29,7 @@ Checks: >
   -cppcoreguidelines-owning-memory,
   -cppcoreguidelines-pro-bounds-constant-array-index,
   -misc-non-private-member-variables-in-classes,
+  -modernize-use-nodiscard,
   -modernize-use-trailing-return-type,
   -readability-identifier-length,
   -readability-magic-numbers,
