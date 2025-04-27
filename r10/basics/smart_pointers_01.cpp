@@ -20,6 +20,8 @@ private:
 };
 
 int main() {
+  //? 《C++ 的超能力指针》
+
   {
     std::unique_ptr<Window> window = std::make_unique<Window>(2560, 1440);
     std::cout << "Width : " << window->width() << std::endl;

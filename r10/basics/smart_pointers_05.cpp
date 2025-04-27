@@ -19,6 +19,8 @@ private:
   int height_;
 };
 
+//? 《C++ 的超能力指针》
+
 //! 我们在 R8/basics 学习过 pass-by-view 的设计思想，所以
 //! 请永远选择 Window *window 这版！
 
