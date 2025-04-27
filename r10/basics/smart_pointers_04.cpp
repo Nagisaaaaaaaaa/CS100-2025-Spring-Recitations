@@ -22,7 +22,7 @@ private:
 int main() {
   //? 《C++ 的超能力指针》
 
-  // 我们有两种智能指针，unique_ptr 和 shared_ptr。
+  // 总之，我们有两种智能指针，unique_ptr 和 shared_ptr。
   //? 纯爱战士和牛头人。
   auto window0 = std::make_unique<Window>(2560, 1440);
   auto window1 = std::make_shared<Window>(2560, 1440);
