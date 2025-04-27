@@ -21,17 +21,19 @@ private:
 
 //? 《C++ 的超能力指针》
 
-// 假设我们想实现一个函数，在给定的 Window 里面画画。
-//! 函数参数怎么设计最合适？
-
-void RenderSomethingInWindow(std::unique_ptr<Window> &window) {
-  // ...
-}
-
-void RenderSomethingInWindow(std::shared_ptr<Window> &window) {
-  // ...
-}
+//! 我们在 R8/basics 学习过 pass-by-view 的设计思想，所以
+//! 请永远选择 Window *window 这版！
 
 void RenderSomethingInWindow(Window *window) {
   // ...
+}
+
+int main() {
+  auto window0 = std::make_unique<Window>(2560, 1440);
+  auto window1 = std::make_shared<Window>(2560, 1440);
+
+  RenderSomethingInWindow(window0.get());
+  RenderSomethingInWindow(window1.get());
+
+  return 0;
 }
