@@ -29,6 +29,7 @@ int main() {
   }
 
   {
+    // 用 auto 来让代码写得更短。
     auto window = std::make_shared<Window>(2560, 1440);
     // ...
   }
