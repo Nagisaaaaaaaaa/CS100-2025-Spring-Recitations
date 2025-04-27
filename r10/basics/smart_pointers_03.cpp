@@ -42,6 +42,7 @@ int main() {
   //* 2. 如果存在某个需求，
   //*    很不适合用 unique_ptr，但很适合用 shared_ptr，
   //*    那你就得考虑用 Python 去实现它，而不是 C++。
+  //*    https://github.com/pybind/pybind11。
 
   return 0;
 }
