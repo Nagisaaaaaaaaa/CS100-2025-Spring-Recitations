@@ -37,7 +37,7 @@ int main() {
   {
     //! 那我问你，这里总共有几个窗口？
     auto window0 = std::make_shared<Window>(2560, 1440);
-    auto window1 = window0;
+    auto window1 = window0; //! 让两个智能指针指向同一个窗口。
     auto window2 = std::move(window0);
 
     //? 所以 shared_ptr 是“牛头人”。
