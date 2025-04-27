@@ -36,6 +36,8 @@ int main() {
     auto window0 = std::make_unique<Window>(2560, 1440);
     // auto window1 = window0;
     auto window2 = std::move(window0);
+
+    //? 所以 unique_ptr 是“纯爱战士”。
   }
 
   {

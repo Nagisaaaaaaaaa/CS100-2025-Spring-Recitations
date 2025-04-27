@@ -36,6 +36,8 @@ int main() {
     auto window0 = std::make_shared<Window>(2560, 1440);
     auto window1 = window0;
     auto window2 = std::move(window0);
+
+    //? 所以 shared_ptr 是“牛头人”。
   }
 
   {
