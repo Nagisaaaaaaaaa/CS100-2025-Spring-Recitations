@@ -1,3 +1,10 @@
+/*
+
+  ! Baseline:
+  ! 1. 函数参数能用裸指针就不要用智能指针。
+
+*/
+
 #include <iostream>
 #include <memory>
 
@@ -23,7 +30,7 @@ private:
 
 //! 我们在 r8/basics 学习过 pass-by-view 的设计思想，
 // 当时的例子是 void Print(std::span<int> view)。
-// 所以请永远选择 Window *window 作为参数。
+//! 所以，函数参数能用裸指针就不要用智能指针。
 
 void RenderSomethingInWindow(Window *window) {
   // ...

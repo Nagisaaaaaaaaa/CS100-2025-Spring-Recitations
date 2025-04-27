@@ -1,3 +1,11 @@
+/*
+
+  ! Baseline:
+  ! 1. 这两种智能指针有哪些区别？
+  ! 2. 请永远选择 std::unique_ptr，纯爱战士是对的。
+
+*/
+
 #include <iostream>
 #include <memory>
 
@@ -27,7 +35,7 @@ int main() {
   auto window0 = std::make_unique<Window>(2560, 1440);
   auto window1 = std::make_shared<Window>(2560, 1440);
 
-  //! 这两种智能指针有什么区别？
+  //! 这两种智能指针有哪些区别？
   //! 1. 所有权：
   //     unique_ptr: 只有一个“所有者”。
   //     shared_ptr: 会有多个“所有者”。
@@ -38,7 +46,7 @@ int main() {
   //* 那么该如何选择用哪种呢？
   //*
   //* 结论：
-  //* 1. 请永远选择 unique_ptr，因为
+  //! 1. 请永远选择 unique_ptr，因为
   //!    shared_ptr 会让生命周期非常混乱，
   //*    并且会影响性能。
   //* 2. 如果存在某个需求，

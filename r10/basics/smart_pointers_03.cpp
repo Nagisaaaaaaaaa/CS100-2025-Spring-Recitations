@@ -1,3 +1,10 @@
+/*
+
+  ! Baseline:
+  ! 1. std::shared_ptr 是一种“牛头人”风格的智能指针。
+
+*/
+
 #include <iostream>
 #include <memory>
 

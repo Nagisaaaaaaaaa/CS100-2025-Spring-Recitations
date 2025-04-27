@@ -1,3 +1,10 @@
+/*
+
+  ! Baseline:
+  ! 1. std::unique_ptr 是一种“纯爱战士”风格的智能指针。
+
+*/
+
 #include <iostream>
 #include <memory>
 
