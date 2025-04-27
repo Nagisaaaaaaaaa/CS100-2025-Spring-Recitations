@@ -27,8 +27,14 @@ int main() {
   }
 
   {
-    auto window = std::make_shared<Window>(2560, 1440);
+    auto window = std::make_unique<Window>(2560, 1440);
     // ...
+  }
+
+  {
+    auto window0 = std::make_unique<Window>(2560, 1440);
+    // auto window1 = window0;
+    auto window2 = std::move(window0);
   }
 
   return 0;
