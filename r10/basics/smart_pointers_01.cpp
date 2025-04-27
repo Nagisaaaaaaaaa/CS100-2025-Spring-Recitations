@@ -22,7 +22,6 @@ private:
 int main() {
   {
     std::unique_ptr<Window> window = std::make_unique<Window>(2560, 1440);
-
     std::cout << "Width : " << window->width() << std::endl;
     std::cout << "Height: " << window->height() << std::endl;
   }
@@ -33,8 +32,8 @@ int main() {
   }
 
   {
+    //! 那我问你，这里总共有几个窗口？
     auto window0 = std::make_unique<Window>(2560, 1440);
-
     // auto window1 = window0;
     auto window2 = std::move(window0);
   }
