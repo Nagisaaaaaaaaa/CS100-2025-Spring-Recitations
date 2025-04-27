@@ -51,7 +51,7 @@ int main() {
 
   // 有没有感受到一点违和？
   //   auto window0 = std::make_shared<Window>(2560, 1440);
-  //   auto window1 = window0;
+  //   auto window1 = window0; //! 让两个智能指针指向同一个窗口。
   //
   //! 谁真正拥有这个窗口？
   //   window0 和 window1 都拥有这个窗口。
