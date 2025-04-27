@@ -21,27 +21,28 @@ private:
 
 int main() {
   {
-    std::unique_ptr<Window> window = std::make_unique<Window>(2560, 1440);
+    std::shared_ptr<Window> window = std::make_shared<Window>(2560, 1440);
 
     std::cout << "Width : " << window->width() << std::endl;
     std::cout << "Height: " << window->height() << std::endl;
   }
 
   {
-    auto window = std::make_unique<Window>(2560, 1440);
+    auto window = std::make_shared<Window>(2560, 1440);
     // ...
   }
 
   {
-    auto window0 = std::make_unique<Window>(2560, 1440);
+    auto window0 = std::make_shared<Window>(2560, 1440);
 
-    // auto window1 = window0;
+    //! 那我问你，这里总共有几个窗口？
+    auto window1 = window0;
     auto window2 = std::move(window0);
   }
 
   {
     //! 那我问你，谁真正拥有这个窗口？
-    auto window = std::make_unique<Window>(2560, 1440);
+    auto window = std::make_shared<Window>(2560, 1440);
     Window *ptr = window.get();
   }
 
