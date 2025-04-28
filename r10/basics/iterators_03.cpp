@@ -16,6 +16,8 @@ struct Vector {
 };
 
 int main() {
+  //? 《迭代器 STL的准则》
+
   Vector vec{new int[5], 5};
 
   for (size_t i = 0; i < vec.size; ++i)

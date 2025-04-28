@@ -3,6 +3,8 @@
 #include <vector>
 
 int main() {
+  //? 《迭代器 STL的准则》
+
   std::vector<int> arr0{0, 1, 2, 3, 4};
   std::list<int> arr1{0, 1, 2, 3, 4};
 
