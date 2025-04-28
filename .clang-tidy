@@ -35,6 +35,9 @@ Checks: >
   -readability-magic-numbers,
   -readability-redundant-access-specifiers,
   -misc-include-cleaner,
+  -modernize-use-ranges,
+  -boost-use-ranges,
+
 
 # Disable it for now, we might need more precise report on errors.
 # WarningsAsErrors: "*"
