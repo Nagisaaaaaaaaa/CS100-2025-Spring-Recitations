@@ -30,13 +30,13 @@ public:
 
   // Public member functions
 public:
-  float &X() { return x_; }
+  float &x() { return x_; }
 
-  float &Y() { return y_; }
+  float &y() { return y_; }
 
-  float X() const { return x_; }
+  float x() const { return x_; }
 
-  float Y() const { return y_; }
+  float y() const { return y_; }
 
   // Operator overloading
 public:

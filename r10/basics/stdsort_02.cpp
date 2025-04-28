@@ -1,7 +1,13 @@
+/*
+
+  ! Baseline:
+  ! 1. Learn how to work with std::sort
+
+*/
+
 #include "vec.h"
 #include <algorithm>
 #include <array>
-#include <functional>
 #include <iostream>
 #include <string_view>
 

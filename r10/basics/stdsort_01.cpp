@@ -1,3 +1,10 @@
+/*
+
+  ! Baseline:
+  ! 1. Learn basic use of std::sort
+
+*/
+
 #include <algorithm>
 #include <array>
 #include <functional>

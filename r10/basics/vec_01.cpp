@@ -18,13 +18,13 @@ public:
 
   // Public member functions
 public:
-  float &X() { return x_; }
+  float &x() { return x_; }
 
-  float &Y() { return y_; }
+  float &y() { return y_; }
 
-  float X() const { return x_; }
+  float x() const { return x_; }
 
-  float Y() const { return y_; }
+  float y() const { return y_; }
 
   // Public Utils
 public:
@@ -39,7 +39,7 @@ private:
 int main() {
   vec2f A{1, 1};
   vec2f B{2, -1};
-  A.X() += 20;
+  A.x() += 20;
   Print(A);
   Print(B);
 

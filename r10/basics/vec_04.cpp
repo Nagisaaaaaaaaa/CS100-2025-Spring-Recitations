@@ -27,13 +27,13 @@ public:
 
   // Public member functions
 public:
-  float &X() { return x_; }
+  float &x() { return x_; }
 
-  float &Y() { return y_; }
+  float &y() { return y_; }
 
-  float X() const { return x_; }
+  float x() const { return x_; }
 
-  float Y() const { return y_; }
+  float y() const { return y_; }
 
   // Operator overloading
 public:
@@ -60,6 +60,7 @@ public:
 
   // Public Utils
 public:
+  // You can still keep it for a good reason
   friend void Print(const vec2f &vec) { std::cout << "{ " << vec.x_ << ", " << vec.y_ << " }" << std::endl; }
 
   friend float abs(const vec2f &vec) { return sqrtf(dot(vec, vec)); }
