@@ -74,8 +74,6 @@ int main() {
     delete &window;
   }
 
-  std::cout << Window::size() << std::endl;
-
   //! 那么如何选择该使用哪种管理方式呢？
   //! 1. 请永远优先选择“纯爱战士”。
   //* 2. 如果觉得“散养”很香，也可以选择它。
