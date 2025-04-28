@@ -97,7 +97,7 @@ public:
   //* 仔细思考你会发现，事实上我们可以进一步把两种赋值整合成为：
   //* 这种写法巧妙地利用了传value的语义，自动适配了左值右值两种版本
   //* （拓展思考题1）这是为什么？
-  //* （拓展思考题2）
+  //* （拓展思考题2）对性能有影响吗？
   // Assignments (Move & Copy)
   Dynarray &operator=(Dynarray other) {
     swap(*this, other);
