@@ -30,13 +30,14 @@ int main() {
   for (auto it = vec.begin(); it != vec.end(); ++it)
     std::cout << *it << std::endl;
 
-  //! 任何 class，只要实现了 begin 和 end 这两个成员函数，
-  //! 就能够自动支持 range-based for 循环。
   for (const auto &v : vec)
     std::cout << v << std::endl;
 
-  //! 所以，对于数组来说，裸指针本身就可以被作为一种“迭代器”。
-  // 但对于其他更复杂的数据结构，裸指针就不够用了。
+  //! 感受一下：
+  //! 1. 对于最简单的数组来说，裸指针本身就可以被作为一种“迭代器”。
+  //     但对于其他更复杂的数据结构，裸指针就不够用了。
+  //! 2. 任何 class，只要实现了 begin 和 end 这两个成员函数，
+  //!    就能够自动支持 range-based for 循环。
 
   return 0;
 }
