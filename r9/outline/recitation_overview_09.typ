@@ -27,7 +27,7 @@
 - #codetxt[Const & non-const references]: function overloading; parameter matching;
 - #codetxt[Class design]: make your class modern
 
-== 4. Bonus Application -- Tools teaching (15 min)
+== 3. Bonus Application -- Tools teaching (15 min)
 - What is property? Why property?
 
 == Supplementary Materials
