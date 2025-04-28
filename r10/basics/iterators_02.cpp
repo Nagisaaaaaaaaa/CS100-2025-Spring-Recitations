@@ -25,15 +25,15 @@ int main() {
   for (auto it = begin1; it != end1; ++it)
     std::cout << *it << std::endl;
 
-  // 那你会问，我不也可以用传统方法遍历数组嘛：
+  // 那你会问，不也可以用传统方法遍历数组嘛：
   for (size_t i = 0; i < arr0.size(); ++i)
     std::cout << arr0[i] << std::endl;
 
-  //! 但是对于 std::list，传统方法就不行了：
+  //! 但是对于 std::list，传统方法就不行了。
+  // 这是因为链表只能“按照顺序一个一个访问”，不能“跳着访问”：
   for (size_t i = 0; i < arr1.size(); ++i)
     std::cout << arr1[i] << std::endl;
 
-  // 这是因为链表只能“按照顺序一个一个访问”，不能“跳着访问”。
   //! STL 的设计是尽可能追求“大一统”的。
 
   return 0;
