@@ -11,6 +11,8 @@ struct Vector {
 
   ~Vector() { delete[] data; }
 
+  // 我们定义两个神秘函数 begin 和 end，
+  // 它们仅仅返回头尾的指针。
   int *begin() { return data; }
 
   int *end() { return data + size; }
@@ -23,6 +25,10 @@ int main() {
 
   for (size_t i = 0; i < vec.size; ++i)
     vec.data[i] = i;
+
+  //! 我们竟然就可以像 std::vector 和 std::list 一样使用它了！
+  for (auto it = vec.begin(); it != vec.end(); ++it)
+    std::cout << *it << std::endl;
 
   for (const auto &v : vec)
     std::cout << v << std::endl;
