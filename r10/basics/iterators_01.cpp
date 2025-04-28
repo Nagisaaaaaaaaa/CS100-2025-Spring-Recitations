@@ -1,3 +1,12 @@
+/*
+
+  ! Baseline:
+  ! 1. STL 的设计是尽可能追求“大一统”的。
+  ! 2. 为了实现“大一统”，这个终极目标，
+  !    STL 引入了“迭代器”这个概念。
+
+*/
+
 #include <iostream>
 #include <list>
 #include <vector>
