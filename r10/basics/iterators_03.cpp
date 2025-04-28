@@ -1,5 +1,7 @@
 #include <iostream>
 
+//? 《迭代器 STL的准则》
+
 // 为什么 std::vector 和 std::list
 // 能够支持 range-based for 循环呢？
 //! 有没有办法让我们自己的 class 支持它呢？
@@ -19,8 +21,6 @@ struct Vector {
 };
 
 int main() {
-  //? 《迭代器 STL的准则》
-
   Vector vec{new int[5]{}, 5};
 
   for (size_t i = 0; i < vec.size; ++i)
