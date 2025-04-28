@@ -56,7 +56,7 @@ int main() {
   // 实际上，远在 r7，我们就给大家见识过第 3 种。见 r7/supp。
 
   //* 3. 不存在任何“所有者”的管理方法 (散养)？
-  Window *window3 = new Window{2560, 1440}; //! 我们甚至在用 new？？？
+  Window *window3 = new Window{2560, 1440}; //* 我们甚至在用 new？
   Window *window4 = new Window{3840, 2160};
 
   //* 那我问你，谁真正拥有这些窗口？
@@ -68,7 +68,7 @@ int main() {
     std::cout << "Height: " << window.height() << std::endl;
   }
 
-  //* 有趣的是，Registry 能够让 new 和 delete 变得非常安全。
+  //* 有趣的是，Registry 能够让 new 和 delete 变得安全，为什么？
   while (Window::size() > 0) {
     Window &window = *Window::begin();
     delete &window;
