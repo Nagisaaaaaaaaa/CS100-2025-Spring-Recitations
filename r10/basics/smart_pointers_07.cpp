@@ -53,7 +53,9 @@ int main() {
   //! 2. 存在多个“所有者”的管理方法 (牛头人)。
   std::shared_ptr<Window> window2;
 
-  //* 3. 不存在任何“所有者”的管理方法 (散养)？见 r7/supp。
+  // 实际上，远在 r7，我们就给大家见识过第 3 种。见 r7/supp。
+
+  //* 3. 不存在任何“所有者”的管理方法 (散养)？
   Window *window3 = new Window{2560, 1440};
   Window *window4 = new Window{3840, 2160};
 
