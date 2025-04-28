@@ -4,6 +4,7 @@
 // 能够支持 range-based for 循环呢？
 //! 有没有办法让我们自己的 class 支持它呢？
 
+// 这是一个超级简陋的 Vector 实现。
 struct Vector {
   int *data;
   size_t size;
@@ -18,7 +19,7 @@ struct Vector {
 int main() {
   //? 《迭代器 STL的准则》
 
-  Vector vec{new int[5], 5};
+  Vector vec{new int[5]{}, 5};
 
   for (size_t i = 0; i < vec.size; ++i)
     vec.data[i] = i;
