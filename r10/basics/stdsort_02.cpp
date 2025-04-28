@@ -63,7 +63,7 @@ int main() {
   // # 4
   auto absGreater = [](const vec2f &alice, const vec2f &bob) { return dot(alice, alice) > dot(bob, bob); };
   std::sort(arr.begin(), arr.end(), absGreater);
-  print("sorted with non-anonymous lambda 'abdGreater'");
+  print("sorted with non-anonymous lambda 'absGreater'");
 
   // # 5
   // C-style function pointers are extremely not recommended in C++ programming.
