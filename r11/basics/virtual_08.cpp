@@ -4,18 +4,23 @@
 
 //? 《OLD GAME!》
 
+// 试试把析构函数都改成虚函数？
+
 class GameObject {
 public:
+  //! 在这一行，加一个 virtual。
   virtual ~GameObject() { std::cout << "GameObject::~GameObject" << std::endl; }
 };
 
 class Tank : public GameObject {
 public:
+  //! 在这一行，加一个 override。
   ~Tank() override { std::cout << "Tank::~Tank" << std::endl; }
 };
 
 class Bullet : public GameObject {
 public:
+  //! 在这一行，加一个 override。
   ~Bullet() override { std::cout << "Bullet::~Bullet" << std::endl; }
 };
 

@@ -32,7 +32,8 @@ int main() {
 
   //! 答案：
   //!   永远只会调用父类 GameObject 的析构函数，
-  //!   因为所有的 std::unique_ptr 的类型都是 GameObject。
+  //! 因为：
+  //!   所有的 std::unique_ptr 的类型都是 GameObject。
   //!   换成裸指针，显式地调用 delete，结果也是一样的。
 
   //! 难道说，当涉及到继承的时候，
