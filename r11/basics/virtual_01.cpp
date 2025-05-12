@@ -17,7 +17,7 @@ int main() {
   Tank *tankPtr = &tank;
   GameObject *gameObjectPtr = &tank;
 
-  // 那我问你，这两行代码会打印出什么？
+  //! 那我问你，这两行代码会打印出什么？
   tankPtr->Update();
   gameObjectPtr->Update();
 
