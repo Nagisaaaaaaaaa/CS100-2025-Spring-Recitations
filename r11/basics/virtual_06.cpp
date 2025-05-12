@@ -18,7 +18,7 @@ public:
 };
 
 int main() {
-  // 实际上很多时候，虚函数会配合智能指针一起使用
+  // 实际上很多时候，虚函数会配合智能指针一起使用。
   std::vector<std::unique_ptr<GameObject>> gameObjects;
 
   gameObjects.push_back(std::make_unique<Tank>());
