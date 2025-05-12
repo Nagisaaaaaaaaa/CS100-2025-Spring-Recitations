@@ -28,21 +28,23 @@ public:
 int main() {
   Tank tank;
 
+  // C++ 允许父类的指针指向子类的实例，我们可以这么写代码。
   Tank *tankPtr = &tank;
   GameObject *gameObjectPtr = &tank;
+
+  // 于是，我们自然地希望做游戏开发时，代码长这样：
+  // 1. 用一个 std::vector 存储所有游戏对象的指针。
+  // 2. 每一帧，遍历所有游戏对象，调用它们的 Update。
+  std::vector<GameObject *> gameObjects;
+  for (auto *gameObject : gameObjects)
+    gameObject->Update();
+
+  // 也就是说，我们希望能够：
+  //! 使用父类的指针，调用子类的函数。
 
   //! 那我问你，这两行代码会打印出什么？
   tankPtr->Update();
   gameObjectPtr->Update();
-
-  // 这不是我们想要的，因为假设我们在设计一个游戏引擎，
-  // 肯定希望这么写代码：
-  std::vector<GameObject *> gameObjects;
-  for (auto *gameObject : gameObjects)
-    gameObject->Update(); // 永远只会调用父类的 Update 啊。
-
-  // 更具体地说，我们希望能够：
-  //! 使用父类的指针，调用子类的函数。
 
   return 0;
 }
