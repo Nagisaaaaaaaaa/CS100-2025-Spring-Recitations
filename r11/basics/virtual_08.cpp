@@ -2,12 +2,9 @@
 #include <memory>
 #include <vector>
 
-// 现在，我们让事情变得更复杂一点。
-// 假设这 3 个 class 都显式地实现了析构函数。
-
 class GameObject {
 public:
-  ~GameObject() { std::cout << "GameObject::~GameObject" << std::endl; }
+  virtual ~GameObject() { std::cout << "GameObject::~GameObject" << std::endl; }
 
 public:
   virtual void Update() = 0;
@@ -15,7 +12,7 @@ public:
 
 class Tank : public GameObject {
 public:
-  ~Tank() { std::cout << "Tank::~Tank" << std::endl; }
+  ~Tank() override { std::cout << "Tank::~Tank" << std::endl; }
 
 public:
   void Update() override { std::cout << "Tank::Update" << std::endl; }
@@ -23,7 +20,7 @@ public:
 
 class Bullet : public GameObject {
 public:
-  ~Bullet() { std::cout << "Bullet::~Bullet" << std::endl; }
+  ~Bullet() override { std::cout << "Bullet::~Bullet" << std::endl; }
 
 public:
   void Update() override { std::cout << "Bullet::Update" << std::endl; }
@@ -41,10 +38,13 @@ int main() {
   //! 那我问你，析构的时候会打印出什么？
 
   //! 答案：
-  //!   永远只会调用父类 GameObject 的析构函数，
-  //!   因为所有的 unique_ptr 的类型都是 GameObject。
-
-  //! 难道说，析构函数必须是 virtual 的吗？
+  //!   子类和父类的析构函数都会被调用。
+  //! 因为：
+  //! 1. 因为析构函数是虚函数，所以即使指针的类型是 GameObject，
+  //!    也会调用子类的析构函数。
+  //! 2. 子类的析构函数会自动调用父类的析构函数，
+  //!    顺序是：先子类、后父类，
+  //!    与构造函数的顺序正好相反。
 
   return 0;
 }
