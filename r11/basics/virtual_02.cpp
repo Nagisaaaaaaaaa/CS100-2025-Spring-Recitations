@@ -3,11 +3,13 @@
 
 class GameObject {
 public:
+  // 在这一行，加一个 virtual。
   virtual void Update() { std::cout << "GameObject::Update" << std::endl; }
 };
 
 class Tank : public GameObject {
 public:
+  // 在这一行，加一个 override。
   void Update() override { std::cout << "Tank::Update" << std::endl; }
 };
 
