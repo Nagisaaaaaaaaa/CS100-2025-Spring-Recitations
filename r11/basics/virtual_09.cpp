@@ -11,7 +11,10 @@
 // 假设你是一位普信程序员，打算继承 std::vector，
 // 并为它拓展功能。
 class MyVector : public std::vector<int> {
-  // ...
+public:
+  // 你觉得 std::copy 的设计就是一坨，于是
+  // 为它实现了一个更香的 copy 函数。
+  void copy(const MyVector &others) { /*...*/ }
 };
 
 int main() {
@@ -28,12 +31,13 @@ int main() {
 
   //! 答案：
   //!   危险。
+  //!   这里涉及到了 std::vector<int> * 类型的指针。
   //!   因为父类 std::vector<int> 的析构函数不是 virtual 的，
   //!   所以只会调用父类的析构函数，不会调用子类的析构函数。
 
-  //* 虽然它存在危险，但是真有人类会写出这种代码吗？
-  //* std::unique_ptr<std::vector<int>>
-  //* 会这么写的都是神人了，所以没关系的，放心用。
+  //* 这个例子和我们 GameObject、Tank 的例子有什么本质区别？
+  //*   没有任何需求会用到 std::vector<int> * 这样的指针，
+  //*   因为不存在任何虚函数，根本用不到指针对吧。
 
   //* 所以，我们实际上有这样的设计原则：
   //* 1. 如果一个 class 存在非析构函数的虚函数，
