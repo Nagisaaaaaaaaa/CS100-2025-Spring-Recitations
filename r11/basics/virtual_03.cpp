@@ -19,6 +19,7 @@ int main() {
   Tank tank;
 
   // 如果把 pointer 换成 reference 会发生什么？
+  // 类似地，C++ 允许父类的 reference 引用子类的实例。
   Tank &tankRef = tank;
   GameObject &gameObjectRef = tank;
 
@@ -33,15 +34,17 @@ int main() {
   for (auto &gameObject : gameObjects)
     gameObject.Update();
 
-  //* std::vector 可以存 pointer 但不能存 reference！
-  //* 这是个所有权 (ownership) 方面的哲学问题。
+  //* 为什么编译不过了？
+  //*   std::vector 可以存 pointer 但不能存 reference。
   //*
-  //* 如果 std::vector 允许存 reference，
-  //* 那么谁才是真正的所有者呢？一切都会很混乱。
+  //* 为什么这么设计呢？
+  //*   如果 std::vector 允许存 reference，
+  //*   那么谁才是真正的所有者？一切都会很混乱。
+  //*   这就是 ownership 的设计哲学。
 
   //! 总结：
   //!   当涉及到继承、虚函数的时候，
-  //!   请永远选择用 pointer 而不是 reference。
+  //!   绝大多数时候，选择 pointer 而不是 reference。
 
   return 0;
 }
