@@ -29,15 +29,15 @@ int main() {
   gameObjectPtr->UpdateVirtual();
 
   // (2). 如果我们事先就知道指向的是个 Tank，
-  //      就可以调用 static_cast 转换到子类指针。
+  //      就可以调用 static_cast 来转换到子类指针。
   //      然后调用非虚函数的版本。
   {
     Tank *ptr = static_cast<Tank *>(gameObjectPtr);
     ptr->UpdateNonVirtual();
   }
 
-  // (3). 我觉得虚函数让我的生活过得太轻松了，
-  //      我想体验一下没有虚函数的日子。
+  //! (3). 我觉得虚函数让我的生活过得太轻松了，
+  //!      想体验一下没有虚函数的日子。
   {
     Tank *ptr = dynamic_cast<Tank *>(gameObjectPtr);
     if (ptr)
