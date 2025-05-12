@@ -41,5 +41,11 @@ int main() {
 
   //! 那我问你，析构的时候会打印出什么？
 
+  //! 答案：
+  //!   永远只会调用父类 GameObject 的析构函数，
+  //!   因为所有的 unique_ptr 的类型都是 GameObject。
+
+  //! 难道说，析构函数必须是 virtual 的吗？
+
   return 0;
 }
