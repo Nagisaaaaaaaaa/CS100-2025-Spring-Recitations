@@ -4,7 +4,7 @@
 
 class GameObject {
 public:
-  //! 不提供“默认行为”的版本：
+  //! 这次我们不提供“默认行为”了。
   // virtual void Update() { std::cout << "GameObject::Update" << std::endl; }
   virtual void Update() = 0;
 };
@@ -14,11 +14,10 @@ public:
   void Update() override { std::cout << "Tank::Update" << std::endl; }
 };
 
-// 除了 Tank 之外，我们还需要 Bullet 之类的 GameObject。
 class Bullet : public GameObject {
 public:
-  // 但是我不小心忘记实现 Bullet 的 Update 了。
-  //! 这时候，不小心忘记实现 Update 就会触发 compile error。
+  //! 如果不存在“默认行为”，
+  //! 不小心忘记实现 Update 就会导致 compile error。
 };
 
 int main() {
