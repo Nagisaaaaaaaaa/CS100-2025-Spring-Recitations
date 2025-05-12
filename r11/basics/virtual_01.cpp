@@ -46,5 +46,8 @@ int main() {
   tankPtr->Update();
   gameObjectPtr->Update();
 
+  // 普通的函数做不到这么厉害的事情。
+  // 于是 C++ 引入了一种叫做“虚函数”的特殊函数。
+
   return 0;
 }
