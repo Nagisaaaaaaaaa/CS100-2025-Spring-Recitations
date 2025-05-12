@@ -1,5 +1,7 @@
 #include <iostream>
 
+//? 《OLD GAME!》
+
 class GameObject {
 public:
   virtual void Update() { std::cout << "GameObject::Update" << std::endl; }

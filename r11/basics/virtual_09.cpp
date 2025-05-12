@@ -1,6 +1,8 @@
 #include <memory>
 #include <vector>
 
+//? 《OLD GAME!》
+
 //* 但是，将万能公式换句话说：
 //*   如果最远古的父类析构函数没有写 virtual，
 //*   那么我们是不是永远都不应该继承于它呢？

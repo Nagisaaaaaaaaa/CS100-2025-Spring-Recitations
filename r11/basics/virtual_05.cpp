@@ -1,5 +1,7 @@
 #include <iostream>
 
+//? 《OLD GAME!》
+
 class GameObject {
 public:
   //! 不提供“默认行为”的版本：

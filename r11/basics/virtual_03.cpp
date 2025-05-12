@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 
+//? 《OLD GAME!》
+
 class GameObject {
 public:
   // 在这一行，加一个 virtual。

@@ -2,6 +2,8 @@
 #include <memory>
 #include <vector>
 
+//? 《OLD GAME!》
+
 // 现在，我们让事情变得更复杂一点。
 // 假设这 3 个 class 都显式地实现了析构函数。
 
