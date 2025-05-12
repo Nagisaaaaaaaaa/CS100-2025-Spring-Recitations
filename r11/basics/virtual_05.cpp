@@ -21,6 +21,7 @@ public:
 };
 
 int main() {
+  //! 会直接在这里 compile error。
   Bullet bullet;
 
   Bullet *bulletPtr = &bullet;
@@ -29,7 +30,8 @@ int main() {
   bulletPtr->Update();
   gameObjectPtr->Update();
 
-  //! 我们称 Update 这样的函数为“纯虚函数” (pure virtual)。
+  //! 我们称 Update 这样的函数为“纯虚函数” (pure virtual function)。
+  //! 这里 pure 指的就是没有“默认行为”。
 
   //! 纯虚函数的意义：
   //!   我们永远无法实例化一个 class，
