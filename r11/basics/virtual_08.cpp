@@ -46,5 +46,28 @@ int main() {
   //!    顺序是：先子类、后父类，
   //!    与构造函数的顺序正好相反。
 
+  //* 假设我们要为 GameObject 和 Tank 实现析构函数，有多少种写法？
+  //*
+  //* · 对于 GameObject：
+  //*   1. ~GameObject() = default;
+  //*   2. ~GameObject() { ... }
+  //*   3. virtual ~GameObject() = default;
+  //*   4. virtual ~GameObject() { ... }
+  //*   5. 啥都不写，让编译器自动生成 (等价于第一种情况)。
+  //*
+  //* · 对于 Tank：
+  //*   1. ~Tank() = default;
+  //*   2. ~Tank() { ... }
+  //*   3. ~Tank() override = default;
+  //*   4. ~Tank() override { ... }
+  //*   5. 啥都不写，让编译器自动生成 (等价于第一种情况)。
+  //*
+  //* 竟然有足足 5 * 5 == 25 种情况……
+  //* 怎么写嘛！
+
+  //* 别急，有万能公式：
+  //* 1. 最远古的父类必须写 virtual (在我们的例子里，GameObject 必须用 3 或 4)。
+  //* 2. 其他所有的子孙类，怎么写都无所谓 (在我们的例子里，Tank 的析构函数随便写)。
+
   return 0;
 }
