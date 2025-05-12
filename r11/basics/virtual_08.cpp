@@ -7,25 +7,16 @@
 class GameObject {
 public:
   virtual ~GameObject() { std::cout << "GameObject::~GameObject" << std::endl; }
-
-public:
-  virtual void Update() { std::cout << "GameObject::Update" << std::endl; }
 };
 
 class Tank : public GameObject {
 public:
   ~Tank() override { std::cout << "Tank::~Tank" << std::endl; }
-
-public:
-  void Update() override { std::cout << "Tank::Update" << std::endl; }
 };
 
 class Bullet : public GameObject {
 public:
   ~Bullet() override { std::cout << "Bullet::~Bullet" << std::endl; }
-
-public:
-  void Update() override { std::cout << "Bullet::Update" << std::endl; }
 };
 
 int main() {
@@ -33,9 +24,6 @@ int main() {
 
   gameObjects.push_back(std::make_unique<Tank>());
   gameObjects.push_back(std::make_unique<Bullet>());
-
-  for (auto &gameObject : gameObjects)
-    gameObject->Update();
 
   //! 那我问你，析构的时候会打印出什么？
 
