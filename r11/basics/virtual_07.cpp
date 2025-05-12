@@ -12,7 +12,7 @@ public:
   ~GameObject() { std::cout << "GameObject::~GameObject" << std::endl; }
 
 public:
-  virtual void Update() = 0;
+  virtual void Update() { std::cout << "GameObject::Update" << std::endl; }
 };
 
 class Tank : public GameObject {

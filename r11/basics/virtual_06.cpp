@@ -6,7 +6,7 @@
 
 class GameObject {
 public:
-  virtual void Update() = 0;
+  virtual void Update() { std::cout << "GameObject::Update" << std::endl; }
 };
 
 class Tank : public GameObject {
