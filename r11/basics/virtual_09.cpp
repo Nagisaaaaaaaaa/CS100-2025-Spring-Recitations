@@ -18,7 +18,7 @@ public:
 };
 
 int main() {
-  //! 那我问你，这么写安全吗？
+  //! 那我问你，这行代码安全吗？
   MyVector v0;
 
   //! 答案：
@@ -26,13 +26,13 @@ int main() {
   //!   因为这里没有涉及到任何指针，只有 MyVector 类型的实例，
   //!   自然总是会调用 MyVector 的析构函数。
 
-  //! 那我问你，这么写安全吗？
+  //! 那我问你，这行代码安全吗？
   std::unique_ptr<std::vector<int>> v1 = std::make_unique<MyVector>();
 
   //! 答案：
   //!   危险。
-  //!   这里涉及到了 std::vector<int> * 类型的指针。
-  //!   因为父类 std::vector<int> 的析构函数不是 virtual 的，
+  //!   因为这里涉及到了 std::vector<int> * 类型的指针。
+  //!   由于父类 std::vector<int> 的析构函数不是 virtual 的，
   //!   所以只会调用父类的析构函数，不会调用子类的析构函数。
 
   //* 这个例子和我们 GameObject、Tank 的例子有什么本质区别？
