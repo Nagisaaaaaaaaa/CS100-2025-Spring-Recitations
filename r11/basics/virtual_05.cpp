@@ -28,5 +28,7 @@ int main() {
   bulletPtr->Update();
   gameObjectPtr->Update();
 
+  //! 我们称 Update 这样的函数为“纯虚函数” (pure virtual)。
+
   return 0;
 }

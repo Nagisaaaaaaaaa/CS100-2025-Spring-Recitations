@@ -27,5 +27,9 @@ int main() {
   for (auto *gameObject : gameObjects)
     gameObject->Update();
 
+  // 感受一下我们做到了什么？
+  //!   使用父类的指针，调用子类的函数。
+  //! 我们称 Update 这样的函数为“虚函数” (virtual)。
+
   return 0;
 }
