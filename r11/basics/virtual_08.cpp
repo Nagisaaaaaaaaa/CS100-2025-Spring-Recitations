@@ -44,14 +44,14 @@ int main() {
   //* 既然我们要为 GameObject 和 Tank、Bullet 实现析构函数，
   //* 那么总共有多少种写法？
   //*
-  //* · 对于 GameObject：
+  //* 对于 GameObject：
   //*   1. ~GameObject() = default;
   //*   2. ~GameObject() { ... }
   //*   3. virtual ~GameObject() = default;
   //*   4. virtual ~GameObject() { ... }
   //*   5. 啥都不写，让编译器自动生成 (等价于第一种情况)。
   //*
-  //* · 对于 Tank：
+  //* 对于 Tank、Bullet：
   //*   1. ~Tank() = default;
   //*   2. ~Tank() { ... }
   //*   3. ~Tank() override = default;
