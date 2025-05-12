@@ -30,5 +30,17 @@ int main() {
 
   //! 我们称 Update 这样的函数为“纯虚函数” (pure virtual)。
 
+  //! 纯虚函数的意义：
+  //!   我们永远无法实例化一个 class，
+  //!   直到我们实现了所有的纯虚函数。
+  GameObject v0; // 无法实例化，因为没有实现“纯虚函数” Update。
+  Tank v1;       // 可以实例化，因为已经实现了所有“纯虚函数”。
+  Bullet v2;     // 无法实例化，因为没有实现“纯虚函数” Update。
+
+  //! 我们称存在未实现“纯虚函数”的 class 为 abstract class。
+  // GameObject 是 abstract class。
+  // Tank       不是 abstract class。
+  // Bullet     是 abstract class。
+
   return 0;
 }
