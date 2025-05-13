@@ -24,12 +24,12 @@
 - #codetxt[public v.s. private derivation]: IS-A or HAS-A?
 - #codetxt[base constructors in derived classes]: whether / when it is called?
 
-== 2. Main Session #2 (40 min)
+== 3. Main Session #2 (40 min)
 - #codetxt[virtual function]: pure virtual function, override.
 - #codetxt[implicit upcasting]: base pointer points to derived classes
 - #codetxt[destructors in derivation]: when / why virtual?
 
-== 5. Bonus Application (20 min)
+== 4. Bonus Application (20 min)
 - How to prepare your exam?
 - What are the priorities?
 - How to prepare a cheat sheet.
