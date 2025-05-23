@@ -27,7 +27,7 @@ int main() {
   }
 
   //! 这个写法完全等价于“被展开”的循环。
-  ARIA::ForEach<5>([&]<int i> { //
+  ARIA::ForEach<5>([]<int i> { //
     std::cout << i << std::endl;
   });
 
