@@ -31,6 +31,9 @@ public:
 
 private:
   //! 允许定义不同的成员变量。
+  //   因为我们希望用 1 个 bit 来存储 bool，
+  //   所以数据类型为 32 位的 unsigend 整型。
+  //   我们需要通过位运算来修改其中的 bit。
   uint32_t *data_ = nullptr;
   size_t size_ = 0;
 };
