@@ -4,7 +4,7 @@
 
 //* 编程小知识：
 //*   我们的老朋友 Registry 其实有个更官方的名字，“侵入式链表”。
-//*   ARIA Registry 是通过一种叫做 CRTP (Curiously Recurring Template Pattern)
+//*   ARIA Registry 是借助一种叫做 CRTP (Curiously Recurring Template Pattern)
 //*   的模板小技巧实现的。
 
 //* 父类的模板参数竟然是子类？
