@@ -25,7 +25,7 @@ struct is_int<int> {
 static_assert(is_int<int>::value == true);
 static_assert(is_int<double>::value == false);
 
-// 可以再定义一个模板变量来进一步简化调用。
+// 可以再定义一个模板变量来进一步简化调用 (快捷方式)。
 template <typename T>
 static constexpr bool is_int_v = is_int<T>::value;
 
@@ -35,7 +35,7 @@ static_assert(is_int_v<double> == false);
 //* 我们来总结一下发生了什么：
 //* 1. 借助模板特化，我们定义了一个叫做 is_int 的 struct，
 //*    它能够用于 判断给定的模板参数是否是 int。
-//* 2. 可以再定义一个模板变量 is_int_v 来进一步简化调用。
+//* 2. 可以再定义一个模板变量 is_int_v 来进一步简化调用 (快捷方式)。
 //*
 //* 感受一下 struct is_int，它能够提取模板参数的“特征”。
 //* 在这个例子中，“特征”是指：是否是 int。
