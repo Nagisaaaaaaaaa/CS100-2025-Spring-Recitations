@@ -7,7 +7,7 @@
 //*   ARIA Registry 是借助一种叫做 CRTP (Curiously Recurring Template Pattern)
 //*   的模板小技巧实现的。
 
-//* 父类的模板参数竟然是子类？
+//* 父类的模板参数竟然可以是子类？这就是 CRTP！
 class Window : public ARIA::Registry<Window> {
 public:
   Window(int width, int height)
