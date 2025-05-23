@@ -47,8 +47,15 @@ int main() {
   static_assert(std::is_same_v<Dynarray<int>, DynarrayImpl<int>>);
   static_assert(std::is_same_v<Dynarray<bool>, std::vector<bool>>);
 
+  //* 感受一下这个例子。
+  //*
+  //* 我们此时正在学习的奇妙技术，叫做 metaprogramming (元编程)。
+  //* 它的核心思想是：利用编译器在编译阶段执行代码，从而生成最终的运行时代码。
+  //*
+  //* 在 C++ 中，模板特化 几乎是元编程的必经之路，这就是为什么说：
+  //!   模 板 特 化 是 C++ 最 伟 大 的 语 法 ！
+
+  //! 此刻，我们总算是真正地，“入门” C++ 了！
+
   return 0;
 }
-
-//* 仿佛就像是，我们的代码，
-//* 而我们此时正在学习的奇妙技术，叫做 metaprogramming (元编程)。
