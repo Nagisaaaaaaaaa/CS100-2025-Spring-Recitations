@@ -40,5 +40,5 @@ static_assert(is_int_v<double> == false);
 //* 感受一下 struct is_int，它能够提取模板参数的“特征”。
 //* 在这个例子中，“特征”是指：是否是 int。
 //*
-//* 因此，struct is_init 这样的类型 被称为“type trait”。
+//* 因此，struct is_int 这样的类型 被称为“type trait” (类型特征)。
 //* 而我们此时正在学习的奇妙技术，叫做 metaprogramming (元编程)。
